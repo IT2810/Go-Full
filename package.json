@@ -7,7 +7,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "test": "node ./node_modules/jest-expo/bin/jest.js --watchAll"
+    "test": "node ./node_modules/jest-expo/bin/jest.js --watchAll",
+    "travisTest": "node ./node_modules/jest-expo/bin/jest.js --watchAll --runInBand"
   },
   "jest": {
     "preset": "jest-expo"
