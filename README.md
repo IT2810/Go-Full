@@ -1,1 +1,1 @@
-# it2810-webutvikling-h18-prosjekt-3-06
+# Prosjekt 3 - Motivasjonsapp
