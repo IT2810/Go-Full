@@ -8,7 +8,8 @@ export default class DateTimePickerClass extends Component {
     chosenDate: ''
   };
 
-  componentDidMount = () => AsyncStorage.getItem('chosenDate').then((value) => this.setState({ 'chosenDate': value }));
+  componentDidMount = () => 
+    AsyncStorage.getItem('chosenDate').then((value) => this.setState({ 'chosenDate': value }));
 
   setDate = (value) => {
     value = JSON.stringify(value);
@@ -16,16 +17,17 @@ export default class DateTimePickerClass extends Component {
     this.setState({ 'chosenDate': value });
   };
 
-  _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
+    showDateTimePicker = () => 
+        this.setState({ isDateTimePickerVisible: true });
 
-  _hideDateTimePicker = () => this.setState({ 
-    isDateTimePickerVisible: false });
+    hideDateTimePicker = () => 
+        this.setState({ isDateTimePickerVisible: false });
 
-  _handleDatePicked = (datetime) => {
-    console.log('A date and time has been picked: ', datetime);
-    this.setState({isDateTimePickerVisible: false});
-    this.setDate(datetime);
-  };
+    handleDatePicked = (datetime) => {
+        console.log('A date and time has been picked: ', datetime);
+        this.setState({isDateTimePickerVisible: false});
+        this.setDate(datetime);
+      };
 
   render () {
     const chosenDate = JSON.stringify(this.state.chosenDate);
@@ -34,13 +36,13 @@ export default class DateTimePickerClass extends Component {
         <Text>
           {chosenDate}
         </Text>
-        <TouchableOpacity onPress={this._showDateTimePicker}>
+        <TouchableOpacity onPress={this.showDateTimePicker}>
           <Text> TRYKK HER FOR SICK POPUP </Text>
         </TouchableOpacity>
         <DateTimePicker
           isVisible={this.state.isDateTimePickerVisible}
-          onConfirm={this._handleDatePicked}
-          onCancel={this._hideDateTimePicker}
+          onConfirm={this.handleDatePicked}
+          onCancel={this.hideDateTimePicker}
           mode={'datetime'}
         />
       </View>
