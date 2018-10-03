@@ -7,16 +7,21 @@ import t from 'tcomb-form-native';
 const Form = t.form.Form;
 
 const User = t.struct({
-  email: t.String,
-  username: t.String,
+  Title: t.String,
+  Description: t.String,
 });
+
+const options = {
+    auto: 'placeholders'
+};
 
 export default class CreateEventClass extends Component {
     render() {
         return(
             <View>
-                <Form type={User} />
+                <Form type={User} options={options} />
             </View>
         )
     }
 }
+
