@@ -3,6 +3,12 @@
 
 Skrive om:
 
+AsyncStorage
+
+Testing
+
+Samarbeid
+
 Yarn
 
 Komponentsstruktur/Mappestruktur
