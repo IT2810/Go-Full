@@ -1,38 +1,10 @@
 import React, { Component } from 'react';
-import {Button, Text, View} from 'react-native';
-import t from 'tcomb-form-native';
+import CreateEventClass from './inputForm';
 
-
-
-const Form = t.form.Form;
-
-const User = t.struct({
-  Title: t.String,
-  Description: t.maybe(t.String),
-  FriendsMail: t.maybe(t.String),
-});
-
-const options = {
-    auto: 'placeholders'
-};
-
-export default class CreateEventClass extends Component {
-
-    handleFriendInvite = () => {
-        //
-    }
-
-    handleCreateEvent = () => {
-        //
-    }
-
+export default class placeHolderNameForThisComponent extends Component {
     render() {
         return(
-            <View>
-                <Form type={User} options={options} />
-                <Button title="Invite Friend" onPress={this.handleFriendInvite} />
-                <Button title="Create Event!" onpress={this.handleCreateEvent} />
-            </View>
+            <CreateEventClass />
         )
     }
 }
