@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import DateTimePickerClass from './src/components/dateTimePicker';
+import CreateEventClass from './src/components/createEvent';
 
 const App = () => {
   const styles = StyleSheet.create({
@@ -15,7 +15,7 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <DateTimePickerClass />
+      <CreateEventClass />
     </View>
   );
 };
