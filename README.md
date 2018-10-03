@@ -18,6 +18,7 @@ Figma
 Tredjepartsbiblioteker:
 https://github.com/mmazzarolo/react-native-modal-datetime-picker
 
+https://github.com/gcanti/tcomb-form
 
 
 
