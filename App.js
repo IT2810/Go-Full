@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import CreateEventClass from './src/components/createEvent';
 
 const App = () => {
@@ -7,7 +7,7 @@ const App = () => {
 
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: '#6D6D6D',
       alignItems: 'center',
       justifyContent: 'center',
     },
