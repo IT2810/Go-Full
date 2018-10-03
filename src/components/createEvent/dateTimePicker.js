@@ -19,8 +19,8 @@ export default class DateTimePickerTester extends Component {
   render () {
     return (
       <View>
-        <TouchableOpacity onPress={this._showDateTimePicker}>
-          <Button title="PICCA THE DATE" onPress={this._handleDatePicked} />
+        <TouchableOpacity>
+          <Button title="PICCA THE DATE" onPress={this._showDateTimePicker} />
         </TouchableOpacity>
         <DateTimePicker
           isVisible={this.state.isDateTimePickerVisible}
