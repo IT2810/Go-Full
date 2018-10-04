@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Button, Text, View} from 'react-native';
+import {StyleSheet, Button, Text, View} from 'react-native';
 import t from 'tcomb-form-native';
 import DateTimePickerTester from './dateTimePicker';
 
@@ -9,34 +9,41 @@ const Form = t.form.Form;
 
 const Events = t.struct({
   Title: t.String,
-  Description: t.maybe(t.String),
+  Description: t.maybe(t.String)    //maybe says that this field is optional
 });
 
 const Friend = t.struct({
-    FriendsMail: t.maybe(t.String)
+    FriendsMail: t.maybe(t.String)  //maybe says that this field is optional
 })
 
 const options = {
     auto: 'placeholders',   //Tells the fields to have placeholder text instead of titles above the fields
-    i18n: {                 //Removes the (optional) in the fields when nothing is written
+    i18n: {     //Removes the (optional) in the fields when nothing is written
         optional: ' '
-    }
+    },
+    stylesheet: formStyles,
 };
+
+const formStyles = StyleSheet.create({
+    formGroup: {
+        color: '#38006B'
+    },
+});
 
 export default class CreateEventClass extends Component {
 
     handleFriendInvite = () => {
-        //
+        //todo
     }
 
     handleCreateEvent = () => {
-        //
+        //todo
     }
 
     render() {
         return(
             <View>
-                <Form type={Events} options={options} />
+                <Form type={Events} options={options} style={formStyles.formGroup} />
                 <DateTimePickerTester />
                 <Form type={Friend} options={options} />
                 <Button title="INVITE FRIEND" onPress={this.handleFriendInvite} />
@@ -45,4 +52,3 @@ export default class CreateEventClass extends Component {
         )
     }
 }
-

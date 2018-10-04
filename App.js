@@ -7,7 +7,7 @@ const App = () => {
 
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: '#6D6D6D',
       alignItems: 'center',
       justifyContent: 'center',
     },

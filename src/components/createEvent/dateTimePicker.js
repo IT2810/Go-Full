@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, Button, TouchableOpacity, View } from 'react-native';
+import { Button, TouchableOpacity, View } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
 export default class DateTimePickerTester extends Component {
@@ -7,25 +7,25 @@ export default class DateTimePickerTester extends Component {
     isDateTimePickerVisible: false,
   };
 
-  _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
+  showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
 
-  _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
+  hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
 
-  _handleDatePicked = (date) => {
+  handleDatePicked = (date) => {
     console.log('A date has been picked: ', date);
-    this._hideDateTimePicker();
+    this.hideDateTimePicker();
   };
 
   render () {
     return (
       <View>
         <TouchableOpacity>
-          <Button title="PICCA THE DATE" onPress={this._showDateTimePicker} />
+          <Button title="PICCA THE DATE" onPress={this.showDateTimePicker} />
         </TouchableOpacity>
         <DateTimePicker
           isVisible={this.state.isDateTimePickerVisible}
-          onConfirm={this._handleDatePicked}
-          onCancel={this._hideDateTimePicker}
+          onConfirm={this.handleDatePicked}
+          onCancel={this.hideDateTimePicker}
         />
       </View>
     );
