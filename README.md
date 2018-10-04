@@ -15,6 +15,8 @@ Komponentsstruktur/Mappestruktur
 
 Figma
 
+AirBNB Linter
+
 Tredjepartsbiblioteker:
 https://github.com/mmazzarolo/react-native-modal-datetime-picker
 
