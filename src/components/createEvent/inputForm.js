@@ -33,8 +33,8 @@ const formStyles = StyleSheet.create({
 export default class CreateEventClass extends Component {
 
     handleFriendInvite = () => {
-        //todo
-    }
+        
+    } 
 
     handleCreateEvent = () => {
         //todo
