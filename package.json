@@ -7,7 +7,9 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "test": "node ./node_modules/jest-expo/bin/jest.js --watchAll"
+    "test": "node ./node_modules/jest-expo/bin/jest.js --watchAll",
+    "travisTest": "node ./node_modules/jest-expo/bin/jest.js --runInBand",
+    "lint": "./node_modules/.bin/eslint **/*.js"
   },
   "jest": {
     "preset": "jest-expo"
@@ -23,6 +25,11 @@
     "tcomb-form-native": "^0.6.19"
   },
   "devDependencies": {
+    "eslint": "^5.6.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
     "jest-expo": "30.0.0"
   }
 }
