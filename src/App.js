@@ -1,8 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Schedule from './src/components/Schedule';
 
 const App = () => {
   const styles = StyleSheet.create({
+
 
     container: {
       flex: 1,
