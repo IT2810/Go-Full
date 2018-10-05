@@ -37,11 +37,12 @@ Context has two core components a Provider and a Consumer. The Provider provides
 Our Provider is defined along with the context in `src/components/AppProvider`. We decided to create a component that could serve as a provider in the component tree. This class also acts as our primary state handler. This way we had one centralised access to our storage and state-handling methods. In the render() you can see that we use the Context to generate a provider that takes the state of AppProvider as it's input and distributes that to the rest the component tree. The provider is inserted at the top of the component tree in `App.js`.
 
 The consumer is used all over the application in any place where we need access to something from the provider. To use a consumer you need a code snippet that looks a lot like this:
-```<AppContext.Consumer>
+```
+<AppContext.Consumer>
         {value =>(
             <Button title={value.relevantPieceOfState} />
         )}
-    </AppContext.Consumer>
+</AppContext.Consumer>
 ```
 
 you also need to import the context from AppProvider:
