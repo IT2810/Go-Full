@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import AppProvider from './src/components/AppProvider';
 
 const App = () => {
   const styles = StyleSheet.create({
@@ -15,7 +16,9 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <AppProvider>
+        <Text>Open up App.js to start working on your app!</Text>
+      </AppProvider>
     </View>
   );
 };
