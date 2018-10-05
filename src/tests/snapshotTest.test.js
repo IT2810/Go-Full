@@ -1,7 +1,7 @@
 import React from 'react';
+import renderer from 'react-test-renderer';
 import Intro from '../components/snapshotTest/index';
 
-import renderer from 'react-test-renderer';
 
 test('renders correctly', () => {
   const tree = renderer.create(<Intro />).toJSON();

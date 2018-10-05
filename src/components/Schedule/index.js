@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import ListItem from './listItem';
 
 
 const styles = StyleSheet.create({
   list: {
     marginTop: 40,
-    flex: 1,
     flexDirection: 'column',
-    justifyContent: 'center',
+    alignItems: 'center',
+    alignContent: 'center',
   },
 });
 
@@ -45,17 +45,20 @@ class Schedule extends Component {
   render() {
     const { events } = this.state;
     return (
-      <View style={styles.list}>
-        {events.map(event => ( // Generate items based on events in state
-          <ListItem
-            key={event.key}
-            keyItem={event.key}
-            time={event.time}
-            title={event.title}
-            handlePress={() => this.handlePress(event.key)}
-          />
-        ))}
-      </View>
+      <ScrollView>
+        <View style={styles.list}>
+          {events.map(event => ( // Generate items based on events in state
+            <ListItem
+              key={event.key}
+              keyItem={event.key}
+              time={event.time}
+              title={event.title}
+              handlePress={() => this.handlePress(event.key)}
+            />
+          ))}
+        </View>
+
+      </ScrollView>
     );
   }
 }
