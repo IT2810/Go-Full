@@ -20,7 +20,8 @@ export default class DateTimePickerTester extends Component {
     return (
       <View>
         <TouchableOpacity>
-          <Button title="PICCA THE DATE" onPress={this.showDateTimePicker} />
+          <Button title="PICCA THE DATE" onPress={this.showDateTimePicker}
+          color="#AE52D4" />
         </TouchableOpacity>
         <DateTimePicker
           isVisible={this.state.isDateTimePickerVisible}
