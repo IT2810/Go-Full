@@ -6,8 +6,10 @@ const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     backgroundColor: '#AE52D4',
-    textDecorationColor: '#FFFFFF'
   },
+  text: {
+    color: '#FFFFFF',
+  }
 });
 
 
@@ -29,7 +31,7 @@ export default class DateTimePickerTester extends Component {
     return (
       <View>
         <TouchableOpacity onPress={this.showDateTimePicker} style={styles.button}>
-          <Text>
+          <Text style={styles.text}>
             PICCA THE DATE
           </Text>
         </TouchableOpacity>

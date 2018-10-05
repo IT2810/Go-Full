@@ -37,8 +37,10 @@ const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     backgroundColor: '#AE52D4'
-
   },
+  text: {
+    color: '#FFFFFF',
+  }
 });
 
 export default class CreateEventClass extends Component {
@@ -53,16 +55,16 @@ export default class CreateEventClass extends Component {
     render() {
         return(
             <View>
-                <Form type={Events} options={options} /*style={formStyles.formGroup}*/ />
+                <Form type={Events} options={options} />
                 <DateTimePickerTester />
                 <Form type={Friend} options={options} />
                 <TouchableOpacity style={styles.button} onPress={this.handleFriendInvite}>
-                  <Text>
+                  <Text style={styles.text}>
                     Invite Friend
                   </Text>
                 </TouchableOpacity> />
                 <TouchableOpacity style={styles.button} onpress={this.handleCreateEvent}>
-                  <Text>
+                  <Text style={styles.text}> 
                     Create Event
                   </Text>
                 </TouchableOpacity>
