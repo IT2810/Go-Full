@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
-import { Button, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
+
+const styles = StyleSheet.create({
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#AE52D4',
+    textDecorationColor: '#FFFFFF'
+  },
+});
+
 
 export default class DateTimePickerTester extends Component {
   state = {
@@ -19,9 +28,10 @@ export default class DateTimePickerTester extends Component {
   render () {
     return (
       <View>
-        <TouchableOpacity>
-          <Button title="PICCA THE DATE" onPress={this.showDateTimePicker}
-          color="#AE52D4" />
+        <TouchableOpacity onPress={this.showDateTimePicker} style={styles.button}>
+          <Text>
+            PICCA THE DATE
+          </Text>
         </TouchableOpacity>
         <DateTimePicker
           isVisible={this.state.isDateTimePickerVisible}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {StyleSheet, Button, Text, View} from 'react-native';
+import {TouchableOpacity, View, Text, StyleSheet} from 'react-native';
 import DateTimePickerTester from './dateTimePicker';
 
 
@@ -32,17 +32,16 @@ const options = {
 stylesheet.textbox.normal.backgroundColor = '#38006B'; //sets the background color of the input fields
 stylesheet.textbox.normal.color = '#FFFFFF'; //sets the textcolor
 stylesheet.textbox.normal.borderWidth = 0; //removes borders of the input fields
-/*
+
 const styles = StyleSheet.create({
-  buttons: {
-    color: 'blue',
-    fontSize: 15,
-    border: 
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#AE52D4'
+
   },
 });
-*/
-export default class CreateEventClass extends Component {
 
+export default class CreateEventClass extends Component {
     handleFriendInvite = () => {
         //todo
     } 
@@ -57,11 +56,16 @@ export default class CreateEventClass extends Component {
                 <Form type={Events} options={options} /*style={formStyles.formGroup}*/ />
                 <DateTimePickerTester />
                 <Form type={Friend} options={options} />
-                <Button title="INVITE FRIEND" onPress={this.handleFriendInvite}
-                color="#AE52D4" />
-                <Button title="CREATE EVENT BBBY" onpress={this.handleCreateEvent}
-                color="#AE52D4"
-                backgroundColor="#AE52D4" />
+                <TouchableOpacity style={styles.button} onPress={this.handleFriendInvite}>
+                  <Text>
+                    Invite Friend
+                  </Text>
+                </TouchableOpacity> />
+                <TouchableOpacity style={styles.button} onpress={this.handleCreateEvent}>
+                  <Text>
+                    Create Event
+                  </Text>
+                </TouchableOpacity>
             </View>
         )
     }
