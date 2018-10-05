@@ -5,6 +5,7 @@ import AppProvider from './src/components/AppProvider';
 const App = () => {
   const styles = StyleSheet.create({
 
+
     container: {
       flex: 1,
       backgroundColor: '#fff',
