@@ -23,6 +23,7 @@ class App extends Component {
 
   onPressTestButton() {
     this.setState({ buttonText: 'Tested' });
+    console.log('heisann');
     return true;
   }
 
