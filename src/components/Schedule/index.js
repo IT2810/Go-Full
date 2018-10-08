@@ -40,7 +40,7 @@ class Schedule extends Component {
     const { events } = this.state;
     const { navigation } = this.props;
     const eventPressed = events.find(element => element.key === key); // finds the clicked element
-    navigation.navigate('scheduleScreen');
+    navigation.navigate('Event', eventPressed);
   }
 
   render() {

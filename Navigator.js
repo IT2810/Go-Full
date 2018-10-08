@@ -1,11 +1,8 @@
-import React from 'react';
-import {
-  StyleSheet, Text, View, Button,
-} from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import ScheduleScreen from './src/screens/scheduleScreen';
+import EventScreen from './src/screens/eventScreen';
 
-const AppStackNavigatorConfig = {
+const NavigatorConfig = {
   initialRouteName: 'Schedule',
   shifting: false,
   backBehavior: 'initialRoute',
@@ -18,6 +15,9 @@ const Navigator = createStackNavigator(({
   Schedule: {
     screen: ScheduleScreen,
   },
-}));
+  Event: {
+    screen: EventScreen,
+  },
+}), NavigatorConfig);
 
 export default Navigator;

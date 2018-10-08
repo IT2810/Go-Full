@@ -3,7 +3,6 @@ import {
   StyleSheet, View,
 } from 'react-native';
 import AppProvider from './src/components/AppProvider';
-import ScheduleScreen from './src/screens/scheduleScreen';
 import Navigator from './Navigator';
 
 const App = () => {
