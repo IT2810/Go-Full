@@ -1,6 +1,7 @@
 import { createStackNavigator } from 'react-navigation';
 import ScheduleScreen from './src/screens/scheduleScreen';
 import EventScreen from './src/screens/eventScreen';
+import CreateEventScreen from './src/screens/createEventScreen';
 
 const NavigatorConfig = {
   initialRouteName: 'Schedule',
@@ -17,6 +18,9 @@ const Navigator = createStackNavigator(({
   },
   Event: {
     screen: EventScreen,
+  },
+  createEvent: {
+    screen: CreateEventScreen,
   },
 }), NavigatorConfig);
 
