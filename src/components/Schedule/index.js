@@ -38,8 +38,9 @@ class Schedule extends Component {
 
   handlePress(key) {
     const { events } = this.state;
+    const { navigation } = this.props;
     const eventPressed = events.find(element => element.key === key); // finds the clicked element
-    console.log(eventPressed);
+    navigation.navigate('scheduleScreen');
   }
 
   render() {
