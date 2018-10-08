@@ -1,21 +1,25 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import CreateEventClass from './src/components/createEvent';
+import { StyleSheet, Text, View } from 'react-native';
+import AppProvider from './src/components/AppProvider';
 
 const App = () => {
   const styles = StyleSheet.create({
 
+
     container: {
       flex: 1,
-      backgroundColor: '#6D6D6D',
+      backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
     },
   });
 
+
   return (
     <View style={styles.container}>
-      <CreateEventClass />
+      <AppProvider>
+        <Text>Open up App.js to start working on your app!</Text>
+      </AppProvider>
     </View>
   );
 };
