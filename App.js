@@ -1,15 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  StyleSheet, View,
+} from 'react-native';
 import AppProvider from './src/components/AppProvider';
+import Navigator from './Navigator';
 
 const App = () => {
   const styles = StyleSheet.create({
-
-
     container: {
       flex: 1,
       backgroundColor: '#fff',
-      alignItems: 'center',
       justifyContent: 'center',
     },
   });
@@ -18,7 +18,7 @@ const App = () => {
   return (
     <View style={styles.container}>
       <AppProvider>
-        <Text>Open up App.js to start working on your app!</Text>
+        <Navigator />
       </AppProvider>
     </View>
   );
