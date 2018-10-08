@@ -31,12 +31,18 @@ class AppProvider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      buttonText: 'heisann',
+      setStorageAndState: this.setStorageAndState,
     };
+  }
+
+  async setStorageAndState(key, value) {
+    await this.setState({ key, value });
+    storeData(this.state);
   }
 
   render() {
     const { children } = this.props;
-
     return (
       <AppContext.Provider value={this.state}>
         {children}
