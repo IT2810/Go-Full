@@ -9,6 +9,14 @@
           ".jsx"
         ]
       }
+    ],
+    "react/prop-types": [
+      "error",
+      {
+        "ignore": [
+          "navigation"
+        ]
+      }
     ]
   }
 }
