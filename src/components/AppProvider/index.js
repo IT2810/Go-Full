@@ -39,6 +39,7 @@ class AppProvider extends React.Component {
   async setStorageAndState(key, value) {
     await this.setState({ key, value });
     storeData(this.state);
+    console.log(retrieveData);
   }
 
   render() {
