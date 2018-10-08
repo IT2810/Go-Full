@@ -2,25 +2,26 @@ import React, { Component } from 'react';
 import {
   TouchableOpacity, View, Text, StyleSheet,
 } from 'react-native';
+import {
+  form, struct, maybe, String,
+} from 'tcomb-form-native';
+import { cloneDeep } from 'lodash';
 import DateTimePickerTester from './dateTimePicker';
-
-
-const t = require('tcomb-form-native');
-const _ = require('lodash');
 
 // this component creates the form to create an event
 
-const stylesheet = _.cloneDeep(t.form.Form.stylesheet); // clone the default stylesheet that comes with tcomb-form-native so that we can change it locally
+// clone the default stylesheet that comes with tcomb-form-native so that we can change it locally
+const stylesheet = cloneDeep(form.Form.stylesheet);
 
-const Form = t.form.Form;
+const { Form } = form;
 
-const Events = t.struct({
-  Title: t.String,
-  Description: t.maybe(t.String), // maybe says that this field is optional
+const Events = struct({
+  Title: String,
+  Description: maybe(String), // maybe says that this field is optional
 });
 
-const Friend = t.struct({
-  FriendsMail: t.maybe(t.String), // maybe says that this field is optional
+const Friend = struct({
+  FriendsMail: maybe(String), // maybe says that this field is optional
 });
 
 const options = {
