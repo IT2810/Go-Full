@@ -26,21 +26,27 @@ const options = {
     i18n: {     //Removes the (optional) in the fields when nothing is written
         optional: ' '
     },
-    stylesheet: stylesheet,
+    stylesheet: stylesheet
 };
 
 stylesheet.textbox.normal.backgroundColor = '#38006B'; //sets the background color of the input fields
 stylesheet.textbox.normal.color = '#FFFFFF'; //sets the textcolor
 stylesheet.textbox.normal.borderWidth = 0; //removes borders of the input fields
+stylesheet.textbox.normal.height = 50;
 
 const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
-    backgroundColor: '#AE52D4'
+    paddingTop: 12.5,
+    backgroundColor: '#AE52D4',
+    height: 45,
+    margin: 15,
+    width: 300,
   },
   text: {
     color: '#FFFFFF',
-  }
+    fontSize: 20
+  },
 });
 
 export default class CreateEventClass extends Component {

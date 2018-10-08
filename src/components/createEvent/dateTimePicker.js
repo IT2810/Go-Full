@@ -5,10 +5,15 @@ import DateTimePicker from 'react-native-modal-datetime-picker';
 const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
+    paddingTop: 12.5,
     backgroundColor: '#AE52D4',
+    height: 45,
+    margin: 15,
+    width: 300,
   },
   text: {
     color: '#FFFFFF',
+    fontSize: 20
   }
 });
 
