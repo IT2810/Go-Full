@@ -12,20 +12,23 @@ const storeData = async (data) => {
   }
 };
 
-const retrieveData = async () => {
-  try {
-    const value = await AsyncStorage.getItem('@go-full:state');
-    if (value !== null) {
-      // We have data in the store
-      return value;
-    }
-    // There is no data in the store
-    return false;
-  } catch (error) {
-    // Error retrieving data
-    return error;
-  }
-};
+// This is a different implementation of the stuff that is
+// currently in the constructor, we might need it for later.
+
+// const retrieveData = async () => {
+//   try {
+//     const value = await AsyncStorage.getItem('@go-full:state');
+//     if (value !== null) {
+//       // We have data in the store
+//       return value;
+//     }
+//     // There is no data in the store
+//     return false;
+//   } catch (error) {
+//     // Error retrieving data
+//     return error;
+//   }
+// };
 
 class AppProvider extends React.Component {
   constructor(props) {
