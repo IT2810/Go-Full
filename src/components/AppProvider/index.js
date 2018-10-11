@@ -33,10 +33,20 @@ const storeData = async (data) => {
 class AppProvider extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      buttonText: 'heisann',
-      setStorageAndState: this.setStorageAndState,
-    };
+
+    AsyncStorage.getItem('@go-full:state')
+      .then((result) => {
+        if (result) {
+          // Here state is set from async storage.
+          this.state = result;
+        } else {
+          this.state = {
+            // This is where we set initial state, if there is nothing in the store.
+            buttonText: 'heisann',
+            setStorageAndState: (key, value) => this.setStorageAndState(key, value),
+          };
+        }
+      });
   }
 
   async setStorageAndState(key, value) {
