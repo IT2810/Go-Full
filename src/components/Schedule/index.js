@@ -36,13 +36,11 @@ class Schedule extends Component {
     };
   }
 
-  handlePress(key) {
+  async handlePress(key) {
     const { events } = this.state;
     const { navigation } = this.props;
     const { appState } = this.props;
-    console.log('heisannheisann');
-    console.log(appState);
-    // appState.setStateAndStorage('boop', 'boopeti');
+    await appState.setStorageAndState('boop', 'boopeti'); // This is an example of how to use the setStorageAndState function
     const eventPressed = events.find(element => element.key === key); // finds the clicked element
     navigation.navigate('Event', eventPressed);
   }
