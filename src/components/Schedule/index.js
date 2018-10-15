@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
-import PropTypes from 'prop-types';
 import ListItem from './listItem';
+import notificationUtil from '../../utils/notifications';
 
 const styles = StyleSheet.create({
   list: {
@@ -39,8 +39,14 @@ class Schedule extends Component {
   async handlePress(key) {
     const { events } = this.state;
     const { navigation } = this.props;
+    // This is an example of how to use the setStorageAndState function.
     const { appState } = this.props;
-    await appState.setStorageAndState('boop', 'boopeti'); // This is an example of how to use the setStorageAndState function
+    await appState.setStorageAndState('boop', 'boopeti');
+    // This is an example of how to send notifications.
+    const id = await notificationUtil.sendNotificationAsync('Prøve', 'kaller med den nye metoden', 'test', new Date().getTime() + 1000);
+    console.log(`this is the id: ${id}`);
+    // This is an example of how to cancel notifications.
+    notificationUtil.cancelNotification(id);
     const eventPressed = events.find(element => element.key === key); // finds the clicked element
     navigation.navigate('Event', eventPressed);
   }
