@@ -71,8 +71,4 @@ class Schedule extends Component {
   }
 }
 
-Schedule.propTypes = {
-  appState: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-};
-
 export default Schedule;
