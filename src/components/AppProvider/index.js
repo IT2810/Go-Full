@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, Platform } from 'react-native';
+import { Notifications } from 'expo';
 
 export const AppContext = React.createContext();
 
@@ -48,6 +49,40 @@ class AppProvider extends React.Component {
         }
       });
   }
+
+  componentDidMount() {
+    this.setupNotificationChannels();
+  }
+
+  setupNotificationChannels() {
+    console.log(this.state);
+    if (Platform.OS === 'android') {
+      // Channel for test notifications
+      Notifications.createChannelAndroidAsync('test', {
+        name: 'Test notifications',
+        sound: true,
+        priority: 'max',
+        vibrate: true,
+      });
+
+      // Channel for mission critical notifications
+      Notifications.createChannelAndroidAsync('mission-critical', {
+        name: 'Test notifications',
+        sound: true,
+        priority: 'high',
+        vibrate: true,
+      });
+
+      // Channel for less important notifications
+      Notifications.createChannelAndroidAsync('nudge', {
+        name: 'Test notifications',
+        sound: true,
+        priority: 'low',
+        vibrate: true,
+      });
+    }
+  }
+
 
   async setStorageAndState(key, value) {
     await this.setState({
