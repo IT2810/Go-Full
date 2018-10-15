@@ -14,7 +14,6 @@ const App = () => {
     },
   });
 
-
   return (
     <View style={styles.container}>
       <AppProvider>

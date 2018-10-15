@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 import ListItem from './listItem';
-
 
 const styles = StyleSheet.create({
   list: {
@@ -56,9 +56,11 @@ class Schedule extends Component {
     };
   }
 
-  handlePress(key) {
+  async handlePress(key) {
     const { events } = this.state;
     const { navigation } = this.props;
+    const { appState } = this.props;
+    await appState.setStorageAndState('boop', 'boopeti'); // This is an example of how to use the setStorageAndState function
     const eventPressed = events.find(element => element.key === key); // finds the clicked element
     navigation.navigate('Event', eventPressed);
   }
@@ -78,10 +80,13 @@ class Schedule extends Component {
             />
           ))}
         </View>
-
       </ScrollView>
     );
   }
 }
+
+Schedule.propTypes = {
+  appState: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+};
 
 export default Schedule;
