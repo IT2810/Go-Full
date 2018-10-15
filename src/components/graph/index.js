@@ -6,8 +6,7 @@ import moment from 'moment';
 class Graph extends Component {
   calculateDataset() {
     const { drinks, appState } = this.props;
-    console.log(drinks, 'this is drinks');
-    if (!drinks.length === 0) {
+    if (drinks.length === 0) {
       return {
         labels: this.generateLabels(moment()),
         datasets: [{
@@ -25,7 +24,7 @@ class Graph extends Component {
 
     );
     const alcoholLevels = new Array(8).fill(0);
-    const startTime = drinks[0].timeStamp;
+    const startTime = drinks[0].timeStamp.clone();
     drinks.forEach((drink) => {
       let index = moment.duration(drink.timeStamp.diff(startTime)).asHours();
       index = Math.round(index);
@@ -37,7 +36,6 @@ class Graph extends Component {
       }
       alcoholLevels[i] += alcoholLevels[i - 1] - MR;
     });
-
 
     return {
 
