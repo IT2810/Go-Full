@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { Text, View, Dimensions } from 'react-native';
 import { LineChart } from 'react-native-chart-kit';
 import moment from 'moment';
+import PropTypes from 'prop-types';
+
 
 class Graph extends Component {
   calculateDataset() {
-    const { drinks, appState } = this.props;
+    const { drinks } = this.props;
     if (drinks.length === 0) {
       return {
         labels: this.generateLabels(moment()),
@@ -88,4 +90,13 @@ class Graph extends Component {
     );
   }
 }
+
+Graph.propTypes = {
+  drinks: PropTypes.arrayOf(PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    gramsOfAlcohol: PropTypes.number.isRequired,
+    timeStamp: PropTypes.instanceOf(moment).isRequired,
+  })).isRequired,
+};
+
 export default Graph;
