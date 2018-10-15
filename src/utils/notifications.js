@@ -27,6 +27,9 @@ const notificationUtil = {
     return id;
   },
 
+  cancelNotification(id) {
+    Notifications.cancelScheduledNotificationAsync(id);
+  },
 };
 
 export default notificationUtil;
