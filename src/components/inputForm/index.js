@@ -5,13 +5,9 @@ import {
 import {
   form, struct, maybe, String,
 } from 'tcomb-form-native';
-import { cloneDeep } from 'lodash';
 import DateTimePickerTester from './dateTimePicker';
 
 // this component creates the form to create an event
-
-// clone the default stylesheet that comes with tcomb-form-native so that we can change it locally
-const stylesheet = cloneDeep(form.Form.stylesheet);
 
 const { Form } = form;
 
@@ -25,6 +21,11 @@ const desc = struct({
 
 
 const options = {
+  auto: 'placeholders',
+  i18n: {
+    optional: ' ',
+    required: ' ',
+  },
   fields: {
     Title: {
       stylesheet: {
@@ -37,7 +38,7 @@ const options = {
             width: 300,
             auto: 'placeholders',
             backgroundColor: '#38006B',
-            color: '#FFFFFF',
+            color: 'white',
             borderWidth: 0,
             alignSelf: 'center',
           },
@@ -65,13 +66,6 @@ const options = {
     },
   },
 };
-
-stylesheet.textbox.normal.backgroundColor = '#38006B'; // sets the background color of the input fields
-stylesheet.textbox.normal.color = '#FFFFFF'; // sets the textcolor
-stylesheet.textbox.normal.borderWidth = 0; // removes borders of the input fields
-stylesheet.textbox.normal.height = 50;
-stylesheet.textbox.normal.width = 300;
-stylesheet.textbox.normal.alignSelf = 'center';
 
 const styles = StyleSheet.create({
   button: {
