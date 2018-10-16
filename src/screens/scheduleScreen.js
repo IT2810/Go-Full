@@ -4,7 +4,6 @@ import { ActionButton } from 'react-native-material-ui';
 import Schedule from '../components/Schedule';
 import { AppContext } from '../components/AppProvider';
 
-
 const schedulescreen = (props) => {
   const { navigation } = props;
   return (
