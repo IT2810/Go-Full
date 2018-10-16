@@ -21,14 +21,13 @@ const Serializer = {
     const tempState = deserializedState.events.map((event) => {
       const tempEvent = cloneDeep(event);
       tempEvent.time = event.time.valueOf();
-      tempEvent.drinks = event.drinks.map((drink) => {
-        const tempDrink = drink;
+      tempEvent.drinks = tempEvent.drinks.map((drink) => {
+        const tempDrink = cloneDeep(drink);
         tempDrink.timeStamp = drink.timeStamp.valueOf();
         return tempDrink;
       });
       return tempEvent;
     });
-    console.log(tempState, 'serializatwsaahioon');
     return tempState;
   },
 };

@@ -38,9 +38,13 @@ class AppProvider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+
       // This is where we set initial state
       events: [],
+
       setStorageAndState: (key, value) => this.setStorageAndState(key, value),
+      addDrinkAsync: (drinkObject, key) => this.addDrinkAsync(drinkObject, key),
+      addEventAsync: eventObject => this.addEventAsync(eventObject),
     };
   }
 
@@ -96,6 +100,13 @@ class AppProvider extends React.Component {
     await storeData(serializedState);
   }
 
+  async addDrinkAsync(drinkObject, eventKey) {
+    const { events } = this.state;
+    const tempState = cloneDeep(events);
+    const currentEvent = tempState.findIndex(event => event.key === eventKey);
+    tempState[currentEvent].drinks.push(drinkObject);
+    this.setStorageAndState('events', tempState);
+  }
 
   async createEventAsync(eventObject) {
     const tempState = cloneDeep(this.state);
