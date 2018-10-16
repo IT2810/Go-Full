@@ -45,11 +45,13 @@ class Schedule extends Component {
           key: 2,
           title: 'a',
           time: '01:00',
+          drinks: [],
         },
         {
           key: 3,
           title: 'cool party i guess',
           time: '13:13',
+          drinks: [],
         },
       ],
     };
