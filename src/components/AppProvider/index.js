@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AsyncStorage } from 'react-native';
+import cloneDeep from 'lodash/cloneDeep';
 
 export const AppContext = React.createContext();
 
