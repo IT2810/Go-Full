@@ -1435,6 +1435,15 @@ babel-plugin-transform-strict-mode@^6.24.1:
     babel-runtime "^6.22.0"
     babel-types "^6.24.1"
 
+babel-polyfill@^6.26.0:
+  version "6.26.0"
+  resolved "https://registry.yarnpkg.com/babel-polyfill/-/babel-polyfill-6.26.0.tgz#379937abc67d7895970adc621f284cd966cf2153"
+  integrity sha1-N5k3q8Z9eJWXCtxiHyhM2WbPIVM=
+  dependencies:
+    babel-runtime "^6.26.0"
+    core-js "^2.5.0"
+    regenerator-runtime "^0.10.5"
+
 babel-preset-es2015-node@^6.1.1:
   version "6.1.1"
   resolved "https://registry.yarnpkg.com/babel-preset-es2015-node/-/babel-preset-es2015-node-6.1.1.tgz#60b23157024b0cfebf3a63554cb05ee035b4e55f"
@@ -2998,6 +3007,31 @@ expo-sms@~1.0.2:
     expo-core "~1.1.0"
     expo-permissions-interface "~1.1.0"
 
+expo@^28.0.0:
+  version "28.0.1"
+  resolved "https://registry.yarnpkg.com/expo/-/expo-28.0.1.tgz#7ab2675070017dbc92d9792416ae0a796d829c6e"
+  integrity sha512-aPU+ndhh7gNOqC6K3ZtXfcSylSKpIiwF+gEQM07qOsWtWCsdZ/u08UFhVKDwjXSn/Qnag8EqRPle3aU/hcn1Tw==
+  dependencies:
+    "@expo/vector-icons" "^6.3.1"
+    "@expo/websql" "^1.0.1"
+    babel-preset-expo "^4.0.0"
+    fbemitter "^2.1.1"
+    invariant "^2.2.2"
+    lodash.map "^4.6.0"
+    lodash.omit "^4.5.0"
+    lodash.zipobject "^4.1.3"
+    lottie-react-native "2.5.0"
+    md5-file "^3.2.3"
+    pretty-format "^21.2.1"
+    prop-types "^15.6.0"
+    qs "^6.5.0"
+    react-native-branch "2.2.5"
+    react-native-gesture-handler "1.0.4"
+    react-native-maps "0.21.0"
+    react-native-reanimated "1.0.0-alpha.3"
+    react-native-svg "6.2.2"
+    uuid-js "^0.7.5"
+
 expo@^30.0.1:
   version "30.0.1"
   resolved "https://registry.yarnpkg.com/expo/-/expo-30.0.1.tgz#2fae2d20b2f71d90e9533030d3671f70d4a18814"
@@ -3478,6 +3512,11 @@ globby@^5.0.0:
     object-assign "^4.0.1"
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
+
+google-palette@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/google-palette/-/google-palette-1.1.0.tgz#37e508568b8ca904e57976dfe28d92f701624a9a"
+  integrity sha512-rg4XQMVYQ83fQUylt2qrzCQ0C06ZrGl3+gh0XIXanyX+7SOkDCtFIn7gV3UMumg/R9HUL1zHtz5Myw3Z5BHCPg==
 
 graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.3, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
   version "4.1.11"
@@ -5553,6 +5592,11 @@ path-type@^2.0.0:
   dependencies:
     pify "^2.0.0"
 
+paths-js@^0.4.7:
+  version "0.4.7"
+  resolved "https://registry.yarnpkg.com/paths-js/-/paths-js-0.4.7.tgz#2e1d4e4a5a8e57e15c16bd29051d3f8be237e194"
+  integrity sha512-a6pYqToBgB/V7YUHHviYdRq41IcijUjY9XJ1NKu2COrR5eLhrx+HPZ/VL6vC3vyg3z4T6K00wsVMAqTzSR3ppg==
+
 pegjs@^0.10.0:
   version "0.10.0"
   resolved "http://registry.npmjs.org/pegjs/-/pegjs-0.10.0.tgz#cf8bafae6eddff4b5a7efb185269eaaf4610ddbd"
@@ -5645,6 +5689,11 @@ pn@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
   integrity sha512-2qHaIQr2VLRFoxe2nASzsV6ef4yOOH+Fi9FBOVH6cqeSgUnoyySPZkxzLuzd+RYOQTRpROA0ztTMqxROKSb/nA==
+
+point-in-polygon@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/point-in-polygon/-/point-in-polygon-1.0.1.tgz#d59b64e8fee41c49458aac82b56718c5957b2af7"
+  integrity sha1-1Ztk6P7kHElFiqyCtWcYxZV7Kvc=
 
 posix-character-classes@^0.1.0:
   version "0.1.1"
@@ -5819,6 +5868,19 @@ react-native-branch@2.2.5:
   resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-2.2.5.tgz#4074dd63b4973e6397d9ce50e97b57c77a518e9d"
   integrity sha1-QHTdY7SXPmOX2c5Q6XtXx3pRjp0=
 
+react-native-chart-kit@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/react-native-chart-kit/-/react-native-chart-kit-1.1.7.tgz#629bd9ba9314e632482a38465be399961c9183ee"
+  integrity sha512-6nO+8wHV6h7yYJIZJ2YKVQJE35NNdVQWj6LgxFaA9Ah7I81JDp/XTTXPqFxQMU/KXA7pYc17vWvVIYIZeJqCVw==
+  dependencies:
+    babel-polyfill "^6.26.0"
+    expo "^28.0.0"
+    google-palette "^1.1.0"
+    lodash "^4.17.10"
+    paths-js "^0.4.7"
+    point-in-polygon "^1.0.1"
+    react-native-scrollable-tab-view "^0.8.0"
+
 react-native-dismiss-keyboard@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-native-dismiss-keyboard/-/react-native-dismiss-keyboard-1.0.0.tgz#32886242b3f2317e121f3aeb9b0a585e2b879b49"
@@ -5842,6 +5904,15 @@ react-native-fontawesome@^5.7.0:
   version "5.7.0"
   resolved "https://registry.yarnpkg.com/react-native-fontawesome/-/react-native-fontawesome-5.7.0.tgz#7bfe57c21c6522d05eaf206474903c3f299bfc0d"
   integrity sha1-e/5XwhxlItBeryBkdJA8Pymb/A0=
+
+react-native-gesture-handler@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.0.4.tgz#1cc13eeffe34dcd6fe4f415c05b08823de9c7584"
+  integrity sha512-Ml7xQqJGoYUfGg3aSj/eNJosivhCB5MxsZ4g4+wDFadJc0oWkXXzm86KWwgsuXxT8dzP5cQRLaG+NC2pzmw+NA==
+  dependencies:
+    hoist-non-react-statics "^2.3.1"
+    invariant "^2.2.2"
+    prop-types "^15.5.10"
 
 react-native-gesture-handler@1.0.6:
   version "1.0.6"
@@ -5897,6 +5968,11 @@ react-native-platform-touchable@^1.1.1:
   resolved "https://registry.yarnpkg.com/react-native-platform-touchable/-/react-native-platform-touchable-1.1.1.tgz#fde4acc65eea585d28b164d0c3716a42129a68e4"
   integrity sha1-/eSsxl7qWF0osWTQw3FqQhKaaOQ=
 
+react-native-reanimated@1.0.0-alpha.3:
+  version "1.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.0.0-alpha.3.tgz#42983aa41911791cd3186fd3a18a788c3d4c3601"
+  integrity sha512-OG7Wydk54SH8ibpY1buwQl7WIuJL2MS6a1czOBZdfXnCgyx9WvnXspsAqiAH16c9N8doccNcwKQxIwgOuDiiKw==
+
 react-native-reanimated@1.0.0-alpha.6:
   version "1.0.0-alpha.6"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.0.0-alpha.6.tgz#169d23b3b39d1c88e509ddc97027b1c8cc066da8"
@@ -5920,6 +5996,15 @@ react-native-screens@^1.0.0-alpha.11, react-native-screens@^1.0.0-alpha.5:
   version "1.0.0-alpha.12"
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-1.0.0-alpha.12.tgz#5953c39c9dbfbe324610005e07d85a416081c48c"
   integrity sha512-n/XyqUStDjtCymXUhAxG98asvgI8/OSH+v9AaAzUFEqfBwJLY8/UjY6m8PIJSgqRt4aR/Z9nO+A1mcMXw6dMdA==
+
+react-native-scrollable-tab-view@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/react-native-scrollable-tab-view/-/react-native-scrollable-tab-view-0.8.0.tgz#5cb1fcfce07bf530a3c81ab51fc5071144edac5c"
+  integrity sha512-8Q7v4f1WyV5cKqvV3QHxnLFRWV8gi24JW2T+Cfx++b3ctHxtJCkGg5Zs15ufYMxaN4W68iDkJrftVVAq0tqb8w==
+  dependencies:
+    create-react-class "^15.6.2"
+    prop-types "^15.6.0"
+    react-timer-mixin "^0.13.3"
 
 react-native-svg@6.2.2:
   version "6.2.2"
@@ -6081,7 +6166,7 @@ react-test-renderer@^16.3.1, react-test-renderer@^16.5.2:
     react-is "^16.5.2"
     schedule "^0.5.0"
 
-react-timer-mixin@^0.13.2:
+react-timer-mixin@^0.13.2, react-timer-mixin@^0.13.3:
   version "0.13.4"
   resolved "https://registry.yarnpkg.com/react-timer-mixin/-/react-timer-mixin-0.13.4.tgz#75a00c3c94c13abe29b43d63b4c65a88fc8264d3"
   integrity sha512-4+ow23tp/Tv7hBM5Az5/Be/eKKF7DIvJ09voz5LyHGQaqqz9WV8YMs31eFvcYQs7d451LSg7kDJV70XYN/Ug/Q==
@@ -6162,6 +6247,11 @@ regenerate@^1.2.1:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.4.0.tgz#4a856ec4b56e4077c557589cae85e7a4c8869a11"
   integrity sha512-1G6jJVDWrt0rK99kBjvEtziZNCICAuvIPkSiUFIQxVP06RCVpq3dmDo2oi6ABpYaDYaTRr67BEhL8r1wgEZZKg==
+
+regenerator-runtime@^0.10.5:
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz#336c3efc1220adcedda2c9fab67b5a7955a33658"
+  integrity sha1-M2w+/BIgrc7dosn6tntaeVWjNlg=
 
 regenerator-runtime@^0.11.0:
   version "0.11.1"

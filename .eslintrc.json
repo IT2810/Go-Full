@@ -3,9 +3,9 @@
   "rules": {
     "arrow-body-style": ["error", "as-needed"],
     "react/prefer-stateless-function": [
-      1, 
-      { 
-        "ignorePureComponents": false 
+      1,
+      {
+        "ignorePureComponents": false
       }],
     "react/jsx-filename-extension": [
       1,
@@ -20,9 +20,14 @@
       "error",
       {
         "ignore": [
-          "navigation"
+          "navigation",
+          "appState"
         ]
       }
-    ]
-  }
+    ],
+    "class-methods-use-this": [0, { }]
+  },
+"env": {
+    "jest": true
+}
 }

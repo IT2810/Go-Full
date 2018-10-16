@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
-import PropTypes from 'prop-types';
+import moment from 'moment';
 import ListItem from './listItem';
 
 const styles = StyleSheet.create({
@@ -21,16 +21,37 @@ class Schedule extends Component {
           key: 1,
           title: 'Steve jobs memorial',
           time: '20:38',
+          drinks: [
+            {
+              type: 'beer 0.5',
+              gramsOfAlcohol: 19.39,
+              timeStamp: moment(),
+
+            },
+            {
+              type: 'beer 0.5',
+              gramsOfAlcohol: 19.39,
+              timeStamp: moment().add(1, 'hours'),
+
+            },
+            {
+              type: 'beer 0.5',
+              gramsOfAlcohol: 19.39,
+              timeStamp: moment().add(6, 'hours'),
+            },
+          ],
         },
         {
           key: 2,
           title: 'a',
           time: '01:00',
+          drinks: [],
         },
         {
           key: 3,
           title: 'cool party i guess',
           time: '13:13',
+          drinks: [],
         },
       ],
     };
@@ -39,8 +60,6 @@ class Schedule extends Component {
   async handlePress(key) {
     const { events } = this.state;
     const { navigation } = this.props;
-    const { appState } = this.props;
-    await appState.setStorageAndState('boop', 'boopeti'); // This is an example of how to use the setStorageAndState function
     const eventPressed = events.find(element => element.key === key); // finds the clicked element
     navigation.navigate('Event', eventPressed);
   }
@@ -64,9 +83,5 @@ class Schedule extends Component {
     );
   }
 }
-
-Schedule.propTypes = {
-  appState: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-};
 
 export default Schedule;

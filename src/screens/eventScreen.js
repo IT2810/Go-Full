@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {View, TouchableOpacity, Text} from 'react-native';
 import StyleSheet from 'react-native-material-ui';
-
+import Graph from '../components/graph/index';
 
 const styles = ({        // Styling for different components
     eventTitle: {
@@ -65,6 +65,7 @@ const EventScreen = (props) => {
                 </TouchableOpacity>
             </View>
         </View>
+      <Graph drinks={navigation.getParam('drinks')} />
     </View>
   );
 };
