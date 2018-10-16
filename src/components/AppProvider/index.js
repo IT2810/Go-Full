@@ -4,6 +4,7 @@ import { AsyncStorage, Platform } from 'react-native';
 import { Notifications } from 'expo';
 import cloneDeep from 'lodash/cloneDeep';
 import moment from 'moment';
+import Serializer from '../../utils/serialization';
 
 export const AppContext = React.createContext();
 
@@ -47,6 +48,7 @@ class AppProvider extends React.Component {
   async componentDidMount() {
     await AsyncStorage.getItem('@go-full:state')
       .then(result => JSON.parse(result))
+      .then(result => Serializer.deserializeState(result))
       .then(result => this.setState(result))
       .catch(error => console.log(error));
 
@@ -90,7 +92,8 @@ class AppProvider extends React.Component {
     const tempState = cloneDeep(this.state);
     tempState[key] = value;
     this.setState(tempState);
-    await storeData(tempState);
+    const serializedState = Serializer.serializeState(tempState);
+    await storeData(serializedState);
   }
 
 
