@@ -15,29 +15,25 @@ const styles = ({        // Styling for different components
         alignItems: Left,
     },
 
-    container: {                           // container - buttons
+    container: {         // container - buttons
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
 
-
     addBeer: {
         width: '25%',
         backgroundColor: "#38006B"
-
     },
 
     addDrink: {
         width: '25%',
         backgroundColor: "#38006B"
-
     },
 
     addWine: {
         width: '25%',
         backgroundColor: "#38006B"
-
     },
 })
 
@@ -51,19 +47,19 @@ const EventScreen = (props) => {
 
         <View style={styles.container}>
             <View style={styles.addBeer}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => console.log("Beer added! 19,3 grams")}>
                     icon = {<Icon name={"fa-beer"} onAction/>}
                 </TouchableOpacity>
             </View>
 
             <View style={styles.addDrink}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => console.log("Drink added! 12,8 grams")}>
                     icon = {<Icon name={"glass-martini"}/>}
                 </TouchableOpacity>
             </View>
 
             <View style={styles.addWine}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => console.log("Wine added! 14,4 grams")}>
                     icon ={<Icon name={"wine-glass"}/>}
 
                 </TouchableOpacity>
