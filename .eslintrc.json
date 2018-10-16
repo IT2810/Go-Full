@@ -3,9 +3,9 @@
   "rules": {
     "arrow-body-style": ["error", "as-needed"],
     "react/prefer-stateless-function": [
-      1, 
-      { 
-        "ignorePureComponents": false 
+      1,
+      {
+        "ignorePureComponents": false
       }],
     "react/jsx-filename-extension": [
       1,

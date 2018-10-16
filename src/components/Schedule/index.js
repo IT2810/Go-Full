@@ -60,7 +60,6 @@ class Schedule extends Component {
   async handlePress(key) {
     const { events } = this.state;
     const { navigation } = this.props;
-    // const { appState } = this.props;
     const eventPressed = events.find(element => element.key === key); // finds the clicked element
     navigation.navigate('Event', eventPressed);
   }
@@ -84,6 +83,5 @@ class Schedule extends Component {
     );
   }
 }
-
 
 export default Schedule;
