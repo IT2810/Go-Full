@@ -1,14 +1,12 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-
+import { View } from 'react-native';
+import Graph from '../components/graph/index';
 
 const EventScreen = (props) => {
   const { navigation } = props;
   return (
     <View>
-      <Text>
-        {navigation.getParam('title')}
-      </Text>
+      <Graph drinks={navigation.getParam('drinks')} />
     </View>
   );
 };
