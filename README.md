@@ -22,7 +22,27 @@ https://github.com/mmazzarolo/react-native-modal-datetime-picker
 
 https://github.com/gcanti/tcomb-form
 
-### React Context API - Teleporting state for fun and profit
+### Design, Styling and Appearance
+
+The earliest stage of our development process was the design phase. Based on impressions and experience from earlier projects we decided to make decisions regarding general appearance, colors, icons, placement of objects early on. We created basic non-interactive dummies using Figma; an online tool for creating and designing prototypes. Figma was attractive compared to other design tools because of the ability to collaborate simultaneously online. 
+
+#### Designing prototypes using Figma
+
+As mentioned figma allowed us to collaborate simultaneously while working on the prototypes. We first decided on a color pallette. We went for a modern minimalistic pallette based on dark purple. Since we like purple and it gives the application a dark/nightly theme, since drinking mostly occurrs during night. 
+
+![alt text](https://imgur.com/a/ewygVbe)
+
+As seen below the different tints and colors are used throughout the application, and different functions and items such as text and backgrounds are used consequently to satisfy the basic principles of design 
+ 
+![alt text](https://imgur.com/a/EW72Uc0)
+
+#### StyleSheet and Material UI
+
+#### FontAwesome
+
+Icons used for different bevrages in the application are imported from the FontAwesome library. These SVGs look very pleasing, and they have a large library with different styles and icons. 
+
+#### React Context API - Teleporting state for fun and profit
 
 For our last project we were not completely happy with how we handled state flowing between components. We would simply pass state from the parent to the child through props. This works well in most cases, however sometimes you end up with intermediary components that really have no reason to have access to some part of the state but we still need to pass everything all the way through the component tree.
 
