@@ -114,47 +114,52 @@ class AppProvider extends React.Component {
     await this.setStorageAndState('events', tempState.events);
   }
 
-  temporaryFunctionPleaseRemoveItsOnlyForTestingPurposesSoYeahGoodbyeAsync() {
+  async temporaryFunctionPleaseRemoveItsOnlyForTestingPurposesSoYeahGoodbyeAsync() {
     const events = [
       {
         key: 1,
         title: 'Steve jobs memorial',
-        time: moment().valueOf,
+        time: moment(),
         drinks: [
           {
             type: 'beer 0.5',
             gramsOfAlcohol: 19.39,
-            timeStamp: moment().valueOf,
+            timeStamp: moment(),
 
           },
           {
             type: 'beer 0.5',
             gramsOfAlcohol: 19.39,
-            timeStamp: moment().add(1, 'hours').valueOf(),
+            timeStamp: moment().add(1, 'hours'),
 
           },
           {
             type: 'beer 0.5',
             gramsOfAlcohol: 19.39,
-            timeStamp: moment().add(6, 'hours').valueOf(),
+            timeStamp: moment().add(6, 'hours'),
           },
         ],
       },
       {
         key: 2,
         title: 'a',
-        time: moment().valueOf,
+        time: moment(),
         drinks: [],
       },
       {
         key: 3,
         title: 'cool party i guess',
-        time: moment.valueOf(),
+        time: moment(),
         drinks: [],
       },
     ];
 
-    events.forEach(event => this.createEventAsync(event));
+    await events.forEach(async event => this.createEventAsync(event));
+    await this.addDrinkAsync({
+      type: 'beer 0.5',
+      gramsOfAlcohol: 19.39,
+      timeStamp: moment().add(6, 'hours'),
+    }, 2);
   }
 
   render() {
