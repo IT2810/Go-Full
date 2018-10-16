@@ -10,7 +10,7 @@ const storeData = async (data) => {
   try {
     await AsyncStorage.setItem('@go-full:state', JSON.stringify(data));
   } catch (error) {
-    // Error saving data
+    console.error(error);
   }
 };
 
@@ -41,6 +41,7 @@ class AppProvider extends React.Component {
       setStorageAndState: (key, value) => this.setStorageAndState(key, value),
     };
   }
+
 
   async componentDidMount() {
     await AsyncStorage.getItem('@go-full:state')

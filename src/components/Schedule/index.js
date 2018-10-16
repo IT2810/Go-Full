@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
+import moment from 'moment';
 import ListItem from './listItem';
-import notificationUtil from '../../utils/notifications';
 
 const styles = StyleSheet.create({
   list: {
@@ -21,16 +21,37 @@ class Schedule extends Component {
           key: 1,
           title: 'Steve jobs memorial',
           time: '20:38',
+          drinks: [
+            {
+              type: 'beer 0.5',
+              gramsOfAlcohol: 19.39,
+              timeStamp: moment(),
+
+            },
+            {
+              type: 'beer 0.5',
+              gramsOfAlcohol: 19.39,
+              timeStamp: moment().add(1, 'hours'),
+
+            },
+            {
+              type: 'beer 0.5',
+              gramsOfAlcohol: 19.39,
+              timeStamp: moment().add(6, 'hours'),
+            },
+          ],
         },
         {
           key: 2,
           title: 'a',
           time: '01:00',
+          drinks: [],
         },
         {
           key: 3,
           title: 'cool party i guess',
           time: '13:13',
+          drinks: [],
         },
       ],
     };
@@ -39,14 +60,6 @@ class Schedule extends Component {
   async handlePress(key) {
     const { events } = this.state;
     const { navigation } = this.props;
-    // This is an example of how to use the setStorageAndState function.
-    const { appState } = this.props;
-    await appState.setStorageAndState('boop', 'boopeti');
-    // This is an example of how to send notifications.
-    const id = await notificationUtil.sendNotificationAsync('Prøve', 'kaller med den nye metoden', 'test', new Date().getTime() + 1000);
-    console.log(`this is the id: ${id}`);
-    // This is an example of how to cancel notifications.
-    notificationUtil.cancelNotification(id);
     const eventPressed = events.find(element => element.key === key); // finds the clicked element
     navigation.navigate('Event', eventPressed);
   }
