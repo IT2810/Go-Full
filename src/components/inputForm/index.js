@@ -23,14 +23,46 @@ const desc = struct({
   Description: maybe(String), // maybe says that this field is optional
 });
 
+
 const options = {
-  auto: 'placeholders', // Tells the fields to have placeholder text instead of titles above the fields
-  i18n: { // Removes the (optional) in the fields when nothing is written
-    optional: ' ',
-  },
-  stylesheet,
-  description: {
-    multiline: true,
+  fields: {
+    Title: {
+      stylesheet: {
+        ...Form.stylesheet,
+        textbox: {
+          ...Form.stylesheet.textbox,
+          normal: {
+            ...Form.stylesheet.textbox.normal,
+            height: 50,
+            width: 300,
+            auto: 'placeholders',
+            backgroundColor: '#38006B',
+            color: '#FFFFFF',
+            borderWidth: 0,
+            alignSelf: 'center',
+          },
+        },
+      },
+    },
+    Description: {
+      multiline: true,
+      stylesheet: {
+        ...Form.stylesheet,
+        textbox: {
+          ...Form.stylesheet.textbox,
+          normal: {
+            ...Form.stylesheet.textbox.normal,
+            height: 200,
+            width: 300,
+            auto: 'placeholders',
+            backgroundColor: '#38006B',
+            color: '#FFFFFF',
+            borderWidth: 0,
+            alignSelf: 'center',
+          },
+        },
+      },
+    },
   },
 };
 
@@ -38,6 +70,8 @@ stylesheet.textbox.normal.backgroundColor = '#38006B'; // sets the background co
 stylesheet.textbox.normal.color = '#FFFFFF'; // sets the textcolor
 stylesheet.textbox.normal.borderWidth = 0; // removes borders of the input fields
 stylesheet.textbox.normal.height = 50;
+stylesheet.textbox.normal.width = 300;
+stylesheet.textbox.normal.alignSelf = 'center';
 
 const styles = StyleSheet.create({
   button: {
