@@ -20,6 +20,7 @@ const desc = struct({
 });
 
 
+// TODO: Figure out how to change the fontcolor on the placeholdertext
 const options = {
   auto: 'placeholders',
   i18n: {
