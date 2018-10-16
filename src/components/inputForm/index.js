@@ -5,37 +5,68 @@ import {
 import {
   form, struct, maybe, String,
 } from 'tcomb-form-native';
-import { cloneDeep } from 'lodash';
 import DateTimePickerTester from './dateTimePicker';
 
 // this component creates the form to create an event
-
-// clone the default stylesheet that comes with tcomb-form-native so that we can change it locally
-const stylesheet = cloneDeep(form.Form.stylesheet);
 
 const { Form } = form;
 
 const Events = struct({
   Title: String,
+});
+
+const desc = struct({
   Description: maybe(String), // maybe says that this field is optional
 });
 
-const Friend = struct({
-  FriendsMail: maybe(String), // maybe says that this field is optional
-});
 
+// TODO: Figure out how to change the fontcolor on the placeholdertext
 const options = {
-  auto: 'placeholders', // Tells the fields to have placeholder text instead of titles above the fields
-  i18n: { // Removes the (optional) in the fields when nothing is written
+  auto: 'placeholders',
+  i18n: {
     optional: ' ',
+    required: ' ',
   },
-  stylesheet,
+  fields: {
+    Title: {
+      stylesheet: {
+        ...Form.stylesheet,
+        textbox: {
+          ...Form.stylesheet.textbox,
+          normal: {
+            ...Form.stylesheet.textbox.normal,
+            height: 50,
+            width: 300,
+            auto: 'placeholders',
+            backgroundColor: '#38006B',
+            color: 'white',
+            borderWidth: 0,
+            alignSelf: 'center',
+          },
+        },
+      },
+    },
+    Description: {
+      multiline: true,
+      stylesheet: {
+        ...Form.stylesheet,
+        textbox: {
+          ...Form.stylesheet.textbox,
+          normal: {
+            ...Form.stylesheet.textbox.normal,
+            height: 200,
+            width: 300,
+            auto: 'placeholders',
+            backgroundColor: '#38006B',
+            color: '#FFFFFF',
+            borderWidth: 0,
+            alignSelf: 'center',
+          },
+        },
+      },
+    },
+  },
 };
-
-stylesheet.textbox.normal.backgroundColor = '#38006B'; // sets the background color of the input fields
-stylesheet.textbox.normal.color = '#FFFFFF'; // sets the textcolor
-stylesheet.textbox.normal.borderWidth = 0; // removes borders of the input fields
-stylesheet.textbox.normal.height = 50;
 
 const styles = StyleSheet.create({
   button: {
@@ -44,7 +75,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#AE52D4',
     height: 45,
     margin: 15,
-    width: 300,
+    width: 200,
+    alignSelf: 'center',
   },
   text: {
     color: '#FFFFFF',
@@ -65,14 +97,8 @@ export default class InputForm extends Component {
     return (
       <View>
         <Form type={Events} options={options} />
+        <Form type={desc} options={options} />
         <DateTimePickerTester />
-        <Form type={Friend} options={options} />
-        <TouchableOpacity style={styles.button} onPress={this.handleFriendInvite}>
-          <Text style={styles.text}>
-            Invite Friend
-          </Text>
-        </TouchableOpacity>
-
         <TouchableOpacity style={styles.button} onpress={this.handleCreateEvent}>
           <Text style={styles.text}>
             Create Event
