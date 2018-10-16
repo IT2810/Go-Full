@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Text, TouchableOpacity } from 'react-native';
 import {
   Container, Content, Form, Item, Input, Label, Textarea,
 } from 'native-base';
@@ -35,6 +36,23 @@ class StackedLabelExample extends Component {
             />
           </Form>
           <DateTimePickerTester />
+          <TouchableOpacity>
+            <Text style={{
+              alignItems: 'center',
+              paddingTop: 12.5,
+              backgroundColor: '#AE52D4',
+              height: 45,
+              margin: 15,
+              width: 200,
+              alignSelf: 'center',
+              fontSize: 20,
+              textAlign: 'center',
+              color: 'white',
+            }}
+            >
+              CREATE EVENT BBY
+            </Text>
+          </TouchableOpacity>
         </Content>
       </Container>
     );
