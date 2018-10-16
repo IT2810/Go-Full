@@ -30,11 +30,11 @@ The earliest stage of our development process was the design phase. Based on imp
 
 As mentioned figma allowed us to collaborate simultaneously while working on the prototypes. We first decided on a color pallette. We went for a modern minimalistic pallette based on dark purple. Since we like purple and it gives the application a dark/nightly theme, since drinking mostly occurrs during night. 
 
-![alt text](https://imgur.com/a/ewygVbe)
+![](https://imgur.com/a/ewygVbe)
 
 As seen below the different tints and colors are used throughout the application, and different functions and items such as text and backgrounds are used consequently to satisfy the basic principles of design 
  
-![alt text](https://imgur.com/a/EW72Uc0)
+![](https://imgur.com/a/EW72Uc0)
 
 #### StyleSheet and Material UI
 
