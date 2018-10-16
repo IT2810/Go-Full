@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { AsyncStorage, Platform } from 'react-native';
 import { Notifications } from 'expo';
 import cloneDeep from 'lodash/cloneDeep';
+import moment from 'moment';
 
 export const AppContext = React.createContext();
 
@@ -50,7 +51,9 @@ class AppProvider extends React.Component {
       .catch(error => console.log(error));
 
     this.setupNotificationChannels();
+    await this.temporaryFunctionPleaseRemoveItsOnlyForTestingPurposesSoYeahGoodbyeAsync();
   }
+
 
   setupNotificationChannels() {
     console.log(this.state);
@@ -88,6 +91,56 @@ class AppProvider extends React.Component {
     tempState[key] = value;
     this.setState(tempState);
     await storeData(tempState);
+  }
+
+
+  async createEventAsync(eventObject) {
+    const tempState = cloneDeep(this.state);
+    tempState.events.push(eventObject);
+    await this.setStorageAndState('events', tempState.events);
+  }
+
+  temporaryFunctionPleaseRemoveItsOnlyForTestingPurposesSoYeahGoodbyeAsync() {
+    const events = [
+      {
+        key: 1,
+        title: 'Steve jobs memorial',
+        time: moment().valueOf,
+        drinks: [
+          {
+            type: 'beer 0.5',
+            gramsOfAlcohol: 19.39,
+            timeStamp: moment().valueOf,
+
+          },
+          {
+            type: 'beer 0.5',
+            gramsOfAlcohol: 19.39,
+            timeStamp: moment().add(1, 'hours').valueOf(),
+
+          },
+          {
+            type: 'beer 0.5',
+            gramsOfAlcohol: 19.39,
+            timeStamp: moment().add(6, 'hours').valueOf(),
+          },
+        ],
+      },
+      {
+        key: 2,
+        title: 'a',
+        time: moment().valueOf,
+        drinks: [],
+      },
+      {
+        key: 3,
+        title: 'cool party i guess',
+        time: moment.valueOf(),
+        drinks: [],
+      },
+    ];
+
+    events.forEach(event => this.createEventAsync(event));
   }
 
   render() {
