@@ -17,11 +17,10 @@ const { Form } = form;
 
 const Events = struct({
   Title: String,
-  Description: maybe(String), // maybe says that this field is optional
 });
 
-const Friend = struct({
-  FriendsMail: maybe(String), // maybe says that this field is optional
+const desc = struct({
+  Description: maybe(String), // maybe says that this field is optional
 });
 
 const options = {
@@ -30,6 +29,9 @@ const options = {
     optional: ' ',
   },
   stylesheet,
+  description: {
+    multiline: true,
+  },
 };
 
 stylesheet.textbox.normal.backgroundColor = '#38006B'; // sets the background color of the input fields
@@ -44,7 +46,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#AE52D4',
     height: 45,
     margin: 15,
-    width: 300,
+    width: 200,
+    alignSelf: 'center',
   },
   text: {
     color: '#FFFFFF',
@@ -65,14 +68,8 @@ export default class InputForm extends Component {
     return (
       <View>
         <Form type={Events} options={options} />
+        <Form type={desc} options={options} />
         <DateTimePickerTester />
-        <Form type={Friend} options={options} />
-        <TouchableOpacity style={styles.button} onPress={this.handleFriendInvite}>
-          <Text style={styles.text}>
-            Invite Friend
-          </Text>
-        </TouchableOpacity>
-
         <TouchableOpacity style={styles.button} onpress={this.handleCreateEvent}>
           <Text style={styles.text}>
             Create Event
