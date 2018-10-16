@@ -11,14 +11,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#AE52D4',
     height: 45,
     margin: 15,
-    width: 300,
+    width: 200,
+    alignSelf: 'center',
   },
   text: {
     color: '#FFFFFF',
     fontSize: 20,
   },
 });
-
 
 export default class DateTimePickerTester extends Component {
   constructor(props) {
