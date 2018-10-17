@@ -1,25 +1,25 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import moment from 'moment';
-import Graph from '../components/graph/index';
+import Graph from '../components/graph';
 
 const drinks = [
   {
     type: 'beer 0.5',
     gramsOfAlcohol: 19.39,
-    timeStamp: moment(),
+    timeStamp: moment(1539717057000),
 
   },
   {
     type: 'beer 0.5',
     gramsOfAlcohol: 19.39,
-    timeStamp: moment().add(1, 'hours'),
+    timeStamp: moment(1539717057000).add(1, 'hours'),
 
   },
   {
     type: 'beer 0.5',
     gramsOfAlcohol: 19.39,
-    timeStamp: moment().add(6, 'hours'),
+    timeStamp: moment(1539717057000).add(6, 'hours'),
   },
 ];
 
