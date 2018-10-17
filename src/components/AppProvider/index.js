@@ -28,6 +28,7 @@ class AppProvider extends React.Component {
       setStorageAndState: (key, value) => this.setStorageAndState(key, value),
       addDrinkAsync: (drinkObject, key) => this.addDrinkAsync(drinkObject, key),
       addEventAsync: eventObject => this.addEventAsync(eventObject),
+      createEventAsync: eventObject => this.createEventAsync(eventObject),
     };
   }
 
@@ -93,6 +94,7 @@ class AppProvider extends React.Component {
   }
 
   async createEventAsync(eventObject) {
+    console.log(eventObject);
     const tempState = cloneDeep(this.state);
     const newEvent = cloneDeep(eventObject);
     // trying to make unique keys. This won't work if we should be able to delete events
