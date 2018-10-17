@@ -1,72 +1,102 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, Text, StyleSheet, Container, Vibration } from 'react-native';
 import Graph from '../components/graph/index';
 import Image from 'react-native-remote-svg';
 
-
 const styles = ({        // Styling for different components
     eventTitle: {
-        width: 132,
-        height: 24,
-        fontSize: 20,
-        lineHeight: 23,
+        fontSize: 36,
+        color: '#FFF',
+        textAlign: 'center',
+        fontWeight: '100',
+        marginTop: 12,
+    },
+    scoreNumber: {
+
+    },
+    topView: {
+        borderRadius: 2,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 5,
+        marginBottom: 10,
     },
 
     container: {         // container - buttons
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+        flex: 1
     },
-
-    addBeer: {
-        width: '50%',
-        height: '50%',
-        backgroundColor: "#38006B"
-    },
-
-    addDrink: {
-        width: '50%',
-        height: '50%',
-        backgroundColor: "#38006B"
-    },
-
-    addWine: {
-        width: '50%',
-        height: '50%',
-        backgroundColor: "#38006B"
-    },
+    elementsContainer: {
+        backgroundColor: '#6D6D6D',
+    }
 })
 
 const EventScreen = (props) => {
     const { navigation } = props;
+
+    // const drinkScore = 0;
+    // this.setState({drinkScore: this.state.drinkScore + 1});
+
+
+    const clickFunction = (drinkParam) => {
+        Vibration.vibrate();
+        // TODO: if -> sjekke om button disabled -> if true, returnere feilmelding til bruker / timer på 1 min?
+        if(drinkParam == 'beer'){
+            console.log('Beer added! 18,03 grams');
+        }
+        else if(drinkParam == 'drink'){
+            console.log('Drink added! 12,8 grams');
+        }
+        else if(drinkParam == 'wine'){
+            console.log('Wine added! 14,4 grams');
+        }
+        // TODO: legge til popup med lagt til(enhet), i tilleg til å aktivere timer / button disabled
+    };
+
     return (
-        <View>
-            <View style={styles.container}>
-                <View style={styles.addBeer}>
-                    <TouchableOpacity style={styles.addBeer} onPress={() => console.log("Beer added! 19,3 grams")}>
-                        <Image source={require('./../Icons/beer-solid.svg')}>
-                        
-                        </Image>
+    // Components placed in Views, accomodating flex - e.g. title will be located in flex: 1
+    // TODO: Legge inn enkel counter - variable ++ 
+
+    <View style={styles.container}>
+        <View style={[{flex: 1}, styles.elementsContainer]}>
+            <View style={[{flex: 2, backgroundColor: '#424242'}, styles.topView]}>
+                <Text style={styles.eventTitle}>
+                    {navigation.getParam('title')}
+                </Text>
+            </View>
+            <View style={{flex: 4, backgroundColor: '#6D6D6D'}}>
+                <Text style={styles.eventTitle}>
+                    Score:{"\n"}
+                </Text>
+            </View>
+
+            <View style={{flex: 3, flexDirection: 'row', marginHorizontal: 30}}>
+                <View style={{flex: 1, alignItems: "center"}}>
+                    <TouchableOpacity onPress={() => clickFunction('beer')}>
+                        <Image source={require('./../Icons/beer-solid.svg')} style={{width: 80, height: 80}}/>
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.addDrink}>
-                    <TouchableOpacity style={styles.addDrink} onPress={() => console.log("Drink added! 12,8 grams")}>
-                        <Image source={require('./../Icons/glass-martini-solid.svg')} />
+                <View style={{flex: 1, alignItems: 'center'}}>
+                    <TouchableOpacity onPress={() => clickFunction('drink') }>
+                        <Image source={require('./../Icons/glass-martini-solid.svg')} style={{width: 75, height: 75, marginTop: 2.5}}/>
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.addWine}>
-                    <TouchableOpacity style={styles.addWine} onPress={() => console.log("Wine added! 14,4 grams")}>
-                        <Image source={require('./../Icons/wine-glass-solid.svg')} />
+                <View style={{flex: 1, alignItems: 'center'}}>
+                    <TouchableOpacity onPress={() => clickFunction('wine') }>
+                        <Image source={require('./../Icons/wine-glass-solid.svg')} style={{width: 75, height: 75, marginTop: 2.5}}/>
                     </TouchableOpacity>
                 </View>
             </View>
 
-            <View>
-                <Graph drinks={navigation.getParam('drinks')} />
+            <View style={{flex: 6, backgroundColor: '#6D6D6D'}}>
+                <View> 
+                    <Graph drinks={navigation.getParam('drinks')}/>
+                </View>
             </View>
         </View>
+    </View>
     );
 };
 
