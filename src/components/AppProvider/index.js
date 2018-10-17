@@ -42,7 +42,6 @@ class AppProvider extends React.Component {
     };
   }
 
-
   async componentDidMount() {
     await AsyncStorage.getItem('@go-full:state')
       .then(result => JSON.parse(result))
@@ -53,7 +52,6 @@ class AppProvider extends React.Component {
   }
 
   setupNotificationChannels() {
-    console.log(this.state);
     if (Platform.OS === 'android') {
       // Channel for test notifications
       Notifications.createChannelAndroidAsync('test', {
@@ -81,13 +79,13 @@ class AppProvider extends React.Component {
     }
   }
 
-
   async setStorageAndState(key, value) {
     // Using cloneDeep to ensure immutability.
     const tempState = cloneDeep(this.state);
     tempState[key] = value;
     this.setState(tempState);
     await storeData(tempState);
+    return tempState;
   }
 
   render() {
