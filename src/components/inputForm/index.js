@@ -5,7 +5,7 @@ import {
 } from 'native-base';
 import DateTimePickerTester from './dateTimePicker';
 
-class StackedLabelExample extends Component {
+class createEvent extends Component {
   render() {
     return (
       <Container style={{ backgroundColor: '#6D6D6D' }}>
@@ -22,8 +22,16 @@ class StackedLabelExample extends Component {
                 border: 0,
               }}
             >
-              <Label style={{ color: 'white' }}>Title</Label>
-              <Input style={{ color: 'white' }} />
+              <Label style={{
+                color: 'white',
+              }}
+              >
+              Title
+              </Label>
+              <Input style={{
+                color: 'white',
+              }}
+              />
             </Item>
           </Form>
           <Form>
@@ -31,7 +39,10 @@ class StackedLabelExample extends Component {
               rowSpan={5}
               placeholder="Description"
               style={{
-                backgroundColor: '#38006B', width: 300, alignSelf: 'center', color: 'white',
+                backgroundColor: '#38006B',
+                width: 300,
+                alignSelf: 'center',
+                color: 'white',
               }}
             />
           </Form>
@@ -59,4 +70,4 @@ class StackedLabelExample extends Component {
   }
 }
 
-export default StackedLabelExample;
+export default createEvent;
