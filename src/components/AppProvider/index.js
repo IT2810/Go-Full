@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AsyncStorage, Platform } from 'react-native';
-import { Notifications } from 'expo';
+import { AsyncStorage } from 'react-native';
 import cloneDeep from 'lodash/cloneDeep';
 import uniqueId from 'lodash/uniqueId';
 import moment from 'moment';
+import Notifications from '../../utils/notifications';
 import Serializer from '../../utils/serialization';
 
 export const AppContext = React.createContext();
@@ -43,37 +43,10 @@ class AppProvider extends React.Component {
       .then(result => this.setState(result))
       .catch(error => console.error(error));
 
-    this.setupNotificationChannels();
+    Notifications.setupNotificationChannels();
     await this.temporaryFunctionPleaseRemoveItsOnlyForTestingPurposesSoYeahGoodbyeAsync();
   }
 
-  setupNotificationChannels() {
-    if (Platform.OS === 'android') {
-      // Channel for test notifications
-      Notifications.createChannelAndroidAsync('test', {
-        name: 'Test notifications',
-        sound: true,
-        priority: 'max',
-        vibrate: true,
-      });
-
-      // Channel for mission critical notifications
-      Notifications.createChannelAndroidAsync('mission-critical', {
-        name: 'Test notifications',
-        sound: true,
-        priority: 'high',
-        vibrate: true,
-      });
-
-      // Channel for less important notifications
-      Notifications.createChannelAndroidAsync('nudge', {
-        name: 'Test notifications',
-        sound: true,
-        priority: 'low',
-        vibrate: true,
-      });
-    }
-  }
 
   async setStorageAndState(key, value) {
     // Using cloneDeep to ensure immutability.

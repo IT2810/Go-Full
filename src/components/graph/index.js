@@ -3,6 +3,7 @@ import { Text, View, Dimensions } from 'react-native';
 import { LineChart } from 'react-native-chart-kit';
 import moment from 'moment';
 import PropTypes from 'prop-types';
+import Notifications from '../../utils/notifications';
 
 
 class Graph extends Component {
@@ -38,7 +39,7 @@ class Graph extends Component {
       }
       alcoholLevels[i] += alcoholLevels[i - 1] - MR;
     });
-
+    this.scheduleNotification();
     return {
 
       labels: this.generateLabels(startTime),
@@ -46,6 +47,10 @@ class Graph extends Component {
         data: alcoholLevels,
       }],
     };
+  }
+
+  scheduleNotification() {
+    Notifications.sendNotificationAsync('DrikkeAlarm', 'Du har farlig lav promille, drikk mye mer!', 'mission-critical', moment().add(10, 'seconds'));
   }
 
   generateLabels(startTime) {
