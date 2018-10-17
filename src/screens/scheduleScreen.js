@@ -14,7 +14,7 @@ const schedulescreen = (props) => {
         )}
       </AppContext.Consumer>
       <View style={{
-        position: 'fixed', right: 0, top: 430,
+        position: 'absolute', right: 0, top: 600,
       }}
       >
         <ActionButton

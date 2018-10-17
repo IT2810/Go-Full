@@ -34,7 +34,12 @@ class AppProvider extends React.Component {
   async componentDidMount() {
     await AsyncStorage.getItem('@go-full:state')
       .then(result => JSON.parse(result))
-      .then(result => Serializer.deserializeState(result))
+      .then((result) => {
+        if (result.events) {
+          return Serializer.deserializeState(result);
+        }
+        return result;
+      })
       .then(result => this.setState(result))
       .catch(error => console.error(error));
 
