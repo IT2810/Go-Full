@@ -97,6 +97,7 @@ class AppProvider extends React.Component {
     const newEvent = cloneDeep(eventObject);
     // trying to make unique keys. This won't work if we should be able to delete events
     newEvent.key = parseInt(uniqueId(), 10);
+    newEvent.drinks = [];
     tempState.events.push(newEvent);
     await this.setStorageAndState('events', tempState.events);
   }
