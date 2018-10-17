@@ -17,24 +17,6 @@ const storeData = async (data) => {
   }
 };
 
-// This is a different implementation of the stuff that is
-// currently in the constructor, we might need it for later.
-
-// const retrieveData = async () => {
-//   try {
-//     const value = await AsyncStorage.getItem('@go-full:state');
-//     if (value !== null) {
-//       // We have data in the store
-//       return value;
-//     }
-//     // There is no data in the store
-//     return false;
-//   } catch (error) {
-//     // Error retrieving data
-//     return error;
-//   }
-// };
-
 class AppProvider extends React.Component {
   constructor(props) {
     super(props);
@@ -49,21 +31,18 @@ class AppProvider extends React.Component {
     };
   }
 
-
   async componentDidMount() {
     await AsyncStorage.getItem('@go-full:state')
       .then(result => JSON.parse(result))
       .then(result => Serializer.deserializeState(result))
       .then(result => this.setState(result))
-      .catch(error => console.log(error));
+      .catch(error => console.error(error));
 
     this.setupNotificationChannels();
     await this.temporaryFunctionPleaseRemoveItsOnlyForTestingPurposesSoYeahGoodbyeAsync();
   }
 
-
   setupNotificationChannels() {
-    console.log(this.state);
     if (Platform.OS === 'android') {
       // Channel for test notifications
       Notifications.createChannelAndroidAsync('test', {
@@ -90,7 +69,6 @@ class AppProvider extends React.Component {
       });
     }
   }
-
 
   async setStorageAndState(key, value) {
     // Using cloneDeep to ensure immutability.
@@ -133,7 +111,6 @@ class AppProvider extends React.Component {
             type: 'beer 0.5',
             gramsOfAlcohol: 19.39,
             timeStamp: moment().add(1, 'hours'),
-
           },
           {
             type: 'beer 0.5',
