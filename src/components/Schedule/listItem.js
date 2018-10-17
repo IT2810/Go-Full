@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { Card } from 'react-native-material-ui';
+import moment from 'moment';
 
 const styles = StyleSheet.create({
   container: {
@@ -32,7 +33,7 @@ const ListItem = (props) => {
           </Text>
         </View>
         <View style={styles.timeView}>
-          <Text>{time}</Text>
+          <Text>{time.format('HH:MM')}</Text>
         </View>
       </View>
     </Card>
@@ -41,7 +42,7 @@ const ListItem = (props) => {
 
 ListItem.propTypes = {
   title: PropTypes.string.isRequired,
-  time: PropTypes.string.isRequired,
+  time: PropTypes.instanceOf(moment).isRequired,
   handlePress: PropTypes.func.isRequired,
 };
 
