@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { AsyncStorage, Platform } from 'react-native';
 import { Notifications } from 'expo';
 import cloneDeep from 'lodash/cloneDeep';
+import uniqueId from 'lodash/uniqueId';
 import moment from 'moment';
 import Serializer from '../../utils/serialization';
 
@@ -110,14 +111,16 @@ class AppProvider extends React.Component {
 
   async createEventAsync(eventObject) {
     const tempState = cloneDeep(this.state);
-    tempState.events.push(eventObject);
+    const newEvent = cloneDeep(eventObject);
+    // trying to make unique keys. This won't work if we should be able to delete events
+    newEvent.key = parseInt(uniqueId(), 10);
+    tempState.events.push(newEvent);
     await this.setStorageAndState('events', tempState.events);
   }
 
   async temporaryFunctionPleaseRemoveItsOnlyForTestingPurposesSoYeahGoodbyeAsync() {
     const events = [
       {
-        key: 1,
         title: 'Steve jobs memorial',
         time: moment(),
         drinks: [
@@ -125,7 +128,6 @@ class AppProvider extends React.Component {
             type: 'beer 0.5',
             gramsOfAlcohol: 19.39,
             timeStamp: moment(),
-
           },
           {
             type: 'beer 0.5',
@@ -141,13 +143,11 @@ class AppProvider extends React.Component {
         ],
       },
       {
-        key: 2,
         title: 'a',
         time: moment(),
         drinks: [],
       },
       {
-        key: 3,
         title: 'cool party i guess',
         time: moment(),
         drinks: [],
