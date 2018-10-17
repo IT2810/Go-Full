@@ -20,5 +20,24 @@ jest.mock('react-native', () => ({
   },
 }));
 
+const AsyncStorage = require('react-native');
+
+const provider = renderer.create(<AppProvider><p>I am a child</p></AppProvider>).getInstance();
+
+describe('storage', () => {
+  test('setStorageAndState should set state with no errors', () => {
+    provider.setStorageAndState('keyOne', 'testValue').then((error) => {
+      expect(error).toEqual(null);
+      expect(provider.setState({ keyOne: 'testValue' })).toBeCalled();
+    });
+  });
+
+  test('setStorageAndState should store in AsyncStorage with no errors', () => {
+    provider.setStorageAndState('keyOne', 'testValue').then((error) => {
+      expect(error).toEqual(null);
+      expect(AsyncStorage.setItem).toBeCalledWith('@go-full:testState', JSON.stringify({ keyOne: 'testValue' }));
+    });
+  });
+});
 
 jest.unmock('react-native');
