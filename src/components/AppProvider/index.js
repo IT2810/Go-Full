@@ -35,7 +35,7 @@ class AppProvider extends React.Component {
     await AsyncStorage.getItem('@go-full:state')
       .then(result => JSON.parse(result))
       .then((result) => {
-        if (result.events) {
+        if (result && result.events) {
           return Serializer.deserializeState(result);
         }
         return result;
