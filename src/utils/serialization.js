@@ -13,7 +13,6 @@ const Serializer = {
       });
       return tempEvent;
     });
-    console.log(tempState, 'deseriala<iaation');
     return tempState;
   },
 
