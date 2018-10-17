@@ -82,6 +82,7 @@ class AppProvider extends React.Component {
     this.setState(tempState);
     const serializedState = Serializer.serializeState(tempState);
     await storeData(serializedState);
+    return tempState;
   }
 
   async addDrinkAsync(drinkObject, eventKey) {
