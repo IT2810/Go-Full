@@ -11,7 +11,7 @@ This project uses yarn not npm. To start the project:
 `yarn start` or `expo start`
 
 ### Testing the app
-Testing some of the functionality might be difficult as the graphs base themselves on drinking over a long period of time. We recommend bringing the app to Samfunnet for a real test.
+Testing some of the functionality might be difficult as the graphs base themselves on drinking over a long period of time. We recommend bringing the app to Samfundet for a real test.
 
 Jokes aside we have included a few test events that show of the functionality. There is also a line in AppProvider that can be uncommented to test notifications without having to wait 15 minutes.
 
@@ -56,9 +56,11 @@ Based on feedback from the lecturerer we decided to focus on demonstrating syste
 
 The earliest stage of our development process was the design phase. Based on impressions and experience from earlier projects we decided to make decisions regarding general appearance, colors, icons, placement of objects early on. We created basic non-interactive dummies using Figma; an online tool for creating and designing prototypes. Figma was attractive compared to other design tools because of the ability to collaborate simultaneously online.
 
+[Figma](https://www.figma.com/)
+
 #### Designing prototypes using Figma
 
-As mentioned figma allowed us to collaborate simultaneously while working on the prototypes. We first decided on a color pallette. We went for a modern minimalistic pallette based on dark purple. Since we like purple and it gives the application a dark/nightly theme, since drinking mostly occurrs during night.
+As mentioned figma allowed us to collaborate simultaneously while working on the prototypes. We first decided on a color palette. We went for a modern minimalistic pallette based on dark purple. Since we like purple and it gives the application a dark/nightly theme, since drinking mostly occurrs during night.
 
 ![](https://i.imgur.com/VyW4F01.png)
 
@@ -138,10 +140,16 @@ This is a library that exposes a cross-platform interface to pick a date and/or 
 Read more about this datetim-picker here:
 [https://github.com/mmazzarolo/react-native-modal-datetime-picker](https://github.com/mmazzarolo/react-native-modal-datetime-picker)
 
-
 ### Lodash
 
+Lodash is one of the most used npm packages that exists. It is a ton of utilities that makes programming in JS objectively better. We heavily leaned on cloneDeep.
+[https://lodash.com/](https://lodash.com/)
+
 ### MockDate
+
+MockDate is a great little tool for mocking dates. Basically MockDate allows you to set a "fake" date for testing. This makes snapshot testing when you have datefields and such a breeze.
+
+[https://www.npmjs.com/package/mockdate](https://www.npmjs.com/package/mockdate)
 
 ### Moment
 
@@ -152,8 +160,7 @@ Read more about this library here:
 
 ### React-native-remote-svg
 
-As explained later we thought that we were going to use font-awesome instead of this, however we concluded that font-awesome did not have the symbols we wanted. This meant that we had to make import the SVG files we wanted, while the 'Image' component in react native does not support SVG files. This library makes this possible. The implementation of this library can be found in ``screens/eventScreen.js`` and the SVG files can be found in `assets`
-
+As explained later we thought that we were going to use font-awesome instead of this, but after hearing some bad things about font-awesome for react-native we decided to take the easy path and just use some SVGs. This meant that we had to make import the SVG files we wanted, while the 'Image' component in react native does not support SVG files. This library makes this possible. The implementation of this library can be found in ``screens/eventScreen.js`` and the SVG files can be found in `assets`
 
 ### React-native-chart-kit
 
