@@ -44,7 +44,7 @@ const EventScreen = (props) => {
   const { navigation } = props;
   const drinkTypes = {
     beer: {
-      type: 'beer 0.5',
+      type: 'beer',
       alcoholInGrams: 18.03,
       timeStamp: moment(),
     },

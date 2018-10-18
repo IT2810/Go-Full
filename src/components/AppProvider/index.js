@@ -142,17 +142,17 @@ class AppProvider extends React.Component {
         description: 'this is an event',
         drinks: [
           {
-            type: 'beer 0.5',
+            type: 'beer',
             alcoholInGrams: 19.39,
             timeStamp: moment().subtract(11, 'hours'),
           },
           {
-            type: 'beer 0.5',
+            type: 'beer',
             alcoholInGrams: 19.39,
             timeStamp: moment().subtract(8, 'hours'),
           },
           {
-            type: 'beer 0.5',
+            type: 'beer',
             alcoholInGrams: 19.39,
             timeStamp: moment().subtract(12, 'hours'),
           },
