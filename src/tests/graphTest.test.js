@@ -1,6 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import moment from 'moment';
+import MockDate from 'mockdate';
 import Graph from '../components/graph';
 
 const drinks = [
@@ -21,6 +22,8 @@ const drinks = [
   },
 ];
 
+// Set date and time so tests correspond with snapshot
+MockDate.set('1/1/2000');
 
 const graph = renderer.create(<Graph drinks={drinks} />).getInstance();
 
