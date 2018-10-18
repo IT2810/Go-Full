@@ -1,4 +1,5 @@
 import { Notifications } from 'expo';
+import { Platform } from 'react-native';
 
 // Usage
 // import notificationUtil from './notifications'
@@ -27,7 +28,7 @@ const notificationUtil = {
     };
 
     const schedulingOptions = {
-      time: date,
+      time: date.toDate(),
     };
 
     const id = await Notifications.scheduleLocalNotificationAsync(
@@ -40,6 +41,33 @@ const notificationUtil = {
 
   cancelNotification(id) {
     Notifications.cancelScheduledNotificationAsync(id);
+  },
+  setupNotificationChannels() {
+    if (Platform.OS === 'android') {
+      // Channel for test notifications
+      Notifications.createChannelAndroidAsync('test', {
+        name: 'Test notifications',
+        sound: true,
+        priority: 'max',
+        vibrate: true,
+      });
+
+      // Channel for mission critical notifications
+      Notifications.createChannelAndroidAsync('mission-critical', {
+        name: 'Test notifications',
+        sound: true,
+        priority: 'high',
+        vibrate: true,
+      });
+
+      // Channel for less important notifications
+      Notifications.createChannelAndroidAsync('nudge', {
+        name: 'Test notifications',
+        sound: true,
+        priority: 'low',
+        vibrate: true,
+      });
+    }
   },
 };
 

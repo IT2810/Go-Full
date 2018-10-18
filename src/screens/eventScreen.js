@@ -2,10 +2,12 @@ import React from 'react';
 import {
   View, TouchableOpacity, Text, Vibration,
 } from 'react-native';
-import { Font } from 'expo';
 import Image from 'react-native-remote-svg';
-import FontAwesome, { Icons } from 'react-native-fontawesome';
 import Graph from '../components/graph/index';
+
+const wineGlass = require('./../Icons/wine-glass-solid.svg');
+const drinkGlass = require('./../Icons/glass-martini-solid.svg');
+const beerGlass = require('./../Icons/beer-solid.svg');
 
 const styles = ({ // Styling for different components
   eventTitle: {
@@ -35,7 +37,7 @@ const styles = ({ // Styling for different components
   },
 });
 
-const EventScreen = async (props) => {
+const EventScreen = (props) => {
   const { navigation } = props;
   // const drinkScore = 0;
   // this.setState({drinkScore: this.state.drinkScore + 1});
@@ -75,14 +77,14 @@ const EventScreen = async (props) => {
         <View style={{ flex: 3, flexDirection: 'row', marginHorizontal: 30 }}>
           <View style={{ flex: 1, alignItems: 'center' }}>
             <TouchableOpacity onPress={() => clickFunction('beer')}>
-                        <Image source={require('./../Icons/beer-solid.svg')} style={{width: 80, height: 80}}/>
+              <Image source={beerGlass} style={{ width: 80, height: 80 }} />
             </TouchableOpacity>
           </View>
 
           <View style={{ flex: 1, alignItems: 'center' }}>
             <TouchableOpacity onPress={() => clickFunction('drink')}>
               <Image
-                source={require('./../Icons/glass-martini-solid.svg')}
+                source={drinkGlass}
                 style={{ width: 75, height: 75, marginTop: 2.5 }}
               />
             </TouchableOpacity>
@@ -91,7 +93,7 @@ const EventScreen = async (props) => {
           <View style={{ flex: 1, alignItems: 'center' }}>
             <TouchableOpacity onPress={() => clickFunction('wine')}>
               <Image
-                source={require('./../Icons/wine-glass-solid.svg')}
+                source={wineGlass}
                 style={{ width: 75, height: 75, marginTop: 2.5 }}
               />
             </TouchableOpacity>
