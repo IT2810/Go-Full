@@ -12,10 +12,6 @@ This project uses yarn not npm. To start the project:
 
 Skrive om:
 
-AsyncStorage
-
-Testing
-
 Samarbeid
 
 ### Assignment demands
@@ -44,6 +40,9 @@ We are definitely not above inserting humor and inside-jokes into our commit mes
 #### Push notifications
 
 To solve the part of the assignment where we had to implement something that wasn't ordinary react native UI problematics we decided to implement the possibility of recieveing push notifications.
+
+#### Testing
+
 
 
 ### Yarn
@@ -98,14 +97,14 @@ As seen below the different tints and colors are used throughout the application
 
 #### Nativebase
 
-Nativebase is a library for cross platform, easy to use, and good looking UI components in react native. In this project we have used 'Container, Content, Form, Item, Input, Label and Textarea' from nativebase which can be found in inputForm/index.js.
+Nativebase is a library for cross platform, easy to use, and good looking UI components in react native. In this project we have used 'Container, Content, Form, Item, Input, Label and Textarea' from nativebase which can be found in ``inputForm/index.js``.
 
 Read more about nativebase here:
 [https://docs.nativebase.io/](https://docs.nativebase.io/)
 
 #### Datetime-picker
 
-This is a library that exposes a cross-platform interface to pick a date and/or time. This component can be found in inputForm/dateTimePicker.js
+This is a library that exposes a cross-platform interface to pick a date and/or time. This component can be found in ``inputForm/dateTimePicker.js``
 
 Read more about this datetim-picker here:
 [https://github.com/mmazzarolo/react-native-modal-datetime-picker](https://github.com/mmazzarolo/react-native-modal-datetime-picker)
@@ -120,20 +119,33 @@ Read more about this datetim-picker here:
 #### PropTypes
 
 
-#### Remote-svg
+#### React-native-remote-svg
+
+As explained later we thought that we were going to use font-awesome instead of this, however we concluded that font-awesome did not have the symbols we wanted. This meant that we had to make import the SVG files we wanted, while the 'Image' component in react native does not support SVG files. This library makes this possible. The implementation of this library can be found in ``screens/eventScreen.js`` and the SVG files can be found in `assets`
 
 
-#### Chart-kit
+#### React-native-chart-kit
+
+Making a graph to show the user their estimated blood alcohol content (BAC) proved to be very easy using this library. Implementation of this library can be found in ``graph/index.js``
+
+You can read more about the chart-kit here:
+[https://www.npmjs.com/package/react-native-chart-kit](https://www.npmjs.com/package/react-native-chart-kit)
 
 
-#### Navigation
+#### React-navigation
+
+To be able to change between the different screens, we needed a way to navigate. This was solved by using the 'react-navigation' library. Implementation of the navigator and its configurations can be found in ``Navigator.js``
+
+Read more about this library here:
+[https://reactnavigation.org/en/](https://reactnavigation.org/en/)
+
+#### React-native-material-ui
+
+Starting out we thought we were going to use a lot of components from this library, however during development we found better ways to implement different components. Because of this, the only thing we used from this library is the ActionButton component which takes you to the create event screen. You can find the implementation of this component in `` screens/scheduleScreen.js ``
 
 
-
-#### Material-ui
-
-add new event button
-
+Read more about this library here:
+[https://github.com/xotahal/react-native-material-ui](https://github.com/xotahal/react-native-material-ui)
 
 
 ### React Context API - Teleporting state for fun and profit
