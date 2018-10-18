@@ -13,7 +13,7 @@ This project uses yarn not npm. To start the project:
 ### Testing the app
 Testing some of the functionality might be difficult as the graphs base themselves on drinking over a long period of time. We recommend bringing the app to Samfundet for a real test.
 
-Jokes aside we have included a few test events that show of the functionality. There is also a line in AppProvider that can be uncommented to test notifications without having to wait 15 minutes.
+Jokes aside we have included a few test events that show of the functionality. There is also a line in ``AppProvider`` that can be uncommented to test notifications without having to wait 15 minutes.
 
 Also take note that the app was designed around a real alcohol consumption level. Due to technical constraints with our solution the app slows down after adding 30 units of alcohol. We've decided to call this a _Health Related Safety Feature_.
 
@@ -21,7 +21,7 @@ Also take note that the app was designed around a real alcohol consumption level
 
 Go'Full is a party and drinks tracking app. The core idea is that students like to drink and stay drunk. We work to ensure that our users never forget to open that next beer.
 
-The app is a tounge-in-cheek joke referencing students relationship to alcohol and apps such as Lykkepromillen. We consider what you are currently looking at a vertical slice of a larger product, as such some code is created to ease further development and some desirable features are left uncreated.
+The app is a tounge-in-cheek joke referencing students relationship to alcohol and apps such as Lykkepromillen. We consider this repository a vertical slice of a larger product. As such, some code is created to ease further development and some desirable features are left uncreated.
 
 ## Technical Decisions and Processes
 
@@ -41,7 +41,8 @@ for more info.
 ### AsyncStorage - Storage that is Async, I guess...
 We decided early in the development that we wantet 1-1 parity between app state and AsyncStorage. To alleviate potential issues down the road we created a wrapper for this.setState which also handled storage in AsyncStorage. This method, situated in AppProvider was our sole writer of storage. This would later help us greatly as we never encountered issues with a mismatch between AsyncStorage and the state of our app. Since we have 1-1 parity we could also allow ourselves only to read from storage when we initialized the app. This is done with a simple get to fetch our entire state in the componentDidMount() of AppProvider.
 
-AppProvider served as our central store for state and functions for most important update functionality that is used throughout the app. These functions are loaded into state and along with the rest of state is served to components throughout the tree through the use of _React Contex API_. You can read more about our implementation of Context in the section __Teleporting state for fun and profit__ under __Going beyond React UI__.
+AppProvider served as our central store for state and functions for most important update functionality that is used throughout the app. These functions are loaded into state and along with the rest of state is served to components throughout the tree, through the use of _React Contex API_. You can read more about our implementation of Context in the section __Teleporting state for fun and profit__ under __Going beyond React UI__.
+
 
 ### Yarn - It's like npm, but different
 Yarn is like npm a package manager for nodejs, at this date there is almost no difference between them. We chose to use yarn just because it's our personal preference.
@@ -71,13 +72,13 @@ As seen below the different tints and colors are used throughout the application
 ### Our Use of Git and GitHub and Gitting Gud
 We use what we like to call minimized-git-flow. We are very fond of the git-flow framework, but some of the tools there are not quite neccesary when you're not hosting a production app during development. One such example is that we use only a master branch, and not a develop branch.
 
-We used issues, along with Figma(see below) to layout our development and feature set in the early development. Throughout development we also sporadically used issues to note problems we found, that needed to be fixed. Some plans we had early on turned out to be outside our final scope; they were labeled `won't fix` and closed. Other issues were closed after being referenced in pull requests, or PRs were referenced on the issues themselves.
+We used issues, along with Figma(see above) to layout our development and feature set in the early development. Throughout development we also sporadically used issues to note problems we found, that needed to be fixed. Some plans we had early on turned out to be outside our final scope; they were labeled `won't fix` and closed. Other issues were closed after being referenced in pull requests, or PRs were referenced on the issues themselves.
 
-We are definitely not above inserting humor and inside-jokes into our commit messages and comments on github. We strongly believe that git and github are tools that mold themselves to their users. We are a bunch of friends that like to work together while we joke around and this is reflected in our use of git and github. However, even through the jokes we strive to keep a clear, readable and understandable commit history.
+We are definitely not above inserting humor and inside-jokes into our commit messages and comments on github. We strongly believe that git and github are tools that mold themselves to their users. We are a bunch of friends that like to work together while we joke around, and this is reflected in our use of git and github. However, even through the jokes we strive to keep a clear, readable and understandable commit history.
 
 ### Project Structure - Folders Files and Fantasy
 
-We decided to use similar folder structure as our previous project, called the ‘Component Folder Pattern’. This gave us better oversight of the different components and makes the whole structure easier to understand.
+We decided to use similar folder structure as our previous project, called the ‘Component Folder Pattern’. This gave us better oversight of the different components, and makes the whole structure easier to understand.
 
 You can read more about this structure here:
 
@@ -97,7 +98,7 @@ We wanted a central part of our app to be showing off cool graphs after a night 
 
 ### React Context API - Teleporting state for fun and profit
 
-For our last project we were not completely happy with how we handled state flowing between components. We would simply pass state from the parent to the child through props. This works well in most cases, however sometimes you end up with intermediary components that really have no reason to have access to some part of the state but we still need to pass everything all the way through the component tree.
+In our last project we were not completely happy with how we handled state flowing between components. We would simply pass state from the parent to the child through props. This works well in most cases, however sometimes you end up with intermediary components that really have no reason to have access to some part of the state but we still need to pass everything all the way through the component tree.
 
 For this project we decided to experiment with the React Context API for distributing state throughout the application. Context is especially good for variables and functions that you would like to be globally available in the application. Due to the relatively small scope and timeline of the project we decided to see how far we could push Context instead of finding the _perfect_ solution for all our state-handling issues. Overall we were very happy with how context helped us and it certainly worked very well in coordinating state with AsyncStorage. For later projects we'll definitely consider using Context again.
 
