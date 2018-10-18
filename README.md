@@ -18,6 +18,27 @@ Testing
 
 Samarbeid
 
+### Assignment demands
+
+#### React Native and Expo
+
+
+#### AsyncStorage
+
+
+#### Cross-platform support
+
+
+#### Use of git
+
+->komponentstruktur, issues - pull requests - commits, 
+
+
+#### Push notifications
+
+To solve the part of the assignment where we had to implement something that wasn't ordinary react native UI problematics we decided to implement the possibility of recieveing push notifications.
+
+
 ### Yarn
 Yarn is like npm a package manager for nodejs, at this date there is almost no difference between them. We chose to use yarn just because it's our personal preference. 
 
@@ -99,6 +120,12 @@ Read more about this datetim-picker here:
 
 
 #### Navigation
+
+
+
+#### Material-ui
+
+add new event button
 
 
 
