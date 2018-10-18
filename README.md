@@ -1,7 +1,7 @@
 # Prosjekt 3 - Motivasjonsapp
 
 ## IMPORTANT
-This project uses yarn not npm. To test the project:
+This project uses yarn not npm. To start the project:
 
 #### Install yarn
 `npm install -g yarn`
