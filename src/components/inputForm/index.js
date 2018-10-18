@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { Alert, Text, TouchableOpacity } from 'react-native';
 import {
   Container, Content, Form, Item, Input, Label, Textarea,
 } from 'native-base';
 import DateTimePickerTester from './dateTimePicker';
 import moment from 'moment';
 import AppProvider from '../AppProvider';
+import { AppContext } from '../AppProvider';
 
 class CreateEvent extends Component {
   constructor(props) {
@@ -24,11 +25,19 @@ class CreateEvent extends Component {
       description: this.inputs.description,
       time: this.inputs.date,
     }
-    await appState.createEventAsync(eventObject)
+    if (eventObject.time === null){
+      Alert.alert(
+        'OOPSIE DOOPSIE U MADE A WOOPSIE'        
+      )
+    }
+    else{
+      await appState.createEventAsync(eventObject)
+      
+    }
   }
 
   handleDatePicked = (datetime) => {
-    this.inputs.date = moment(datetime)
+      this.inputs.date = moment(datetime)
   };
 
   render() {
@@ -78,7 +87,6 @@ class CreateEvent extends Component {
           </Form>
           <DateTimePickerTester
             onDatePicked={(datetime) => this.handleDatePicked(datetime)}
-            onConfirm={() => this.hideDateTimePicker()}
           />
           <TouchableOpacity
             onPress={() => this.submitEvent()}
