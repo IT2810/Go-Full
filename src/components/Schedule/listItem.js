@@ -33,7 +33,7 @@ const ListItem = (props) => {
           </Text>
         </View>
         <View style={styles.timeView}>
-          <Text>{time.format('HH:MM')}</Text>
+          <Text>{time.format('DD.MM')}</Text>
         </View>
       </View>
     </Card>
