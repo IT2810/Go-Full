@@ -17,6 +17,8 @@ class Graph extends Component {
       };
     }
     // const { weight, gender } = appState; this is what it is supposed to be;
+    // in a final product we would register weight and gender, but in this vertical slice
+    // we a set of default values.
     const weight = 80;
     const gender = true;
     const BW = gender ? 0.58 : 0.49;
