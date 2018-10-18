@@ -102,7 +102,7 @@ Read more about this datetim-picker here:
 
 
 
-#### React Context API - Teleporting state for fun and profit
+### React Context API - Teleporting state for fun and profit
 
 For our last project we were not completely happy with how we handled state flowing between components. We would simply pass state from the parent to the child through props. This works well in most cases, however sometimes you end up with intermediary components that really have no reason to have access to some part of the state but we still need to pass everything all the way through the component tree.
 
