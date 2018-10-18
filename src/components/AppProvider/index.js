@@ -6,6 +6,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import uniqueId from 'lodash/uniqueId';
 import moment from 'moment';
 import Serializer from '../../utils/serialization';
+import notificationUtil from '../../utils/notifications';
 
 export const AppContext = React.createContext();
 
@@ -24,11 +25,13 @@ class AppProvider extends React.Component {
 
       // This is where we set initial state
       events: [],
+      notificationId: -1,
 
       setStorageAndState: (key, value) => this.setStorageAndState(key, value),
       addDrinkAsync: (drinkObject, key) => this.addDrinkAsync(drinkObject, key),
       createEventAsync: eventObject => this.createEventAsync(eventObject),
       getEventFromKey: key => this.getEventFromKey(key),
+      notify: drinkType => this.notify(drinkType),
     };
   }
 
@@ -97,6 +100,25 @@ class AppProvider extends React.Component {
     const currentEvent = tempState.findIndex(event => event.key === eventKey);
     tempState[currentEvent].drinks.push(drinkObject);
     this.setStorageAndState('events', tempState);
+  }
+
+  async notify(drinkType) {
+    const { notificationId } = this.state;
+    const notificationTexts = {
+      beer: 'How is that beer going? Maybe it\'s time you had another?',
+      drink: 'The bartender hasn\'t flipped a tumbler in like 10 minutes, time to make him work for his tips!',
+      wine: 'That glass is looking pretty empty, time for a refill!',
+    };
+    notificationUtil.cancelNotification(notificationId);
+    const newId = await notificationUtil.sendNotificationAsync(
+      'You\'re looking sober!',
+      notificationTexts[drinkType],
+      'mission-critical',
+      // uncomment this line, and comment out the line below, to test notifications that are FASTAH.
+      // moment().add(10, 'seconds'),
+      moment().add(15, 'minutes'),
+    );
+    this.setStorageAndState('notificationId', newId);
   }
 
   async createEventAsync(eventObject) {
