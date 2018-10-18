@@ -35,9 +35,10 @@ export default class DateTimePickerTester extends Component {
   }
 
   hideDateTimePicker() {
-    this.setState({ isDateTimePickerVisible: false });
+    this.setState({
+      isDateTimePickerVisible: false,
+    });
   }
-
 
   render() {
     const { isDateTimePickerVisible } = this.state;

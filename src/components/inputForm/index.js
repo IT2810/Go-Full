@@ -78,6 +78,7 @@ class CreateEvent extends Component {
           </Form>
           <DateTimePickerTester
             onDatePicked={(datetime) => this.handleDatePicked(datetime)}
+            onConfirm={() => this.hideDateTimePicker()}
           />
           <TouchableOpacity
             onPress={() => this.submitEvent()}
