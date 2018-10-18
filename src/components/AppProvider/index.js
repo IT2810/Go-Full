@@ -126,7 +126,7 @@ class AppProvider extends React.Component {
     const newEvent = cloneDeep(eventObject);
     // trying to make unique keys. This won't work if we should be able to delete events
     newEvent.key = parseInt(uniqueId(), 10);
-    newEvent.drinks = [];
+    newEvent.drinks = newEvent.drinks ? newEvent.drinks : [];
     tempState.events.push(newEvent);
     await this.setStorageAndState('events', tempState.events);
   }
@@ -134,26 +134,32 @@ class AppProvider extends React.Component {
   async thisFunctionIsForTesting() {
     const events = [
       {
-        title: 'this is a test event',
-        time: moment(),
+        title: 'this is a past event',
+        time: moment().subtract(13, 'hours'),
         description: 'this is an event',
         drinks: [
           {
             type: 'beer 0.5',
             alcoholInGrams: 19.39,
-            timeStamp: moment(),
+            timeStamp: moment().subtract(11, 'hours'),
           },
           {
             type: 'beer 0.5',
             alcoholInGrams: 19.39,
-            timeStamp: moment(),
+            timeStamp: moment().subtract(8, 'hours'),
           },
           {
             type: 'beer 0.5',
             alcoholInGrams: 19.39,
-            timeStamp: moment().add(6, 'hours'),
+            timeStamp: moment().subtract(12, 'hours'),
           },
         ],
+      },
+      {
+        title: 'this is a testevent',
+        description: 'this is an event',
+        time: moment().add(6, 'hours'),
+        drinks: [],
       },
       {
         title: 'this is an upcoming event',
