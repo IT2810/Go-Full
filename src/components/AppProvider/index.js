@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AsyncStorage, Platform } from 'react-native';
-import { Notifications } from 'expo';
+import { Notifications, Permissions } from 'expo';
 import cloneDeep from 'lodash/cloneDeep';
 import uniqueId from 'lodash/uniqueId';
 import moment from 'moment';
@@ -46,6 +46,9 @@ class AppProvider extends React.Component {
       })
       .then(result => this.setState(result))
       .catch(error => console.error(error));
+
+    // We need to ask the user permission to send notifications in iOS.
+    Permissions.askAsync(Permissions.NOTIFICATIONS);
 
     this.setupNotificationChannels();
     await this.thisFunctionIsForTesting();
@@ -139,17 +142,17 @@ class AppProvider extends React.Component {
         description: 'this is an event',
         drinks: [
           {
-            type: 'beer 0.5',
+            type: 'beer',
             alcoholInGrams: 19.39,
             timeStamp: moment().subtract(11, 'hours'),
           },
           {
-            type: 'beer 0.5',
+            type: 'beer',
             alcoholInGrams: 19.39,
             timeStamp: moment().subtract(8, 'hours'),
           },
           {
-            type: 'beer 0.5',
+            type: 'beer',
             alcoholInGrams: 19.39,
             timeStamp: moment().subtract(12, 'hours'),
           },
