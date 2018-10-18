@@ -7,12 +7,9 @@ import DateTimePickerTester from './dateTimePicker';
 import moment from 'moment';
 import AppProvider from '../AppProvider';
 
-class createEvent extends Component {
+class CreateEvent extends Component {
   constructor(props) {
     super(props);
-
-    this.submitEvent = this.submitEvent.bind(this);
-    
     this.inputs = {
       title: '',
       description: '',
@@ -21,28 +18,25 @@ class createEvent extends Component {
   }
 
   async submitEvent() {
-    console.log(this.inputs.title);
-    console.log(this.inputs.description);
-    console.log(this.inputs.date)
     const { appState } = this.props;
     const eventObject = {
       title: this.inputs.title,
       description: this.inputs.description,
       time: this.inputs.date,
-      drinks: []
     }
-
     await appState.createEventAsync(eventObject)
   }
 
   handleDatePicked = (datetime) => {
     this.inputs.date = moment(datetime)
-    console.log('A date has been picked: ', datetime);
   };
 
   render() {
     return (
-      <Container style={{ backgroundColor: '#6D6D6D' }}>
+      <Container
+        style={{
+          backgroundColor: '#6D6D6D'
+        }}>
         <Content>
           <Form>
             <Item
@@ -52,15 +46,14 @@ class createEvent extends Component {
                 width: 300,
                 alignSelf: 'center',
                 margin: 10,
-                fontColor: 'white',
-                border: 0,
               }}
             >
-              <Label style={{
-                color: 'white',
-              }}
+              <Label
+                style={{
+                  color: 'white',
+                }}
               >
-              Title
+                Title
               </Label>
               <Input
                 onChangeText={text => this.inputs.title = text}
@@ -83,8 +76,8 @@ class createEvent extends Component {
               }}
             />
           </Form>
-          <DateTimePickerTester 
-          onDatePicked = {(datetime)=> this.handleDatePicked(datetime)}
+          <DateTimePickerTester
+            onDatePicked={(datetime) => this.handleDatePicked(datetime)}
           />
           <TouchableOpacity
             onPress={() => this.submitEvent()}
@@ -103,7 +96,7 @@ class createEvent extends Component {
                 color: 'white',
               }}
             >
-              CREATE EVENT BBY
+              Create Event
             </Text>
           </TouchableOpacity>
         </Content>
@@ -112,4 +105,4 @@ class createEvent extends Component {
   }
 }
 
-export default createEvent;
+export default CreateEvent;

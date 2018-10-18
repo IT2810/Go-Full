@@ -46,7 +46,7 @@ export default class DateTimePickerTester extends Component {
       <View>
         <TouchableOpacity onPress={() => this.showDateTimePicker()} style={styles.button}>
           <Text style={styles.text}>
-            PICCA THE DATE
+            Choose Date
           </Text>
         </TouchableOpacity>
         <DateTimePicker
