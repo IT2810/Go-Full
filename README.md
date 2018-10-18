@@ -10,11 +10,18 @@ This project uses yarn not npm. To start the project:
 #### Start expo
 `yarn start` or `expo start`
 
+### Testing the app
+Testing some of the functionality might be difficult as the graphs base themselves on drinking over a long period of time. We recommend bringing the app to Samfunnet for a real test.
+
+Jokes aside we have included a few test events that show of the functionality. There is also a line in AppProvider that can be uncommented to test notifications without having to wait 15 minutes.
+
+Also take note that the app was designed around a real alcohol consumption level. Due to technical constraints with our solution the app slows down after adding 30 units of alcohol. We've decided to call this a _Health Related Safety Feature_.
+
 ## About the App
 
 Go'Full is a party and drinks tracking app. The core idea is that students like to drink and stay drunk. We work to ensure that our users never forget to open that next beer.
 
-The app is a tounge-in-cheek joke referencing students relationship to alcohol and apps such as Lykkepromillen.
+The app is a tounge-in-cheek joke referencing students relationship to alcohol and apps such as Lykkepromillen. We consider what you are currently looking at a vertical slice of a larger product, as such some code is created to ease further development and some desirable features are left uncreated.
 
 ## Technical Decisions and Processes
 
@@ -40,6 +47,8 @@ AppProvider served as our central store for state and functions for most importa
 Yarn is like npm a package manager for nodejs, at this date there is almost no difference between them. We chose to use yarn just because it's our personal preference.
 
 ### Testing
+
+Based on feedback from the lecturerer we decided to focus on demonstrating systematic testing, instead of applying this principle to the entire app. As such you'll see snapshot testing of our graphs, Mocking of third-party compontents and good structured use of jest. You will not see a high code coverage statistic.
 
 ## Not-That-Techinical Decisions and Processes
 
@@ -74,10 +83,15 @@ https://medium.com/styled-components/component-folder-pattern-ee42df37ec68
 
 
 ## Going Beyond React Native UI
+We have decided to discuss three parts of our app in this section. Notifications, BAC-calculation and our implementation of the React Context API.
 
 ### Notifications
+We take use of Expos excellent notification features to send notifications if we think it's about time for the user to have another drink. We use scheduled notifications that are sent when submitting a beverage. Older scheduled notifications are cancelled when new ones are created to make sure we don't spam the users should they have a higher than anticipated rate of consumption.
+
+For android we created three notification channels (this is a new feature in android 8.0). For this vertical slice only one, 'mission-critical' is used. However best-practice for android notification channels is to spend some time planning when first creating them, and not updating them too often. As such we have also created 'test' for test-notifications and 'nudge' for less important, less intrusive notifications.
 
 ### BAC-Calculation
+We wanted a central part of our app to be showing off cool graphs after a night out on the town. And as such we believed it to be very important that we calculate a true-to-life blood alcohol content for our users. In this vertical slice we assume default weights, height and gender however the functionality we created supports custom settings for each user.
 
 ### React Context API - Teleporting state for fun and profit
 
@@ -131,7 +145,7 @@ Read more about this datetim-picker here:
 
 ### Moment
 
-This library makes it _a lot_ easier to work with date objects in react, as it parses it to the format you want it to be in.
+This library makes it _a lot_ easier to work with date objects in react. It contains a ton of useful functionality to handle dates, and can output just about any format with no problems.
 
 Read more about this library here:
 [https://www.npmjs.com/package/react-moment](https://www.npmjs.com/package/react-moment)
