@@ -5,8 +5,6 @@ import {
 } from 'native-base';
 import DateTimePickerTester from './dateTimePicker';
 import moment from 'moment';
-import AppProvider from '../AppProvider';
-import { AppContext } from '../AppProvider';
 
 class CreateEvent extends Component {
   constructor(props) {
@@ -25,14 +23,13 @@ class CreateEvent extends Component {
       description: this.inputs.description,
       time: this.inputs.date,
     }
-    if (eventObject.time === null){
+    if (eventObject.time === null || eventObject.title === ''){
       Alert.alert(
         'OOPSIE DOOPSIE U MADE A WOOPSIE'        
       )
     }
     else{
       await appState.createEventAsync(eventObject)
-      
     }
   }
 
