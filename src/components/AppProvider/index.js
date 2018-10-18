@@ -36,7 +36,7 @@ class AppProvider extends React.Component {
       .then(result => JSON.parse(result))
       .then((result) => {
         if (result && result.events) {
-          return Serializer.deserializeState(result);
+          return Serializer.deserializeState(result.events);
         }
         return result;
       })
@@ -80,7 +80,7 @@ class AppProvider extends React.Component {
     const tempState = cloneDeep(this.state);
     tempState[key] = value;
     this.setState(tempState);
-    const serializedState = Serializer.serializeState(tempState);
+    const serializedState = Serializer.serializeState(tempState.events);
     await storeData(serializedState);
     return tempState;
   }
