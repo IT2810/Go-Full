@@ -3,6 +3,7 @@ import {
   Text, TouchableOpacity, View, StyleSheet,
 } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
+import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
   button: {
@@ -63,3 +64,7 @@ export default class DateTimePickerTester extends Component {
     );
   }
 }
+
+DateTimePickerTester.propTypes = {
+  onDatePicked: PropTypes.func.isRequired,
+};
