@@ -17,6 +17,7 @@
   "dependencies": {
     "@expo/samples": "2.1.1",
     "expo": "^30.0.1",
+    "jest": "^23.6.0",
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
     "native-base": "^2.8.1",
