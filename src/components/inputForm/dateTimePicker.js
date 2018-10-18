@@ -52,7 +52,10 @@ export default class DateTimePickerTester extends Component {
         </TouchableOpacity>
         <DateTimePicker
           isVisible={isDateTimePickerVisible}
-          onConfirm={datetime => onDatePicked(datetime)}
+          onConfirm={(datetime) => {
+            onDatePicked(datetime);
+            this.hideDateTimePicker();
+          }}
           onCancel={() => this.hideDateTimePicker()}
           mode="datetime"
         />
