@@ -24,6 +24,9 @@ Samarbeid
 
 
 #### AsyncStorage
+We decided early in the development that we wantet 1-1 parity between app state and AsyncStorage. To alleviate potential issues down the road we created a wrapper for this.setState which also handled storage in AsyncStorage. This method, situated in AppProvider was our sole writer of storage. This would later help us greatly as we never encountered issues with a mismatch between AsyncStorage and the state of our app. Since we have 1-1 parity we could also allow ourselves only to read from storage when we initialized the app. This is done with a simple get to fetch our entire state in the componentDidMount() of AppProvider.
+
+AppProvider served as our central store for state and functions for most important update functionality that is used throughout the app. These functions are loaded into state and along with the rest of state is served to components throughout the tree through the use of _React Contex API_. You can read more about our implementation of Context in the section __Teleporting state for fun and profit__ under __Going beyond React UI__.
 
 
 #### Cross-platform support
