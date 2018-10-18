@@ -12,11 +12,17 @@ This project uses yarn not npm. To start the project:
 
 ## About the App
 
+Go'Full is a party and drinks tracking app. The core idea is that students like to drink and stay drunk. We work to ensure that our users never forget to open that next beer.
+
+The app is a tounge-in-cheek joke referencing students relationship to alcohol and apps such as Lykkepromillen.
+
 ## Technical Decisions and Processes
 
 ### AirBNB Linter
 
-After a lot of code reviews where most of the comments were about linting errors during our last project, we decided to implement the linter that AirBNB uses for their code. This lessened the amount of linting work we had to do ourselves, while also making our code easier to read and understand. After our experience with this linter we recommend everyone to use one on their project.
+For the last project a lot of code-review-time was used linting eachothers code. For this project we decided to use ESLint and chose the ruleset that AirBnB uses. It is a very popular ruleset, which is very opinionated. This is good because it means we get a uniform codebase, while not having to research every little implementation detail of JS. It also saved us a lot of work linting and hours of headaches that we would have had while debugging.
+
+While the start was heavy and the linter could seem downright aggressive we emerged on the other side as complete converts and better coders. We heartily recommend using both a linter and the AirBnB ruleset to anyone.
 
 @August, var det diss linkene du brukte? --------------------------------------------------
 Check out:
@@ -121,6 +127,7 @@ Read more about this datetim-picker here:
 
 ### Lodash
 
+### MockDate
 
 ### Moment
 
