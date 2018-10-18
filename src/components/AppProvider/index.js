@@ -6,6 +6,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import uniqueId from 'lodash/uniqueId';
 import moment from 'moment';
 import Serializer from '../../utils/serialization';
+import notificationUtil from '../../utils/notifications';
 
 export const AppContext = React.createContext();
 
@@ -24,10 +25,13 @@ class AppProvider extends React.Component {
 
       // This is where we set initial state
       events: [],
+      notificationId: -1,
 
       setStorageAndState: (key, value) => this.setStorageAndState(key, value),
       addDrinkAsync: (drinkObject, key) => this.addDrinkAsync(drinkObject, key),
-      addEventAsync: eventObject => this.addEventAsync(eventObject),
+      createEventAsync: eventObject => this.createEventAsync(eventObject),
+      getEventFromKey: key => this.getEventFromKey(key),
+      notify: drinkType => this.notify(drinkType),
     };
   }
 
@@ -36,7 +40,7 @@ class AppProvider extends React.Component {
       .then(result => JSON.parse(result))
       .then((result) => {
         if (result && result.events) {
-          return Serializer.deserializeState(result);
+          return Serializer.deserializeState(result.events);
         }
         return result;
       })
@@ -80,9 +84,14 @@ class AppProvider extends React.Component {
     const tempState = cloneDeep(this.state);
     tempState[key] = value;
     this.setState(tempState);
-    const serializedState = Serializer.serializeState(tempState);
+    const serializedState = Serializer.serializeState(tempState.events);
     await storeData(serializedState);
     return tempState;
+  }
+
+  getEventFromKey(key) {
+    const { events } = this.state;
+    return events.find(event => event.key === key);
   }
 
   async addDrinkAsync(drinkObject, eventKey) {
@@ -93,11 +102,31 @@ class AppProvider extends React.Component {
     this.setStorageAndState('events', tempState);
   }
 
+  async notify(drinkType) {
+    const { notificationId } = this.state;
+    const notificationTexts = {
+      beer: 'How is that beer going? Maybe it\'s time you had another?',
+      drink: 'The bartender hasn\'t flipped a tumbler in like 10 minutes, time to make him work for his tips!',
+      wine: 'That glass is looking pretty empty, time for a refill!',
+    };
+    notificationUtil.cancelNotification(notificationId);
+    const newId = await notificationUtil.sendNotificationAsync(
+      'You\'re looking sober!',
+      notificationTexts[drinkType],
+      'mission-critical',
+      // uncomment this line, and comment out the line below, to test notifications that are FASTAH.
+      // moment().add(10, 'seconds'),
+      moment().add(15, 'minutes'),
+    );
+    this.setStorageAndState('notificationId', newId);
+  }
+
   async createEventAsync(eventObject) {
     const tempState = cloneDeep(this.state);
     const newEvent = cloneDeep(eventObject);
     // trying to make unique keys. This won't work if we should be able to delete events
     newEvent.key = parseInt(uniqueId(), 10);
+    newEvent.drinks = [];
     tempState.events.push(newEvent);
     await this.setStorageAndState('events', tempState.events);
   }
@@ -110,17 +139,17 @@ class AppProvider extends React.Component {
         drinks: [
           {
             type: 'beer 0.5',
-            gramsOfAlcohol: 19.39,
+            alcoholInGrams: 19.39,
             timeStamp: moment(),
           },
           {
             type: 'beer 0.5',
-            gramsOfAlcohol: 19.39,
+            alcoholInGrams: 19.39,
             timeStamp: moment().add(1, 'hours'),
           },
           {
             type: 'beer 0.5',
-            gramsOfAlcohol: 19.39,
+            alcoholInGrams: 19.39,
             timeStamp: moment().add(6, 'hours'),
           },
         ],
@@ -138,11 +167,6 @@ class AppProvider extends React.Component {
     ];
 
     await events.forEach(async event => this.createEventAsync(event));
-    await this.addDrinkAsync({
-      type: 'beer 0.5',
-      gramsOfAlcohol: 19.39,
-      timeStamp: moment().add(6, 'hours'),
-    }, 2);
   }
 
   render() {

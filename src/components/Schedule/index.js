@@ -12,12 +12,9 @@ const styles = StyleSheet.create({
 });
 
 function Schedule(props) {
+  const { navigation } = props;
   const handlePress = (key) => {
-    const { appState } = props;
-    const { events } = appState;
-    const { navigation } = props;
-    const eventPressed = events.find(element => element.key === key); // finds the clicked element
-    navigation.navigate('Event', eventPressed);
+    navigation.navigate('Event', { key });
   };
   const { appState } = props;
 

@@ -2,18 +2,21 @@
 
 exports[`renders correctly empty graph correctly 1`] = `
 <View>
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-  >
-    Bezier Line Chart
-  </Text>
   <View
     style={
       Object {
-        "borderRadius": 16,
-        "marginVertical": 8,
+        "borderColor": "#ddd",
+        "borderRadius": 2,
+        "marginBottom": 10,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "height": 2,
+          "width": 0,
+        },
+        "shadowOpacity": 0.8,
+        "shadowRadius": 5,
       }
     }
   >
@@ -37,13 +40,13 @@ exports[`renders correctly empty graph correctly 1`] = `
         <RNSVGLinearGradient
           gradient={
             Array [
-              0.984313725490196,
-              0.5490196078431373,
+              0.2196078431372549,
               0,
+              0.4196078431372549,
               1,
-              1,
-              0.6549019607843137,
-              0.14901960784313725,
+              0.2196078431372549,
+              0,
+              0.4196078431372549,
               1,
               0,
               1,
@@ -128,8 +131,8 @@ exports[`renders correctly empty graph correctly 1`] = `
           ]
         }
         rotation={0}
-        rx="16"
-        ry="16"
+        rx="2"
+        ry="2"
         scaleX={1}
         scaleY={1}
         skewX={0}
@@ -407,8 +410,6 @@ exports[`renders correctly empty graph correctly 1`] = `
         y2="181"
       />
       <RNSVGText
-        alignmentBaseline={undefined}
-        baselineShift={undefined}
         content={null}
         deltaX={Array []}
         deltaY={Array []}
@@ -471,13 +472,10 @@ exports[`renders correctly empty graph correctly 1`] = `
         strokeMiterlimit={4}
         strokeOpacity={1}
         strokeWidth="1"
-        verticalAlign={undefined}
         x={0}
         y={0}
       >
         <RNSVGTSpan
-          alignmentBaseline={undefined}
-          baselineShift={undefined}
           content="NaN"
           deltaX={Array []}
           deltaY={Array []}
@@ -523,7 +521,6 @@ exports[`renders correctly empty graph correctly 1`] = `
           strokeMiterlimit={4}
           strokeOpacity={1}
           strokeWidth="1"
-          verticalAlign={undefined}
           x={0}
           y={0}
         />
@@ -1049,8 +1046,6 @@ exports[`renders correctly empty graph correctly 1`] = `
         y2="181"
       />
       <RNSVGText
-        alignmentBaseline={undefined}
-        baselineShift={undefined}
         content={null}
         deltaX={Array []}
         deltaY={Array []}
@@ -1113,14 +1108,11 @@ exports[`renders correctly empty graph correctly 1`] = `
         strokeMiterlimit={4}
         strokeOpacity={1}
         strokeWidth="1"
-        verticalAlign={undefined}
         x={0}
         y={0}
       >
         <RNSVGTSpan
-          alignmentBaseline={undefined}
-          baselineShift={undefined}
-          content="11:10"
+          content="01:01"
           deltaX={Array []}
           deltaY={Array []}
           fill={
@@ -1165,14 +1157,11 @@ exports[`renders correctly empty graph correctly 1`] = `
           strokeMiterlimit={4}
           strokeOpacity={1}
           strokeWidth="1"
-          verticalAlign={undefined}
           x={0}
           y={0}
         />
       </RNSVGText>
       <RNSVGText
-        alignmentBaseline={undefined}
-        baselineShift={undefined}
         content={null}
         deltaX={Array []}
         deltaY={Array []}
@@ -1235,14 +1224,11 @@ exports[`renders correctly empty graph correctly 1`] = `
         strokeMiterlimit={4}
         strokeOpacity={1}
         strokeWidth="1"
-        verticalAlign={undefined}
         x={0}
         y={0}
       >
         <RNSVGTSpan
-          alignmentBaseline={undefined}
-          baselineShift={undefined}
-          content="12:10"
+          content="02:01"
           deltaX={Array []}
           deltaY={Array []}
           fill={
@@ -1287,14 +1273,11 @@ exports[`renders correctly empty graph correctly 1`] = `
           strokeMiterlimit={4}
           strokeOpacity={1}
           strokeWidth="1"
-          verticalAlign={undefined}
           x={0}
           y={0}
         />
       </RNSVGText>
       <RNSVGText
-        alignmentBaseline={undefined}
-        baselineShift={undefined}
         content={null}
         deltaX={Array []}
         deltaY={Array []}
@@ -1357,14 +1340,11 @@ exports[`renders correctly empty graph correctly 1`] = `
         strokeMiterlimit={4}
         strokeOpacity={1}
         strokeWidth="1"
-        verticalAlign={undefined}
         x={0}
         y={0}
       >
         <RNSVGTSpan
-          alignmentBaseline={undefined}
-          baselineShift={undefined}
-          content="13:10"
+          content="03:01"
           deltaX={Array []}
           deltaY={Array []}
           fill={
@@ -1409,14 +1389,11 @@ exports[`renders correctly empty graph correctly 1`] = `
           strokeMiterlimit={4}
           strokeOpacity={1}
           strokeWidth="1"
-          verticalAlign={undefined}
           x={0}
           y={0}
         />
       </RNSVGText>
       <RNSVGText
-        alignmentBaseline={undefined}
-        baselineShift={undefined}
         content={null}
         deltaX={Array []}
         deltaY={Array []}
@@ -1479,14 +1456,11 @@ exports[`renders correctly empty graph correctly 1`] = `
         strokeMiterlimit={4}
         strokeOpacity={1}
         strokeWidth="1"
-        verticalAlign={undefined}
         x={0}
         y={0}
       >
         <RNSVGTSpan
-          alignmentBaseline={undefined}
-          baselineShift={undefined}
-          content="14:10"
+          content="04:01"
           deltaX={Array []}
           deltaY={Array []}
           fill={
@@ -1531,14 +1505,11 @@ exports[`renders correctly empty graph correctly 1`] = `
           strokeMiterlimit={4}
           strokeOpacity={1}
           strokeWidth="1"
-          verticalAlign={undefined}
           x={0}
           y={0}
         />
       </RNSVGText>
       <RNSVGText
-        alignmentBaseline={undefined}
-        baselineShift={undefined}
         content={null}
         deltaX={Array []}
         deltaY={Array []}
@@ -1601,14 +1572,11 @@ exports[`renders correctly empty graph correctly 1`] = `
         strokeMiterlimit={4}
         strokeOpacity={1}
         strokeWidth="1"
-        verticalAlign={undefined}
         x={0}
         y={0}
       >
         <RNSVGTSpan
-          alignmentBaseline={undefined}
-          baselineShift={undefined}
-          content="15:10"
+          content="05:01"
           deltaX={Array []}
           deltaY={Array []}
           fill={
@@ -1653,14 +1621,11 @@ exports[`renders correctly empty graph correctly 1`] = `
           strokeMiterlimit={4}
           strokeOpacity={1}
           strokeWidth="1"
-          verticalAlign={undefined}
           x={0}
           y={0}
         />
       </RNSVGText>
       <RNSVGText
-        alignmentBaseline={undefined}
-        baselineShift={undefined}
         content={null}
         deltaX={Array []}
         deltaY={Array []}
@@ -1723,14 +1688,11 @@ exports[`renders correctly empty graph correctly 1`] = `
         strokeMiterlimit={4}
         strokeOpacity={1}
         strokeWidth="1"
-        verticalAlign={undefined}
         x={0}
         y={0}
       >
         <RNSVGTSpan
-          alignmentBaseline={undefined}
-          baselineShift={undefined}
-          content="16:10"
+          content="06:01"
           deltaX={Array []}
           deltaY={Array []}
           fill={
@@ -1775,14 +1737,11 @@ exports[`renders correctly empty graph correctly 1`] = `
           strokeMiterlimit={4}
           strokeOpacity={1}
           strokeWidth="1"
-          verticalAlign={undefined}
           x={0}
           y={0}
         />
       </RNSVGText>
       <RNSVGText
-        alignmentBaseline={undefined}
-        baselineShift={undefined}
         content={null}
         deltaX={Array []}
         deltaY={Array []}
@@ -1845,14 +1804,11 @@ exports[`renders correctly empty graph correctly 1`] = `
         strokeMiterlimit={4}
         strokeOpacity={1}
         strokeWidth="1"
-        verticalAlign={undefined}
         x={0}
         y={0}
       >
         <RNSVGTSpan
-          alignmentBaseline={undefined}
-          baselineShift={undefined}
-          content="17:10"
+          content="07:01"
           deltaX={Array []}
           deltaY={Array []}
           fill={
@@ -1897,14 +1853,11 @@ exports[`renders correctly empty graph correctly 1`] = `
           strokeMiterlimit={4}
           strokeOpacity={1}
           strokeWidth="1"
-          verticalAlign={undefined}
           x={0}
           y={0}
         />
       </RNSVGText>
       <RNSVGText
-        alignmentBaseline={undefined}
-        baselineShift={undefined}
         content={null}
         deltaX={Array []}
         deltaY={Array []}
@@ -1967,14 +1920,11 @@ exports[`renders correctly empty graph correctly 1`] = `
         strokeMiterlimit={4}
         strokeOpacity={1}
         strokeWidth="1"
-        verticalAlign={undefined}
         x={0}
         y={0}
       >
         <RNSVGTSpan
-          alignmentBaseline={undefined}
-          baselineShift={undefined}
-          content="18:10"
+          content="08:01"
           deltaX={Array []}
           deltaY={Array []}
           fill={
@@ -2019,7 +1969,6 @@ exports[`renders correctly empty graph correctly 1`] = `
           strokeMiterlimit={4}
           strokeOpacity={1}
           strokeWidth="1"
-          verticalAlign={undefined}
           x={0}
           y={0}
         />
@@ -2517,18 +2466,21 @@ exports[`renders correctly empty graph correctly 1`] = `
 
 exports[`renders correctly filled graph correctly 1`] = `
 <View>
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-  >
-    Bezier Line Chart
-  </Text>
   <View
     style={
       Object {
-        "borderRadius": 16,
-        "marginVertical": 8,
+        "borderColor": "#ddd",
+        "borderRadius": 2,
+        "marginBottom": 10,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "height": 2,
+          "width": 0,
+        },
+        "shadowOpacity": 0.8,
+        "shadowRadius": 5,
       }
     }
   >
@@ -2552,13 +2504,13 @@ exports[`renders correctly filled graph correctly 1`] = `
         <RNSVGLinearGradient
           gradient={
             Array [
-              0.984313725490196,
-              0.5490196078431373,
+              0.2196078431372549,
               0,
+              0.4196078431372549,
               1,
-              1,
-              0.6549019607843137,
-              0.14901960784313725,
+              0.2196078431372549,
+              0,
+              0.4196078431372549,
               1,
               0,
               1,
@@ -2643,8 +2595,8 @@ exports[`renders correctly filled graph correctly 1`] = `
           ]
         }
         rotation={0}
-        rx="16"
-        ry="16"
+        rx="2"
+        ry="2"
         scaleX={1}
         scaleY={1}
         skewX={0}
@@ -2922,8 +2874,6 @@ exports[`renders correctly filled graph correctly 1`] = `
         y2="181"
       />
       <RNSVGText
-        alignmentBaseline={undefined}
-        baselineShift={undefined}
         content={null}
         deltaX={Array []}
         deltaY={Array []}
@@ -2986,13 +2936,10 @@ exports[`renders correctly filled graph correctly 1`] = `
         strokeMiterlimit={4}
         strokeOpacity={1}
         strokeWidth="1"
-        verticalAlign={undefined}
         x={0}
         y={0}
       >
         <RNSVGTSpan
-          alignmentBaseline={undefined}
-          baselineShift={undefined}
           content="0.40"
           deltaX={Array []}
           deltaY={Array []}
@@ -3038,14 +2985,11 @@ exports[`renders correctly filled graph correctly 1`] = `
           strokeMiterlimit={4}
           strokeOpacity={1}
           strokeWidth="1"
-          verticalAlign={undefined}
           x={0}
           y={0}
         />
       </RNSVGText>
       <RNSVGText
-        alignmentBaseline={undefined}
-        baselineShift={undefined}
         content={null}
         deltaX={Array []}
         deltaY={Array []}
@@ -3108,13 +3052,10 @@ exports[`renders correctly filled graph correctly 1`] = `
         strokeMiterlimit={4}
         strokeOpacity={1}
         strokeWidth="1"
-        verticalAlign={undefined}
         x={0}
         y={0}
       >
         <RNSVGTSpan
-          alignmentBaseline={undefined}
-          baselineShift={undefined}
           content="0.64"
           deltaX={Array []}
           deltaY={Array []}
@@ -3160,14 +3101,11 @@ exports[`renders correctly filled graph correctly 1`] = `
           strokeMiterlimit={4}
           strokeOpacity={1}
           strokeWidth="1"
-          verticalAlign={undefined}
           x={0}
           y={0}
         />
       </RNSVGText>
       <RNSVGText
-        alignmentBaseline={undefined}
-        baselineShift={undefined}
         content={null}
         deltaX={Array []}
         deltaY={Array []}
@@ -3230,13 +3168,10 @@ exports[`renders correctly filled graph correctly 1`] = `
         strokeMiterlimit={4}
         strokeOpacity={1}
         strokeWidth="1"
-        verticalAlign={undefined}
         x={0}
         y={0}
       >
         <RNSVGTSpan
-          alignmentBaseline={undefined}
-          baselineShift={undefined}
           content="0.88"
           deltaX={Array []}
           deltaY={Array []}
@@ -3282,14 +3217,11 @@ exports[`renders correctly filled graph correctly 1`] = `
           strokeMiterlimit={4}
           strokeOpacity={1}
           strokeWidth="1"
-          verticalAlign={undefined}
           x={0}
           y={0}
         />
       </RNSVGText>
       <RNSVGText
-        alignmentBaseline={undefined}
-        baselineShift={undefined}
         content={null}
         deltaX={Array []}
         deltaY={Array []}
@@ -3352,13 +3284,10 @@ exports[`renders correctly filled graph correctly 1`] = `
         strokeMiterlimit={4}
         strokeOpacity={1}
         strokeWidth="1"
-        verticalAlign={undefined}
         x={0}
         y={0}
       >
         <RNSVGTSpan
-          alignmentBaseline={undefined}
-          baselineShift={undefined}
           content="1.12"
           deltaX={Array []}
           deltaY={Array []}
@@ -3404,7 +3333,6 @@ exports[`renders correctly filled graph correctly 1`] = `
           strokeMiterlimit={4}
           strokeOpacity={1}
           strokeWidth="1"
-          verticalAlign={undefined}
           x={0}
           y={0}
         />
@@ -3930,8 +3858,6 @@ exports[`renders correctly filled graph correctly 1`] = `
         y2="181"
       />
       <RNSVGText
-        alignmentBaseline={undefined}
-        baselineShift={undefined}
         content={null}
         deltaX={Array []}
         deltaY={Array []}
@@ -3994,14 +3920,11 @@ exports[`renders correctly filled graph correctly 1`] = `
         strokeMiterlimit={4}
         strokeOpacity={1}
         strokeWidth="1"
-        verticalAlign={undefined}
         x={0}
         y={0}
       >
         <RNSVGTSpan
-          alignmentBaseline={undefined}
-          baselineShift={undefined}
-          content="22:10"
+          content="21:10"
           deltaX={Array []}
           deltaY={Array []}
           fill={
@@ -4046,14 +3969,11 @@ exports[`renders correctly filled graph correctly 1`] = `
           strokeMiterlimit={4}
           strokeOpacity={1}
           strokeWidth="1"
-          verticalAlign={undefined}
           x={0}
           y={0}
         />
       </RNSVGText>
       <RNSVGText
-        alignmentBaseline={undefined}
-        baselineShift={undefined}
         content={null}
         deltaX={Array []}
         deltaY={Array []}
@@ -4116,14 +4036,11 @@ exports[`renders correctly filled graph correctly 1`] = `
         strokeMiterlimit={4}
         strokeOpacity={1}
         strokeWidth="1"
-        verticalAlign={undefined}
         x={0}
         y={0}
       >
         <RNSVGTSpan
-          alignmentBaseline={undefined}
-          baselineShift={undefined}
-          content="23:10"
+          content="22:10"
           deltaX={Array []}
           deltaY={Array []}
           fill={
@@ -4168,14 +4085,11 @@ exports[`renders correctly filled graph correctly 1`] = `
           strokeMiterlimit={4}
           strokeOpacity={1}
           strokeWidth="1"
-          verticalAlign={undefined}
           x={0}
           y={0}
         />
       </RNSVGText>
       <RNSVGText
-        alignmentBaseline={undefined}
-        baselineShift={undefined}
         content={null}
         deltaX={Array []}
         deltaY={Array []}
@@ -4238,14 +4152,11 @@ exports[`renders correctly filled graph correctly 1`] = `
         strokeMiterlimit={4}
         strokeOpacity={1}
         strokeWidth="1"
-        verticalAlign={undefined}
         x={0}
         y={0}
       >
         <RNSVGTSpan
-          alignmentBaseline={undefined}
-          baselineShift={undefined}
-          content="00:10"
+          content="23:10"
           deltaX={Array []}
           deltaY={Array []}
           fill={
@@ -4290,14 +4201,11 @@ exports[`renders correctly filled graph correctly 1`] = `
           strokeMiterlimit={4}
           strokeOpacity={1}
           strokeWidth="1"
-          verticalAlign={undefined}
           x={0}
           y={0}
         />
       </RNSVGText>
       <RNSVGText
-        alignmentBaseline={undefined}
-        baselineShift={undefined}
         content={null}
         deltaX={Array []}
         deltaY={Array []}
@@ -4360,14 +4268,11 @@ exports[`renders correctly filled graph correctly 1`] = `
         strokeMiterlimit={4}
         strokeOpacity={1}
         strokeWidth="1"
-        verticalAlign={undefined}
         x={0}
         y={0}
       >
         <RNSVGTSpan
-          alignmentBaseline={undefined}
-          baselineShift={undefined}
-          content="01:10"
+          content="00:10"
           deltaX={Array []}
           deltaY={Array []}
           fill={
@@ -4412,14 +4317,11 @@ exports[`renders correctly filled graph correctly 1`] = `
           strokeMiterlimit={4}
           strokeOpacity={1}
           strokeWidth="1"
-          verticalAlign={undefined}
           x={0}
           y={0}
         />
       </RNSVGText>
       <RNSVGText
-        alignmentBaseline={undefined}
-        baselineShift={undefined}
         content={null}
         deltaX={Array []}
         deltaY={Array []}
@@ -4482,14 +4384,11 @@ exports[`renders correctly filled graph correctly 1`] = `
         strokeMiterlimit={4}
         strokeOpacity={1}
         strokeWidth="1"
-        verticalAlign={undefined}
         x={0}
         y={0}
       >
         <RNSVGTSpan
-          alignmentBaseline={undefined}
-          baselineShift={undefined}
-          content="02:10"
+          content="01:10"
           deltaX={Array []}
           deltaY={Array []}
           fill={
@@ -4534,14 +4433,11 @@ exports[`renders correctly filled graph correctly 1`] = `
           strokeMiterlimit={4}
           strokeOpacity={1}
           strokeWidth="1"
-          verticalAlign={undefined}
           x={0}
           y={0}
         />
       </RNSVGText>
       <RNSVGText
-        alignmentBaseline={undefined}
-        baselineShift={undefined}
         content={null}
         deltaX={Array []}
         deltaY={Array []}
@@ -4604,14 +4500,11 @@ exports[`renders correctly filled graph correctly 1`] = `
         strokeMiterlimit={4}
         strokeOpacity={1}
         strokeWidth="1"
-        verticalAlign={undefined}
         x={0}
         y={0}
       >
         <RNSVGTSpan
-          alignmentBaseline={undefined}
-          baselineShift={undefined}
-          content="03:10"
+          content="02:10"
           deltaX={Array []}
           deltaY={Array []}
           fill={
@@ -4656,14 +4549,11 @@ exports[`renders correctly filled graph correctly 1`] = `
           strokeMiterlimit={4}
           strokeOpacity={1}
           strokeWidth="1"
-          verticalAlign={undefined}
           x={0}
           y={0}
         />
       </RNSVGText>
       <RNSVGText
-        alignmentBaseline={undefined}
-        baselineShift={undefined}
         content={null}
         deltaX={Array []}
         deltaY={Array []}
@@ -4726,14 +4616,11 @@ exports[`renders correctly filled graph correctly 1`] = `
         strokeMiterlimit={4}
         strokeOpacity={1}
         strokeWidth="1"
-        verticalAlign={undefined}
         x={0}
         y={0}
       >
         <RNSVGTSpan
-          alignmentBaseline={undefined}
-          baselineShift={undefined}
-          content="04:10"
+          content="03:10"
           deltaX={Array []}
           deltaY={Array []}
           fill={
@@ -4778,14 +4665,11 @@ exports[`renders correctly filled graph correctly 1`] = `
           strokeMiterlimit={4}
           strokeOpacity={1}
           strokeWidth="1"
-          verticalAlign={undefined}
           x={0}
           y={0}
         />
       </RNSVGText>
       <RNSVGText
-        alignmentBaseline={undefined}
-        baselineShift={undefined}
         content={null}
         deltaX={Array []}
         deltaY={Array []}
@@ -4848,14 +4732,11 @@ exports[`renders correctly filled graph correctly 1`] = `
         strokeMiterlimit={4}
         strokeOpacity={1}
         strokeWidth="1"
-        verticalAlign={undefined}
         x={0}
         y={0}
       >
         <RNSVGTSpan
-          alignmentBaseline={undefined}
-          baselineShift={undefined}
-          content="05:10"
+          content="04:10"
           deltaX={Array []}
           deltaY={Array []}
           fill={
@@ -4900,7 +4781,6 @@ exports[`renders correctly filled graph correctly 1`] = `
           strokeMiterlimit={4}
           strokeOpacity={1}
           strokeWidth="1"
-          verticalAlign={undefined}
           x={0}
           y={0}
         />

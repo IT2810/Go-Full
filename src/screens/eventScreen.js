@@ -3,7 +3,9 @@ import {
   View, TouchableOpacity, Text, Vibration,
 } from 'react-native';
 import Image from 'react-native-remote-svg';
+import moment from 'moment';
 import Graph from '../components/graph/index';
+import { AppContext } from '../components/AppProvider';
 
 const wineGlass = require('./../Icons/wine-glass-solid.svg');
 const drinkGlass = require('./../Icons/glass-martini-solid.svg');
@@ -39,74 +41,84 @@ const styles = ({ // Styling for different components
 
 const EventScreen = (props) => {
   const { navigation } = props;
-  // const drinkScore = 0;
-  // this.setState({drinkScore: this.state.drinkScore + 1});
+  const drinkTypes = {
+    beer: {
+      type: 'beer 0.5',
+      alcoholInGrams: 18.03,
+      timeStamp: moment(),
+    },
+    drink: {
+      type: 'drink',
+      alcoholInGrams: 12.8,
+      timeStamp: moment(),
+    },
+    wine: {
+      type: 'wine',
+      alcoholInGrams: 14.4,
+      timeStamp: moment(),
+    },
+  };
 
-
-  const clickFunction = (drinkParam) => {
-    Vibration.vibrate();
-    // TODO: if -> sjekke om button disabled -> if true, returnere feilmelding til bruker / timer på 1 min?
-    if (drinkParam === 'beer') {
-      console.log('Beer added! 18,03 grams');
-    } else if (drinkParam === 'drink') {
-      console.log('Drink added! 12,8 grams');
-    } else if (drinkParam === 'wine') {
-      console.log('Wine added! 14,4 grams');
-    }
-    // TODO: legge til popup med lagt til(enhet), i tilleg til å aktivere timer / button disabled
+  const handlePress = (drinkType, key, appState) => {
+    appState.addDrinkAsync(drinkType, key);
+    Vibration.vibrate(10);
+    appState.notify(drinkType.type);
   };
 
   return (
-  // Components placed in Views, accomodating flex - e.g. title will be located in flex: 1
-  // TODO: Legge inn enkel counter - variable ++
+    <AppContext.Consumer>
+      {(appState) => {
+        const key = navigation.getParam('key');
+        const event = appState.getEventFromKey(key);
+        return (
+          <View style={styles.container}>
+            <View style={[{ flex: 1 }, styles.elementsContainer]}>
+              <View style={[{ flex: 2, backgroundColor: '#424242' }, styles.topView]}>
+                <Text style={styles.eventTitle}>
+                  {event.title}
+                </Text>
+              </View>
+              <View style={{ flex: 4, backgroundColor: '#6D6D6D' }}>
+                <Text style={styles.eventTitle}>
+                  Score:
+                  {event.drinks.length}
+                </Text>
+              </View>
 
-    <View style={styles.container}>
-      <View style={[{ flex: 1 }, styles.elementsContainer]}>
-        <View style={[{ flex: 2, backgroundColor: '#424242' }, styles.topView]}>
-          <Text style={styles.eventTitle}>
-            {navigation.getParam('title')}
-          </Text>
-        </View>
-        <View style={{ flex: 4, backgroundColor: '#6D6D6D' }}>
-          <Text style={styles.eventTitle}>
-             Score:
-            {navigation.getParam('drinks').length}
-          </Text>
-        </View>
+              <View style={{ flex: 3, flexDirection: 'row', marginHorizontal: 30 }}>
+                <View style={{ flex: 1, alignItems: 'center' }}>
+                  <TouchableOpacity onPress={() => handlePress(drinkTypes.beer, key, appState)}>
+                    <Image source={beerGlass} style={{ width: 80, height: 80 }} />
+                  </TouchableOpacity>
+                </View>
 
-        <View style={{ flex: 3, flexDirection: 'row', marginHorizontal: 30 }}>
-          <View style={{ flex: 1, alignItems: 'center' }}>
-            <TouchableOpacity onPress={() => clickFunction('beer')}>
-              <Image source={beerGlass} style={{ width: 80, height: 80 }} />
-            </TouchableOpacity>
-          </View>
+                <View style={{ flex: 1, alignItems: 'center' }}>
+                  <TouchableOpacity onPress={() => handlePress(drinkTypes.drink, key, appState)}>
+                    <Image
+                      source={drinkGlass}
+                      style={{ width: 75, height: 75, marginTop: 2.5 }}
+                    />
+                  </TouchableOpacity>
+                </View>
 
-          <View style={{ flex: 1, alignItems: 'center' }}>
-            <TouchableOpacity onPress={() => clickFunction('drink')}>
-              <Image
-                source={drinkGlass}
-                style={{ width: 75, height: 75, marginTop: 2.5 }}
-              />
-            </TouchableOpacity>
-          </View>
-
-          <View style={{ flex: 1, alignItems: 'center' }}>
-            <TouchableOpacity onPress={() => clickFunction('wine')}>
-              <Image
-                source={wineGlass}
-                style={{ width: 75, height: 75, marginTop: 2.5 }}
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        <View style={{ flex: 6, backgroundColor: '#6D6D6D' }}>
-          <View>
-            <Graph drinks={navigation.getParam('drinks')} />
-          </View>
-        </View>
-      </View>
-    </View>
+                <View style={{ flex: 1, alignItems: 'center' }}>
+                  <TouchableOpacity onPress={() => handlePress(drinkTypes.wine, key, appState)}>
+                    <Image
+                      source={wineGlass}
+                      style={{ width: 75, height: 75, marginTop: 2.5 }}
+                    />
+                  </TouchableOpacity>
+                </View>
+              </View>
+              <View style={{ flex: 6, backgroundColor: '#6D6D6D' }}>
+                <View>
+                  <Graph drinks={event.drinks} />
+                </View>
+              </View>
+            </View>
+          </View>);
+      }}
+    </AppContext.Consumer>
   );
 };
 
