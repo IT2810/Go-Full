@@ -33,9 +33,13 @@ AppProvider served as our central store for state and functions for most importa
 
 
 #### Use of git
+We use what we like to call minimized-git-flow. We are very fond of the git-flow framework, but some of the tools there are not quite neccesary when you're not hosting a production app during development. One such example is that we use only a master branch, and not a develop branch.
 
-->komponentstruktur, issues - pull requests - commits, 
+We used issues, along with Figma(see below) to layout our development and feature set in the early development. Throughout development we also sporadically used issues to note problems we found, that needed to be fixed. Some plans we had early on turned out to be outside our final scope; they were labeled `won't fix` and closed. Other issues were closed after being referenced in pull requests, or PRs were referenced on the issues themselves.
 
+We are definitely not above inserting humor and inside-jokes into our commit messages and comments on github. We strongly believe that git and github are tools that mold themselves to their users. We are a bunch of friends that like to work together while we joke around and this is reflected in our use of git and github. However, even through the jokes we strive to keep a clear, readable and understandable commit history.
+
+### Going beyond React UI
 
 #### Push notifications
 
