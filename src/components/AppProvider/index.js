@@ -28,6 +28,7 @@ class AppProvider extends React.Component {
       setStorageAndState: (key, value) => this.setStorageAndState(key, value),
       addDrinkAsync: (drinkObject, key) => this.addDrinkAsync(drinkObject, key),
       addEventAsync: eventObject => this.addEventAsync(eventObject),
+      getEventFromKey: key => this.getEventFromKey(key),
     };
   }
 
@@ -85,6 +86,11 @@ class AppProvider extends React.Component {
     return tempState;
   }
 
+  getEventFromKey(key) {
+    const { events } = this.state;
+    return events.find(event => event.key === key);
+  }
+
   async addDrinkAsync(drinkObject, eventKey) {
     const { events } = this.state;
     const tempState = cloneDeep(events);
@@ -110,17 +116,17 @@ class AppProvider extends React.Component {
         drinks: [
           {
             type: 'beer 0.5',
-            gramsOfAlcohol: 19.39,
+            alcoholInGrams: 19.39,
             timeStamp: moment(),
           },
           {
             type: 'beer 0.5',
-            gramsOfAlcohol: 19.39,
+            alcoholInGrams: 19.39,
             timeStamp: moment().add(1, 'hours'),
           },
           {
             type: 'beer 0.5',
-            gramsOfAlcohol: 19.39,
+            alcoholInGrams: 19.39,
             timeStamp: moment().add(6, 'hours'),
           },
         ],
@@ -138,11 +144,6 @@ class AppProvider extends React.Component {
     ];
 
     await events.forEach(async event => this.createEventAsync(event));
-    await this.addDrinkAsync({
-      type: 'beer 0.5',
-      gramsOfAlcohol: 19.39,
-      timeStamp: moment().add(6, 'hours'),
-    }, 2);
   }
 
   render() {
