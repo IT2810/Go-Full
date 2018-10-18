@@ -1,13 +1,13 @@
 # Prosjekt 3 - Motivasjonsapp
 
-##IMPORTANT
+## IMPORTANT
 This project uses yarn not npm. To test the project:
 
-####Install yarn
+#### Install yarn
 `npm install -g yarn`
-####Install dependencies
+#### Install dependencies
 `yarn install`
-####Start expo
+#### Start expo
 `yarn start` or `expo start`
 
 Skrive om:
@@ -18,13 +18,10 @@ Testing
 
 Samarbeid
 
-Yarn
-
-
-###Yarn
+### Yarn
 Yarn is like npm a package manager for nodejs, at this date there is almost no difference between them. We chose to use yarn just because it's our personal preference. 
 
-###Project Structure
+### Project Structure
 
 We decided to use similar folder structure as our previous project, called the ‘Component Folder Pattern’. This gave us better oversight of the different components and makes the whole structure easier to understand.
 
@@ -32,7 +29,7 @@ You can read more about this structure here:
 
 https://medium.com/styled-components/component-folder-pattern-ee42df37ec68
 
-###Figma
+### Figma
 
 Before we started coding we decided to make a prototype of our project in figma. This helped us immensely when coding, as we had a sketch of the finished product we could work towards. Which helped with developing functionality and finding third-party libraries.
 
@@ -40,9 +37,9 @@ Before we started coding we decided to make a prototype of our project in figma.
 Check out or figma here:LINK
 
 
-###AirBNB Linter
+### AirBNB Linter
 
-After a lot of code reviews where most of the comments was about linting errors during our last project, we decided to implement the linter that AirBNB uses for their code. This lessened the amount of linting work we had to do ourselves, while also making our code easier to read and understand. After our experience with this linter we recommend everyone to use one on their project. 
+After a lot of code reviews where most of the comments were about linting errors during our last project, we decided to implement the linter that AirBNB uses for their code. This lessened the amount of linting work we had to do ourselves, while also making our code easier to read and understand. After our experience with this linter we recommend everyone to use one on their project. 
 
 
 @August, var det diss linkene du brukte? --------------------------------------------------
@@ -52,15 +49,8 @@ and
 https://github.com/airbnb/javascript/issues/1589
 for more info.
 
-Tredjepartsbiblioteker:
-https://github.com/mmazzarolo/react-native-modal-datetime-picker
 
-https://github.com/gcanti/tcomb-form
 
-Tredjepartsbiblioteker:
-https://github.com/mmazzarolo/react-native-modal-datetime-picker
-
-https://github.com/gcanti/tcomb-form
 
 ### Design, Styling and Appearance
 
@@ -76,22 +66,40 @@ As seen below the different tints and colors are used throughout the application
  
 ![](https://i.imgur.com/G4Rvavc.png)
 
-####Third party components and libaries
+### Third-party components
 
-#### StyleSheet and Material UI
+#### Nativebase
 
-#### FontAwesome
+Nativebase is a library for cross platform, easy to use, and good looking UI components in react native. In this project we have used 'Container, Content, Form, Item, Input, Label and Textarea' from nativebase which can be found in inputForm/index.js.
 
-Icons used for different bevrages in the application are imported from the FontAwesome library. These SVGs look very pleasing, and they have a large library with different styles and icons. 
+Read more about nativebase here:
+[https://docs.nativebase.io/](https://docs.nativebase.io/)
 
-####Expo-Api
+#### Datetime-picker
 
-####React-native-Chart-kit
+This is a library that exposes a cross-platform interface to pick a date and/or time. This component can be found in inputForm/dateTimePicker.js
 
-####Moment 
+Read more about this datetim-picker here:
+[https://github.com/mmazzarolo/react-native-modal-datetime-picker](https://github.com/mmazzarolo/react-native-modal-datetime-picker)
 
 
-####lodash
+#### Lodash
+
+
+#### Moment
+
+
+#### PropTypes
+
+
+#### Remote-svg
+
+
+#### Chart-kit
+
+
+#### Navigation
+
 
 
 #### React Context API - Teleporting state for fun and profit
