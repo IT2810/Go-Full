@@ -17,6 +17,8 @@ Jokes aside we have included a few test events that show of the functionality. T
 
 Also take note that the app was designed around a real alcohol consumption level. Due to technical constraints with our solution the app slows down after adding 30 units of alcohol. We've decided to call this a _Health Related Safety Feature_.
 
+On IOS you won't get push notifications if you have the expo app open, which means that to see the notification you have to be in another app or on the home screen.
+
 ## About the App
 
 Go'Full is a party and drinks tracking app. The core idea is that students like to drink and stay drunk. We work to ensure that our users never forget to open that next beer.
