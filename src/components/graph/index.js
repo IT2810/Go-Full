@@ -30,7 +30,7 @@ class Graph extends Component {
     drinks.forEach((drink) => {
       let index = moment.duration(drink.timeStamp.diff(startTime)).asHours();
       index = Math.round(index);
-      alcoholLevels[index] += alcoholMass(drink.gramsOfAlcohol);
+      alcoholLevels[index] += alcoholMass(drink.alcoholInGrams);
     });
     alcoholLevels.forEach((levelAtHour, i) => {
       if (i === 0) {
@@ -98,7 +98,7 @@ class Graph extends Component {
 Graph.propTypes = {
   drinks: PropTypes.arrayOf(PropTypes.shape({
     type: PropTypes.string.isRequired,
-    gramsOfAlcohol: PropTypes.number.isRequired,
+    alcoholInGrams: PropTypes.number.isRequired,
     timeStamp: PropTypes.instanceOf(moment).isRequired,
   })).isRequired,
 };
