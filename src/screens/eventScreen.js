@@ -7,9 +7,9 @@ import moment from 'moment';
 import Graph from '../components/graph/index';
 import { AppContext } from '../components/AppProvider';
 
-const wineGlass = require('./../Icons/wine-glass-solid.svg');
-const drinkGlass = require('./../Icons/glass-martini-solid.svg');
-const beerGlass = require('./../Icons/beer-solid.svg');
+const wineGlass = require('../../assets/wine-glass-solid.svg');
+const drinkGlass = require('../../assets/glass-martini-solid.svg');
+const beerGlass = require('../../assets/beer-solid.svg');
 
 const styles = ({ // Styling for different components
   eventTitle: {
