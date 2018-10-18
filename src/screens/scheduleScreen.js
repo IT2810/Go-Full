@@ -5,50 +5,45 @@ import Schedule from '../components/Schedule';
 import { AppContext } from '../components/AppProvider';
 
 const styles = ({
-  eventTitle: {
-    fontSize: 36,
-    color: '#FFF',
-    textAlign: 'center',
-    fontWeight: '100',
-    marginTop: 12,
-  },
   title: {
     fontSize: 36,
     color: '#FFF',
     textAlign: 'center',
     fontWeight: '100',
-    marginTop: 12,
+    borderRadius: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 5,
+    marginBottom: 10,
   },
-})
+});
 
 const schedulescreen = (props) => {
   const { navigation } = props;
   return (
-    <View style={[{ flex: 1 }, styles.elementsContainer]}>
-      <View style={[{ flex: 1, backgroundColor: '#424242' }]}>
-        <Text style={styles.title}>
-            Events
+    <View style={{ backgroundColor: '#6D6D6D', flex: 1 }}>
+      <View style={[{ backgroundColor: '#424242' }, styles.title]}>
+        <Text style={[{ paddingBottom: 12, paddingTop: 14 }, styles.title]}>
+            Your Events
         </Text>
       </View>
-      <View style={{ flex: 6, flexDirection: 'column', marginHorizontal: 0 }}>
-        <View style={{backgroundColor: '#6D6D6D'}}>
-          <AppContext.Consumer>
-            {appState => (
+      <AppContext.Consumer>
+        {appState => (
           <Schedule navigation={navigation} appState={appState} />
         )}
-        </AppContext.Consumer>
-          <View style={{
-            position: 'absolute', right: 0, top: 600,
-        }}
-        >
-          <ActionButton
-          buttonColor="rbga(156,77,204,1)"
+      </AppContext.Consumer>
+
+      <View style={{
+        position: 'absolute', right: 0, top: 600,
+      }}
+      >
+        <ActionButton
+          style={{ container: { backgroundColor: '#9C4DCC' } }}
           onPress={() => navigation.navigate('createEvent')}
-          />
-          </View>
-        </View>);
+        />
       </View>
-    </View>
-  )};
+    </View>);
+};
 
 export default schedulescreen;
