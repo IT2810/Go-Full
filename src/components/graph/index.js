@@ -17,6 +17,8 @@ class Graph extends Component {
       };
     }
     // const { weight, gender } = appState; this is what it is supposed to be;
+    // in a final product we would register weight and gender, but in this vertical slice
+    // we a set of default values.
     const weight = 80;
     const gender = true;
     const BW = gender ? 0.58 : 0.49;
@@ -30,7 +32,7 @@ class Graph extends Component {
     drinks.forEach((drink) => {
       let index = moment.duration(drink.timeStamp.diff(startTime)).asHours();
       index = Math.round(index);
-      alcoholLevels[index] += alcoholMass(drink.gramsOfAlcohol);
+      alcoholLevels[index] += alcoholMass(drink.alcoholInGrams);
     });
     alcoholLevels.forEach((levelAtHour, i) => {
       if (i === 0) {
@@ -62,9 +64,6 @@ class Graph extends Component {
     const data = this.calculateDataset();
     return (
       <View>
-        <Text>
-          Bezier Line Chart
-        </Text>
         <LineChart
           data={data}
 
@@ -72,8 +71,8 @@ class Graph extends Component {
           height={220}
           chartConfig={{
             backgroundColor: '#e26a00',
-            backgroundGradientFrom: '#fb8c00',
-            backgroundGradientTo: '#ffa726',
+            backgroundGradientFrom: '#38006B',
+            backgroundGradientTo: '#38006B',
             decimalPlaces: 2, // optional, defaults to 2dp
             color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
             style: {
@@ -82,8 +81,15 @@ class Graph extends Component {
           }}
           bezier
           style={{
-            marginVertical: 8,
-            borderRadius: 16,
+            borderRadius: 2,
+            marginRight: 0,
+            marginLeft: 0,
+            borderColor: '#ddd',
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.8,
+            shadowRadius: 5,
+            marginBottom: 10,
           }}
         />
       </View>
@@ -94,7 +100,7 @@ class Graph extends Component {
 Graph.propTypes = {
   drinks: PropTypes.arrayOf(PropTypes.shape({
     type: PropTypes.string.isRequired,
-    gramsOfAlcohol: PropTypes.number.isRequired,
+    alcoholInGrams: PropTypes.number.isRequired,
     timeStamp: PropTypes.instanceOf(moment).isRequired,
   })).isRequired,
 };
