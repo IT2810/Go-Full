@@ -102,6 +102,8 @@ class AppProvider extends React.Component {
     await this.setStorageAndState('events', tempState.events);
   }
 
+  // This function exists to prepopulate the list with a few events so that testing is
+  // easier for other students.
   async temporaryFunctionPleaseRemoveItsOnlyForTestingPurposesSoYeahGoodbyeAsync() {
     const events = [
       {
