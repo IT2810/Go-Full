@@ -30,12 +30,17 @@ class CreateEvent extends Component {
     }
     else{
       await appState.createEventAsync(eventObject)
+      this.goBack();
     }
   }
 
   handleDatePicked = (datetime) => {
       this.inputs.date = moment(datetime)
   };
+  
+  goBack(){
+    this.props.navigation.goBack();
+  }
 
   render() {
     return (
