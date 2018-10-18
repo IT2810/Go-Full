@@ -56,13 +56,6 @@ You can read more about this structure here:
 
 https://medium.com/styled-components/component-folder-pattern-ee42df37ec68
 
-### Figma
-
-Before we started coding we decided to make a prototype of our project in figma. This helped us immensely when coding, as we had a sketch of the finished product we could work towards. Which helped with developing functionality and finding third-party libraries.
-
-
-Check out or figma here:LINK
-
 
 ### AirBNB Linter
 
@@ -75,9 +68,6 @@ https://www.npmjs.com/package/eslint-config-airbnb
 and 
 https://github.com/airbnb/javascript/issues/1589
 for more info.
-
-
-
 
 ### Design, Styling and Appearance
 
@@ -115,9 +105,10 @@ Read more about this datetim-picker here:
 
 #### Moment
 
+This library makes it _a lot_ easier to work with date objects in react, as it parses it to the format you want it to be in.
 
-#### PropTypes
-
+Read more about this library here:
+[https://www.npmjs.com/package/react-moment](https://www.npmjs.com/package/react-moment)
 
 #### React-native-remote-svg
 
