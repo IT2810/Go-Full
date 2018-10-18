@@ -25,7 +25,7 @@ The app is a tounge-in-cheek joke referencing students relationship to alcohol a
 
 ## Technical Decisions and Processes
 
-### AirBNB Linter
+### AirBNB Linter - Our angry goblin overlord
 
 For the last project a lot of code-review-time was used linting eachothers code. For this project we decided to use ESLint and chose the ruleset that AirBnB uses. It is a very popular ruleset, which is very opinionated. This is good because it means we get a uniform codebase, while not having to research every little implementation detail of JS. It also saved us a lot of work linting and hours of headaches that we would have had while debugging.
 
@@ -38,27 +38,27 @@ and
 https://github.com/airbnb/javascript/issues/1589
 for more info.
 
-### AsyncStorage
+### AsyncStorage - Storage that is Async, I guess...
 We decided early in the development that we wantet 1-1 parity between app state and AsyncStorage. To alleviate potential issues down the road we created a wrapper for this.setState which also handled storage in AsyncStorage. This method, situated in AppProvider was our sole writer of storage. This would later help us greatly as we never encountered issues with a mismatch between AsyncStorage and the state of our app. Since we have 1-1 parity we could also allow ourselves only to read from storage when we initialized the app. This is done with a simple get to fetch our entire state in the componentDidMount() of AppProvider.
 
 AppProvider served as our central store for state and functions for most important update functionality that is used throughout the app. These functions are loaded into state and along with the rest of state is served to components throughout the tree through the use of _React Contex API_. You can read more about our implementation of Context in the section __Teleporting state for fun and profit__ under __Going beyond React UI__.
 
-### Yarn
+### Yarn - It's like npm, but different
 Yarn is like npm a package manager for nodejs, at this date there is almost no difference between them. We chose to use yarn just because it's our personal preference.
 
-### Testing
+### Testing - Why would you even? The code is perfect.
 
 Based on feedback from the lecturerer we decided to focus on demonstrating systematic testing, instead of applying this principle to the entire app. As such you'll see snapshot testing of our graphs, Mocking of third-party compontents and good structured use of jest. You will not see a high code coverage statistic.
 
 ## Not-That-Techinical Decisions and Processes
 
-### Design, Styling and Appearance
+### Design, Styling, Appearance and Pzazz
 
 The earliest stage of our development process was the design phase. Based on impressions and experience from earlier projects we decided to make decisions regarding general appearance, colors, icons, placement of objects early on. We created basic non-interactive dummies using Figma; an online tool for creating and designing prototypes. Figma was attractive compared to other design tools because of the ability to collaborate simultaneously online.
 
 [Figma](https://www.figma.com/)
 
-#### Designing prototypes using Figma
+#### Designing prototypes using Figma - It's Like Google Drive for Illustrator
 
 As mentioned figma allowed us to collaborate simultaneously while working on the prototypes. We first decided on a color palette. We went for a modern minimalistic pallette based on dark purple. Since we like purple and it gives the application a dark/nightly theme, since drinking mostly occurrs during night.
 
@@ -68,14 +68,14 @@ As seen below the different tints and colors are used throughout the application
 
 ![](https://i.imgur.com/G4Rvavc.png)
 
-### Our Use of Git and GitHub
+### Our Use of Git and GitHub and Gitting Gud
 We use what we like to call minimized-git-flow. We are very fond of the git-flow framework, but some of the tools there are not quite neccesary when you're not hosting a production app during development. One such example is that we use only a master branch, and not a develop branch.
 
 We used issues, along with Figma(see below) to layout our development and feature set in the early development. Throughout development we also sporadically used issues to note problems we found, that needed to be fixed. Some plans we had early on turned out to be outside our final scope; they were labeled `won't fix` and closed. Other issues were closed after being referenced in pull requests, or PRs were referenced on the issues themselves.
 
 We are definitely not above inserting humor and inside-jokes into our commit messages and comments on github. We strongly believe that git and github are tools that mold themselves to their users. We are a bunch of friends that like to work together while we joke around and this is reflected in our use of git and github. However, even through the jokes we strive to keep a clear, readable and understandable commit history.
 
-### Project Structure
+### Project Structure - Folders Files and Fantasy
 
 We decided to use similar folder structure as our previous project, called the ‘Component Folder Pattern’. This gave us better oversight of the different components and makes the whole structure easier to understand.
 
@@ -87,12 +87,12 @@ https://medium.com/styled-components/component-folder-pattern-ee42df37ec68
 ## Going Beyond React Native UI
 We have decided to discuss three parts of our app in this section. Notifications, BAC-calculation and our implementation of the React Context API.
 
-### Notifications
+### Notifications - But not like annoying ones.
 We take use of Expos excellent notification features to send notifications if we think it's about time for the user to have another drink. We use scheduled notifications that are sent when submitting a beverage. Older scheduled notifications are cancelled when new ones are created to make sure we don't spam the users should they have a higher than anticipated rate of consumption.
 
 For android we created three notification channels (this is a new feature in android 8.0). For this vertical slice only one, 'mission-critical' is used. However best-practice for android notification channels is to spend some time planning when first creating them, and not updating them too often. As such we have also created 'test' for test-notifications and 'nudge' for less important, less intrusive notifications.
 
-### BAC-Calculation
+### BAC-Calculation - We know our alcohol
 We wanted a central part of our app to be showing off cool graphs after a night out on the town. And as such we believed it to be very important that we calculate a true-to-life blood alcohol content for our users. In this vertical slice we assume default weights, height and gender however the functionality we created supports custom settings for each user.
 
 ### React Context API - Teleporting state for fun and profit
@@ -101,7 +101,7 @@ For our last project we were not completely happy with how we handled state flow
 
 For this project we decided to experiment with the React Context API for distributing state throughout the application. Context is especially good for variables and functions that you would like to be globally available in the application. Due to the relatively small scope and timeline of the project we decided to see how far we could push Context instead of finding the _perfect_ solution for all our state-handling issues. Overall we were very happy with how context helped us and it certainly worked very well in coordinating state with AsyncStorage. For later projects we'll definitely consider using Context again.
 
-#### How it works
+#### How it works and doesn't
 
 This section is written both so that we'll have a place to lookup Context later, and so that groups that have to evaluate our project won't need to go look up how Context works. Hopefully you learn something you would like to try out in your next project!
 
@@ -123,7 +123,7 @@ you also need to import the context from AppProvider:
 
 `import { AppContext } from '../AppProvider';`
 
-## Third-Party Dependencies
+## Third-Party Dependencies - they are not as good as parties we host, but they are ok I guess.
 In this section we will outline our third-party dependencies.
 
 ### Nativebase
