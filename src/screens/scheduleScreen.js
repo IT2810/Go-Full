@@ -16,6 +16,8 @@ const styles = ({
     shadowOpacity: 0.8,
     shadowRadius: 5,
     marginBottom: 10,
+    paddingBottom: 12,
+    paddingTop: 14,
   },
 });
 
@@ -23,8 +25,8 @@ const schedulescreen = (props) => {
   const { navigation } = props;
   return (
     <View style={{ backgroundColor: '#6D6D6D', flex: 1 }}>
-      <View style={[{ backgroundColor: '#424242' }, styles.title]}>
-        <Text style={[{ paddingBottom: 12, paddingTop: 14 }, styles.title]}>
+      <View style={{ backgroundColor: '#424242' }}>
+        <Text style={styles.title}>
             Your Events
         </Text>
       </View>
