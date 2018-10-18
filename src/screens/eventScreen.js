@@ -61,7 +61,7 @@ const EventScreen = (props) => {
 
   const handlePress = (drinkType, key, appState) => {
     appState.addDrinkAsync(drinkType, key);
-    appState.notify();
+    Vibration.vibrate(10);
   };
 
   return (
