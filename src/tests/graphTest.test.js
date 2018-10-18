@@ -6,20 +6,18 @@ import Graph from '../components/graph';
 const drinks = [
   {
     type: 'beer 0.5',
-    gramsOfAlcohol: 19.39,
-    timeStamp: moment(1539717057000),
-
+    alcoholInGrams: 19.39,
+    timeStamp: moment(),
   },
   {
     type: 'beer 0.5',
-    gramsOfAlcohol: 19.39,
-    timeStamp: moment(1539717057000).add(1, 'hours'),
-
+    alcoholInGrams: 19.39,
+    timeStamp: moment().add(1, 'hours'),
   },
   {
     type: 'beer 0.5',
-    gramsOfAlcohol: 19.39,
-    timeStamp: moment(1539717057000).add(6, 'hours'),
+    alcoholInGrams: 19.39,
+    timeStamp: moment().add(6, 'hours'),
   },
 ];
 
