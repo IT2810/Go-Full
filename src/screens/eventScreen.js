@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import Image from 'react-native-remote-svg';
 import moment from 'moment';
+import { Card } from 'react-native-material-ui';
 import Graph from '../components/graph/index';
 import { AppContext } from '../components/AppProvider';
 
@@ -13,7 +14,7 @@ const beerGlass = require('../../assets/beer-solid.svg');
 
 const styles = ({ // Styling for different components
   eventTitle: {
-    fontSize: 36,
+    fontSize: 24,
     color: '#FFF',
     textAlign: 'center',
     fontWeight: '100',
@@ -65,6 +66,49 @@ const EventScreen = (props) => {
     appState.notify(drinkType.type);
   };
 
+  const IconButton = (drinkType, key, appState, image) => (
+    <View style={{ flex: 1, alignItems: 'center' }}>
+      <TouchableOpacity onPress={() => handlePress(drinkType, key, appState)}>
+        <Image source={image} style={{ width: 80, height: 80 }} />
+      </TouchableOpacity>
+    </View>
+  );
+
+  const description = (description, text) => (
+    <Card style={{
+      container: {
+        flex: 10,
+        alignSelf: 'center',
+        alignItems: 'center',
+        backgroundColor: '#38006B',
+      },
+    }}
+    >
+      <Text style={{ color: '#FFFFFF', marginBottom: 10, fontSize: 20 }}>{text}</Text>
+      <Text style={{ color: '#FFFFFF', fontSize: 15 }}>{description}</Text>
+    </Card>);
+
+  const descriptionOrButtons = (event, key, appState) => {
+    const now = moment().add(5, 'hours');
+    const startTime = event.time.clone();
+    if (now.isBefore(startTime)) {
+      return description(event.description, 'Event has not started yet');
+    }
+    startTime.add(8, 'hours');
+    if (now.isAfter(startTime)) {
+      return description('', 'Event has ended');
+    }
+
+    return (
+      <View style={{ flex: 3, flexDirection: 'row', marginHorizontal: 30 }}>
+        {IconButton(drinkTypes.beer, key, appState, beerGlass)}
+        {IconButton(drinkTypes.drink, key, appState, drinkGlass)}
+        {IconButton(drinkTypes.wine, key, appState, wineGlass)}
+      </View>
+    );
+  };
+
+
   return (
     <AppContext.Consumer>
       {(appState) => {
@@ -84,36 +128,11 @@ const EventScreen = (props) => {
                   {event.drinks.length}
                 </Text>
               </View>
-
               <View style={{ flex: 3, flexDirection: 'row', marginHorizontal: 30 }}>
-                <View style={{ flex: 1, alignItems: 'center' }}>
-                  <TouchableOpacity onPress={() => handlePress(drinkTypes.beer, key, appState)}>
-                    <Image source={beerGlass} style={{ width: 80, height: 80 }} />
-                  </TouchableOpacity>
-                </View>
-
-                <View style={{ flex: 1, alignItems: 'center' }}>
-                  <TouchableOpacity onPress={() => handlePress(drinkTypes.drink, key, appState)}>
-                    <Image
-                      source={drinkGlass}
-                      style={{ width: 75, height: 75, marginTop: 2.5 }}
-                    />
-                  </TouchableOpacity>
-                </View>
-
-                <View style={{ flex: 1, alignItems: 'center' }}>
-                  <TouchableOpacity onPress={() => handlePress(drinkTypes.wine, key, appState)}>
-                    <Image
-                      source={wineGlass}
-                      style={{ width: 75, height: 75, marginTop: 2.5 }}
-                    />
-                  </TouchableOpacity>
-                </View>
+                {descriptionOrButtons(event, key, appState)}
               </View>
               <View style={{ flex: 6, backgroundColor: '#6D6D6D' }}>
-                <View>
-                  <Graph drinks={event.drinks} />
-                </View>
+                <Graph drinks={event.drinks} />
               </View>
             </View>
           </View>);

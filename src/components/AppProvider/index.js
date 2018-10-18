@@ -27,11 +27,11 @@ class AppProvider extends React.Component {
       events: [],
       notificationId: -1,
 
-      setStorageAndState: (key, value) => this.setStorageAndState(key, value),
-      addDrinkAsync: (drinkObject, key) => this.addDrinkAsync(drinkObject, key),
-      createEventAsync: eventObject => this.createEventAsync(eventObject),
+      setStorageAndState: async (key, value) => await this.setStorageAndState(key, value),
+      addDrinkAsync: async (drinkObject, key) => await this.addDrinkAsync(drinkObject, key),
+      createEventAsync: async eventObject => await this.createEventAsync(eventObject),
       getEventFromKey: key => this.getEventFromKey(key),
-      notify: drinkType => this.notify(drinkType),
+      notify: async drinkType => await this.notify(drinkType),
     };
   }
 
@@ -48,7 +48,7 @@ class AppProvider extends React.Component {
       .catch(error => console.error(error));
 
     this.setupNotificationChannels();
-    await this.temporaryFunctionPleaseRemoveItsOnlyForTestingPurposesSoYeahGoodbyeAsync();
+    await this.thisFunctionIsForTesting();
   }
 
   setupNotificationChannels() {
@@ -126,42 +126,45 @@ class AppProvider extends React.Component {
     const newEvent = cloneDeep(eventObject);
     // trying to make unique keys. This won't work if we should be able to delete events
     newEvent.key = parseInt(uniqueId(), 10);
-    newEvent.drinks = [];
+    newEvent.drinks = newEvent.drinks ? newEvent.drinks : [];
     tempState.events.push(newEvent);
     await this.setStorageAndState('events', tempState.events);
   }
 
-  async temporaryFunctionPleaseRemoveItsOnlyForTestingPurposesSoYeahGoodbyeAsync() {
+  async thisFunctionIsForTesting() {
     const events = [
       {
-        title: 'Steve jobs memorial',
-        time: moment(),
+        title: 'this is a past event',
+        time: moment().subtract(13, 'hours'),
+        description: 'this is an event',
         drinks: [
           {
             type: 'beer 0.5',
             alcoholInGrams: 19.39,
-            timeStamp: moment(),
+            timeStamp: moment().subtract(11, 'hours'),
           },
           {
             type: 'beer 0.5',
             alcoholInGrams: 19.39,
-            timeStamp: moment().add(1, 'hours'),
+            timeStamp: moment().subtract(8, 'hours'),
           },
           {
             type: 'beer 0.5',
             alcoholInGrams: 19.39,
-            timeStamp: moment().add(6, 'hours'),
+            timeStamp: moment().subtract(12, 'hours'),
           },
         ],
       },
       {
-        title: 'a',
+        title: 'this is a testevent',
+        description: 'this is an event',
         time: moment(),
         drinks: [],
       },
       {
-        title: 'cool party i guess',
-        time: moment(),
+        title: 'this is an upcoming event',
+        description: 'this is an event',
+        time: moment().add(6, 'hours'),
         drinks: [],
       },
     ];
