@@ -28,5 +28,18 @@ const events = [
 ];
 
 describe('event serialization', () => {
+  test('deserialized serialized data should be equal to original data', () => {
+    expect(JSON.stringify(events))
+      .toEqual(JSON.stringify(Serializer.deserializeState(Serializer.serializeState(events))));
+  });
 
+  test('serializer should run without errors', () => {
+    expect(() => Serializer.serializeState(events)).not.toThrowError();
+  });
+
+  test('deserializer should run without errors', () => {
+    const serialized = Serializer.serializeState(events);
+
+    expect(() => Serializer.deserializeState(serialized)).not.toThrowError();
+  });
 });
