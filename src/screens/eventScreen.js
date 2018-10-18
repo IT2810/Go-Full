@@ -59,6 +59,11 @@ const EventScreen = (props) => {
     },
   };
 
+  const handlePress = (drinkType, key, appState) => {
+    appState.addDrinkAsync(drinkType, key);
+    appState.notify();
+  };
+
   return (
     <AppContext.Consumer>
       {(appState) => {
@@ -81,19 +86,13 @@ const EventScreen = (props) => {
 
               <View style={{ flex: 3, flexDirection: 'row', marginHorizontal: 30 }}>
                 <View style={{ flex: 1, alignItems: 'center' }}>
-                  <TouchableOpacity onPress={() => {
-                    appState.addDrinkAsync(drinkTypes.beer, key);
-                  }}
-                  >
+                  <TouchableOpacity onPress={() => handlePress(drinkTypes.beer, key, appState)}>
                     <Image source={beerGlass} style={{ width: 80, height: 80 }} />
                   </TouchableOpacity>
                 </View>
 
                 <View style={{ flex: 1, alignItems: 'center' }}>
-                  <TouchableOpacity onPress={() => {
-                    appState.addDrinkAsync(drinkTypes.drink, key);
-                  }}
-                  >
+                  <TouchableOpacity onPress={() => handlePress(drinkTypes.drink, key, appState)}>
                     <Image
                       source={drinkGlass}
                       style={{ width: 75, height: 75, marginTop: 2.5 }}
@@ -102,10 +101,7 @@ const EventScreen = (props) => {
                 </View>
 
                 <View style={{ flex: 1, alignItems: 'center' }}>
-                  <TouchableOpacity onPress={() => {
-                    appState.addDrinkAsync(drinkTypes.wine, key);
-                  }}
-                  >
+                  <TouchableOpacity onPress={() => handlePress(drinkTypes.wine, key, appState)}>
                     <Image
                       source={wineGlass}
                       style={{ width: 75, height: 75, marginTop: 2.5 }}
