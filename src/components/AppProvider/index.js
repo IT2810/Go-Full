@@ -27,11 +27,11 @@ class AppProvider extends React.Component {
       events: [],
       notificationId: -1,
 
-      setStorageAndState: (key, value) => this.setStorageAndState(key, value),
-      addDrinkAsync: (drinkObject, key) => this.addDrinkAsync(drinkObject, key),
-      createEventAsync: eventObject => this.createEventAsync(eventObject),
+      setStorageAndState: async (key, value) => await this.setStorageAndState(key, value),
+      addDrinkAsync: async (drinkObject, key) => await this.addDrinkAsync(drinkObject, key),
+      createEventAsync: async eventObject => await this.createEventAsync(eventObject),
       getEventFromKey: key => this.getEventFromKey(key),
-      notify: drinkType => this.notify(drinkType),
+      notify: async drinkType => await this.notify(drinkType),
     };
   }
 
@@ -158,7 +158,7 @@ class AppProvider extends React.Component {
       {
         title: 'this is a testevent',
         description: 'this is an event',
-        time: moment().add(6, 'hours'),
+        time: moment(),
         drinks: [],
       },
       {
