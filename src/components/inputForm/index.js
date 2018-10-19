@@ -1,110 +1,119 @@
 import React, { Component } from 'react';
+import { Alert, Text, TouchableOpacity } from 'react-native';
 import {
-  TouchableOpacity, View, Text, StyleSheet,
-} from 'react-native';
-import {
-  form, struct, maybe, String,
-} from 'tcomb-form-native';
+  Container, Content, Form, Item, Input, Label, Textarea,
+} from 'native-base';
+import moment from 'moment';
 import DateTimePickerTester from './dateTimePicker';
 
-// this component creates the form to create an event
+class CreateEvent extends Component {
+  constructor(props) {
+    super(props);
+    this.inputs = {
+      title: '',
+      description: '',
+      date: null,
+    };
+  }
 
-const { Form } = form;
-
-const Events = struct({
-  Title: String,
-});
-
-const desc = struct({
-  Description: maybe(String), // maybe says that this field is optional
-});
-
-
-// TODO: Figure out how to change the fontcolor on the placeholdertext
-const options = {
-  auto: 'placeholders',
-  i18n: {
-    optional: ' ',
-    required: ' ',
-  },
-  fields: {
-    Title: {
-      stylesheet: {
-        ...Form.stylesheet,
-        textbox: {
-          ...Form.stylesheet.textbox,
-          normal: {
-            ...Form.stylesheet.textbox.normal,
-            height: 50,
-            width: 300,
-            auto: 'placeholders',
-            backgroundColor: '#38006B',
-            color: 'white',
-            borderWidth: 0,
-            alignSelf: 'center',
-          },
-        },
-      },
-    },
-    Description: {
-      multiline: true,
-      stylesheet: {
-        ...Form.stylesheet,
-        textbox: {
-          ...Form.stylesheet.textbox,
-          normal: {
-            ...Form.stylesheet.textbox.normal,
-            height: 200,
-            width: 300,
-            auto: 'placeholders',
-            backgroundColor: '#38006B',
-            color: '#FFFFFF',
-            borderWidth: 0,
-            alignSelf: 'center',
-          },
-        },
-      },
-    },
-  },
-};
-
-const styles = StyleSheet.create({
-  button: {
-    alignItems: 'center',
-    paddingTop: 12.5,
-    backgroundColor: '#AE52D4',
-    height: 45,
-    margin: 15,
-    width: 200,
-    alignSelf: 'center',
-  },
-  text: {
-    color: '#FFFFFF',
-    fontSize: 20,
-  },
-});
-
-export default class InputForm extends Component {
-  /* handleFriendInvite = () => {
-        //todo
+  async submitEvent() {
+    const { appState } = this.props;
+    const eventObject = {
+      title: this.inputs.title,
+      description: this.inputs.description,
+      time: this.inputs.date,
     }
+    if (eventObject.time === null || eventObject.title === ''){
+      Alert.alert(
+        'OOPSIE DOOPSIE U MADE A WOOPSIE'        
+      )
+    }
+    else{
+      await appState.createEventAsync(eventObject)
+      this.goBack();
+    }
+  }
 
-    handleCreateEvent = () => {
-        //todo
-    } */
+  handleDatePicked = (datetime) => {
+      this.inputs.date = moment(datetime)
+  };
+  
+  goBack(){
+    this.props.navigation.goBack();
+  }
 
   render() {
     return (
-      <View>
-        <Form type={Events} options={options} />
-        <Form type={desc} options={options} />
-        <DateTimePickerTester />
-        <TouchableOpacity style={styles.button} onpress={this.handleCreateEvent}>
-          <Text style={styles.text}>
-            Create Event
-          </Text>
-        </TouchableOpacity>
-      </View>
+      <Container
+        style={{
+          backgroundColor: '#6D6D6D'
+        }}>
+        <Content>
+          <Form>
+            <Item
+              stackedLabel
+              style={{
+                backgroundColor: '#38006B',
+                width: 300,
+                alignSelf: 'center',
+                margin: 10,
+              }}
+            >
+              <Label
+                style={{
+                  color: 'white',
+                }}
+              >
+                Title
+              </Label>
+              <Input
+                onChangeText={text => this.inputs.title = text}
+                style={{
+                  color: 'white',
+                }}
+              />
+            </Item>
+          </Form>
+          <Form>
+            <Textarea
+              onChangeText={text => this.inputs.description = text}
+              rowSpan={5}
+              placeholder="Description"
+              style={{
+                backgroundColor: '#38006B',
+                width: 300,
+                alignSelf: 'center',
+                color: 'white',
+              }}
+            />
+          </Form>
+          <DateTimePickerTester
+            onDatePicked={(datetime) => this.handleDatePicked(datetime)}
+          />
+          <TouchableOpacity
+            onPress={() => this.submitEvent()}
+          >
+            <Text
+              style={{
+                alignItems: 'center',
+                paddingTop: 12.5,
+                backgroundColor: '#AE52D4',
+                height: 45,
+                margin: 15,
+                width: 200,
+                alignSelf: 'center',
+                fontSize: 20,
+                textAlign: 'center',
+                color: 'white',
+              }}
+            >
+              Create Event
+            </Text>
+          </TouchableOpacity>
+        </Content>
+      </Container>
     );
   }
 }
+
+export default CreateEvent;

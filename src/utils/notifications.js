@@ -27,7 +27,7 @@ const notificationUtil = {
     };
 
     const schedulingOptions = {
-      time: date,
+      time: date.toDate(),
     };
 
     const id = await Notifications.scheduleLocalNotificationAsync(
@@ -39,6 +39,7 @@ const notificationUtil = {
   },
 
   cancelNotification(id) {
+    if (id === -1) return;
     Notifications.cancelScheduledNotificationAsync(id);
   },
 };

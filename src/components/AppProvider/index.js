@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AsyncStorage, Platform } from 'react-native';
-import { Notifications } from 'expo';
+import { Notifications, Permissions } from 'expo';
 import cloneDeep from 'lodash/cloneDeep';
-import uniqueId from 'lodash/uniqueId';
 import moment from 'moment';
+import uuid from 'uuid';
 import Serializer from '../../utils/serialization';
+import notificationUtil from '../../utils/notifications';
 
 export const AppContext = React.createContext();
 
@@ -23,28 +24,73 @@ class AppProvider extends React.Component {
     this.state = {
 
       // This is where we set initial state
-      events: [],
+      events: [
+        {
+          key: uuid(),
+          title: 'this is a past event',
+          time: moment().subtract(13, 'hours'),
+          description: 'this is an event',
+          drinks: [
+            {
+              type: 'beer',
+              alcoholInGrams: 19.39,
+              timeStamp: moment().subtract(11, 'hours'),
+            },
+            {
+              type: 'beer',
+              alcoholInGrams: 19.39,
+              timeStamp: moment().subtract(8, 'hours'),
+            },
+            {
+              type: 'beer',
+              alcoholInGrams: 19.39,
+              timeStamp: moment().subtract(12, 'hours'),
+            },
+          ],
+        },
+        {
+          key: uuid(),
+          title: 'this is a testevent',
+          description: 'this is an event',
+          time: moment(),
+          drinks: [],
+        },
+        {
+          key: uuid(),
+          title: 'this is an upcoming event',
+          description: 'this is an event',
+          time: moment().add(6, 'hours'),
+          drinks: [],
+        },
+      ],
+      notificationId: -1,
 
-      setStorageAndState: (key, value) => this.setStorageAndState(key, value),
-      addDrinkAsync: (drinkObject, key) => this.addDrinkAsync(drinkObject, key),
-      addEventAsync: eventObject => this.addEventAsync(eventObject),
+      setStorageAndState: async (key, value) => await this.setStorageAndState(key, value),
+      addDrinkAsync: async (drinkObject, key) => await this.addDrinkAsync(drinkObject, key),
+      createEventAsync: async eventObject => await this.createEventAsync(eventObject),
+      getEventFromKey: key => this.getEventFromKey(key),
+      notify: async drinkType => await this.notify(drinkType),
     };
   }
 
   async componentDidMount() {
+    // await AsyncStorage.clear(); //use this to clear asyncstorage for testing
     await AsyncStorage.getItem('@go-full:state')
       .then(result => JSON.parse(result))
       .then((result) => {
         if (result && result.events) {
-          return Serializer.deserializeState(result.events);
+          result.events = Serializer.deserializeState(result.events);
+          return result;
         }
         return result;
       })
       .then(result => this.setState(result))
       .catch(error => console.error(error));
 
+    // We need to ask the user permission to send notifications in iOS.
+    Permissions.askAsync(Permissions.NOTIFICATIONS);
+
     this.setupNotificationChannels();
-    await this.temporaryFunctionPleaseRemoveItsOnlyForTestingPurposesSoYeahGoodbyeAsync();
   }
 
   setupNotificationChannels() {
@@ -76,13 +122,19 @@ class AppProvider extends React.Component {
   }
 
   async setStorageAndState(key, value) {
-    // Using cloneDeep to ensure immutability.
+    // Using cloneDeep to ensure immutability. Why is javascript always mutable :====)
     const tempState = cloneDeep(this.state);
     tempState[key] = value;
-    this.setState(tempState);
+    this.setState(cloneDeep(tempState));
     const serializedState = Serializer.serializeState(tempState.events);
-    await storeData(serializedState);
+    tempState.events = serializedState;
+    storeData(tempState);
     return tempState;
+  }
+
+  getEventFromKey(key) {
+    const { events } = this.state;
+    return events.find(event => event.key === key);
   }
 
   async addDrinkAsync(drinkObject, eventKey) {
@@ -93,58 +145,33 @@ class AppProvider extends React.Component {
     this.setStorageAndState('events', tempState);
   }
 
+  async notify(drinkType) {
+    const { notificationId } = this.state;
+    const notificationTexts = {
+      beer: 'How is that beer going? Maybe it\'s time you had another?',
+      drink: 'The bartender hasn\'t flipped a tumbler in like 10 minutes, time to make him work for his tips!',
+      wine: 'That glass is looking pretty empty, time for a refill!',
+    };
+    notificationUtil.cancelNotification(notificationId);
+    const newId = await notificationUtil.sendNotificationAsync(
+      'You\'re looking sober!',
+      notificationTexts[drinkType],
+      'mission-critical',
+      // uncomment this line, and comment out the line below, to test notifications that are FASTAH.
+      // moment().add(10, 'seconds'),
+      moment().add(15, 'minutes'),
+    );
+    this.setStorageAndState('notificationId', newId);
+  }
+
   async createEventAsync(eventObject) {
     const tempState = cloneDeep(this.state);
     const newEvent = cloneDeep(eventObject);
-    // trying to make unique keys. This won't work if we should be able to delete events
-    newEvent.key = parseInt(uniqueId(), 10);
+    // making unique keys. This won't work if we should be able to delete events
+    newEvent.key = uuid();
+    newEvent.drinks = newEvent.drinks ? newEvent.drinks : [];
     tempState.events.push(newEvent);
     await this.setStorageAndState('events', tempState.events);
-  }
-
-  // This function exists to prepopulate the list with a few events so that testing is
-  // easier for other students.
-  async temporaryFunctionPleaseRemoveItsOnlyForTestingPurposesSoYeahGoodbyeAsync() {
-    const events = [
-      {
-        title: 'Steve jobs memorial',
-        time: moment(),
-        drinks: [
-          {
-            type: 'beer 0.5',
-            gramsOfAlcohol: 19.39,
-            timeStamp: moment(),
-          },
-          {
-            type: 'beer 0.5',
-            gramsOfAlcohol: 19.39,
-            timeStamp: moment().add(1, 'hours'),
-          },
-          {
-            type: 'beer 0.5',
-            gramsOfAlcohol: 19.39,
-            timeStamp: moment().add(6, 'hours'),
-          },
-        ],
-      },
-      {
-        title: 'a',
-        time: moment(),
-        drinks: [],
-      },
-      {
-        title: 'cool party i guess',
-        time: moment(),
-        drinks: [],
-      },
-    ];
-
-    await events.forEach(async event => this.createEventAsync(event));
-    await this.addDrinkAsync({
-      type: 'beer 0.5',
-      gramsOfAlcohol: 19.39,
-      timeStamp: moment().add(6, 'hours'),
-    }, 2);
   }
 
   render() {

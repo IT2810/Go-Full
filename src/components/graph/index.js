@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Dimensions } from 'react-native';
+import { View, Dimensions } from 'react-native';
 import { LineChart } from 'react-native-chart-kit';
 import moment from 'moment';
 import PropTypes from 'prop-types';
@@ -32,7 +32,7 @@ class Graph extends Component {
     drinks.forEach((drink) => {
       let index = moment.duration(drink.timeStamp.diff(startTime)).asHours();
       index = Math.round(index);
-      alcoholLevels[index] += alcoholMass(drink.gramsOfAlcohol);
+      alcoholLevels[index] += alcoholMass(drink.alcoholInGrams);
     });
     alcoholLevels.forEach((levelAtHour, i) => {
       if (i === 0) {
@@ -100,7 +100,7 @@ class Graph extends Component {
 Graph.propTypes = {
   drinks: PropTypes.arrayOf(PropTypes.shape({
     type: PropTypes.string.isRequired,
-    gramsOfAlcohol: PropTypes.number.isRequired,
+    alcoholInGrams: PropTypes.number.isRequired,
     timeStamp: PropTypes.instanceOf(moment).isRequired,
   })).isRequired,
 };
