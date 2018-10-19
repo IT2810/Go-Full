@@ -19,7 +19,6 @@ const styles = ({ // Styling for different components
     fontWeight: '100',
     marginTop: 12,
   },
-
   topView: {
     borderRadius: 2,
     shadowColor: '#000',
@@ -28,7 +27,6 @@ const styles = ({ // Styling for different components
     shadowRadius: 5,
     marginBottom: 10,
   },
-
   container: { // container - buttons
     flex: 1,
   },
@@ -82,14 +80,12 @@ const EventScreen = (props) => {
                   {event.drinks.length}
                 </Text>
               </View>
-
               <View style={{ flex: 3, flexDirection: 'row', marginHorizontal: 30 }}>
                 <View style={{ flex: 1, alignItems: 'center' }}>
                   <TouchableOpacity onPress={() => handlePress(drinkTypes.beer, key, appState)}>
                     <Image source={beerGlass} style={{ width: 80, height: 80 }} />
                   </TouchableOpacity>
                 </View>
-
                 <View style={{ flex: 1, alignItems: 'center' }}>
                   <TouchableOpacity onPress={() => handlePress(drinkTypes.drink, key, appState)}>
                     <Image
@@ -98,7 +94,6 @@ const EventScreen = (props) => {
                     />
                   </TouchableOpacity>
                 </View>
-
                 <View style={{ flex: 1, alignItems: 'center' }}>
                   <TouchableOpacity onPress={() => handlePress(drinkTypes.wine, key, appState)}>
                     <Image
