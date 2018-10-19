@@ -35,7 +35,6 @@ const schedulescreen = (props) => {
           <Schedule navigation={navigation} appState={appState} />
         )}
       </AppContext.Consumer>
-
       <View style={{
         position: 'absolute', right: 0, top: 600,
       }}
