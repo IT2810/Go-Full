@@ -19,9 +19,7 @@ const styles = ({ // Styling for different components
     fontWeight: '100',
     marginTop: 12,
   },
-  scoreNumber: {
 
-  },
   topView: {
     borderRadius: 2,
     shadowColor: '#000',
