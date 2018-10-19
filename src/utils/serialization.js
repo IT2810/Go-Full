@@ -1,3 +1,9 @@
+/*
+  This util helps us generate events based on our json state and convert our event objects
+  into timestamps we can store easily. The most important part is converting between date objects
+  and timestamps that are easier to handle in JSON.
+*/
+
 import cloneDeep from 'lodash/cloneDeep';
 import moment from 'moment';
 
@@ -23,9 +29,6 @@ const Serializer = {
       tempEvent.drinks = tempEvent.drinks.map((drink) => {
         const tempDrink = cloneDeep(drink);
         tempDrink.timeStamp = drink.timeStamp.valueOf();
-        // console.log('boop');
-        // console.log(drink.timeStamp.valueOf());
-        // console.log(drink);
         return tempDrink;
       });
       return tempEvent;

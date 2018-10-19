@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
 });
 
-
+// Each event generates one clean list item.
 const ListItem = (props) => {
   const {
     title, time, handlePress,

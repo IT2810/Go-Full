@@ -32,6 +32,9 @@ class CreateEvent extends Component {
     }
   }
 
+  // Here we have a lot of smaller functions that have been spun out to
+  // ensure readability and future extensibility.
+
   handleDatePicked(datetime) {
     this.inputs.date = moment(datetime);
   }
@@ -58,6 +61,7 @@ class CreateEvent extends Component {
       >
         <Content>
           <Form>
+            {/* This is the input field for the event title. */}
             <Item
               stackedLabel
               style={{
@@ -83,6 +87,7 @@ class CreateEvent extends Component {
             </Item>
           </Form>
           <Form>
+            {/* This is the input field for the event description. */}
             <Textarea
               onChangeText={text => this.changeDescription(text)}
               rowSpan={5}
@@ -95,14 +100,18 @@ class CreateEvent extends Component {
               }}
             />
           </Form>
+          {/* This is the input field for the date. */}
           <DateTimePickerTester
             onDatePicked={datetime => this.handleDatePicked(datetime)}
           />
+          {/* This is our submit button. */}
           <TouchableOpacity
             onPress={() => this.submitEvent()}
           >
             <Text
               style={{
+                // it could be we should have spun the styles out into a const, but we
+                // decided to keep them here. As it was easier to work with while styling.
                 alignItems: 'center',
                 paddingTop: 12.5,
                 backgroundColor: '#AE52D4',

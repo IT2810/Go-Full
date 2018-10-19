@@ -14,6 +14,9 @@ const App = () => {
     },
   });
 
+  // App.js doens't do much, but it inserts both our navigator
+  // and our AppProvider into the component tree.
+
   return (
     <View style={styles.container}>
       <AppProvider>
