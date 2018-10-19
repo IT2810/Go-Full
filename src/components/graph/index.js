@@ -7,6 +7,8 @@ import PropTypes from 'prop-types';
 
 class Graph extends Component {
   calculateDataset() {
+    // This is where we calculate BAC. The math is
+    // based on the wikipedia article for blood alcohol level.
     const { drinks } = this.props;
     if (drinks.length === 0) {
       return {
@@ -65,7 +67,7 @@ class Graph extends Component {
     return (
       <View>
         <LineChart
-          data={data}
+          data={data} // we use the data we generate above to populate the graph.
 
           width={Dimensions.get('window').width} // from react-native
           height={220}

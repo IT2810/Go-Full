@@ -4,7 +4,7 @@ import { ActionButton } from 'react-native-material-ui';
 import Schedule from '../components/Schedule';
 import { AppContext } from '../components/AppProvider';
 
-const styles = ({
+const styles = ({ // This style rule became so complex we decided to spin it out into this object.
   title: {
     fontSize: 36,
     color: '#FFF',
@@ -32,7 +32,7 @@ const schedulescreen = (props) => {
       </View>
       <AppContext.Consumer>
         {appState => (
-          <Schedule navigation={navigation} appState={appState} />
+          <Schedule navigation={navigation} appState={appState} /> // This is the actual schedule.
         )}
       </AppContext.Consumer>
       <View style={{

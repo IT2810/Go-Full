@@ -38,7 +38,7 @@ const styles = ({ // Styling for different components
 
 const EventScreen = (props) => {
   const { navigation } = props;
-  const drinkTypes = {
+  const drinkTypes = { // This holds info on different drinktypes.
     beer: {
       type: 'beer',
       alcoholInGrams: 18.03,
@@ -57,11 +57,12 @@ const EventScreen = (props) => {
   };
 
   const handlePress = (drinkType, key, appState) => {
-    appState.addDrinkAsync(drinkType, key);
-    Vibration.vibrate(10);
-    appState.notify(drinkType.type);
+    appState.addDrinkAsync(drinkType, key); // Adding the drink to state.
+    Vibration.vibrate(10); // A tiny vibration for haptic feedback.
+    appState.notify(drinkType.type); // Scheduling a new notification
   };
 
+  // This is the icon button we call below.
   const IconButton = (drinkType, key, appState, image) => (
     <View style={{ flex: 1, alignItems: 'center' }}>
       <TouchableOpacity onPress={() => handlePress(drinkType, key, appState)}>
@@ -85,6 +86,8 @@ const EventScreen = (props) => {
     </Card>);
 
   const descriptionOrButtons = (event, key, appState) => {
+    // This decides if we show the description or buttons, based on if the event is active or not.
+    // Active means the event is underway.
     const now = moment().add(5, 'hours');
     const startTime = event.time.clone();
     if (now.isBefore(startTime)) {
@@ -95,6 +98,7 @@ const EventScreen = (props) => {
       return description('', 'Event has ended');
     }
 
+    // If we use buttons we have three different buttons we need.
     return (
       <View style={{ flex: 3, flexDirection: 'row', marginHorizontal: 30 }}>
         {IconButton(drinkTypes.beer, key, appState, beerGlass)}
@@ -113,20 +117,24 @@ const EventScreen = (props) => {
         return (
           <View style={styles.container}>
             <View style={[{ flex: 1 }, styles.elementsContainer]}>
+              {/* Event Title */}
               <View style={[{ flex: 2, backgroundColor: '#424242' }, styles.topView]}>
                 <Text style={styles.eventTitle}>
                   {event.title}
                 </Text>
               </View>
+              {/* Score, or how many drinks have you had */}
               <View style={{ flex: 4, backgroundColor: '#6D6D6D' }}>
                 <Text style={styles.eventTitle}>
                   Score:
                   {event.drinks.length}
                 </Text>
               </View>
+              {/* Either descriptions or buttons */}
               <View style={{ flex: 3, flexDirection: 'row', marginHorizontal: 30 }}>
                 {descriptionOrButtons(event, key, appState)}
               </View>
+              {/* The graph that displays your BAC */}
               <View style={{ flex: 6, backgroundColor: '#6D6D6D' }}>
                 <Graph drinks={event.drinks} />
               </View>

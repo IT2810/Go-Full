@@ -25,6 +25,8 @@ export default class DateTimePickerTester extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // here we have some state that is not handled by the wrapped setStorageAndState function.
+      // The idea is that really nothing else needs to know about this, so we just kept it local.
       isDateTimePickerVisible: false,
     };
   }
@@ -54,8 +56,8 @@ export default class DateTimePickerTester extends Component {
         <DateTimePicker
           isVisible={isDateTimePickerVisible}
           onConfirm={(datetime) => {
-            onDatePicked(datetime);
-            this.hideDateTimePicker();
+            onDatePicked(datetime); // setting the date.
+            this.hideDateTimePicker(); // ensuring that the picker is hidden when you find a date.
           }}
           onCancel={() => this.hideDateTimePicker()}
           mode="datetime"
