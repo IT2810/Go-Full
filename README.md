@@ -189,3 +189,11 @@ Starting out we thought we were going to use a lot of components from this libra
 
 Read more about this library here:
 [https://github.com/xotahal/react-native-material-ui](https://github.com/xotahal/react-native-material-ui)
+
+
+### UUID
+
+We used this library to create universally unique id's that are used as keys for our objects. You can find the implementation of this library in ``AppProvider/index.js``
+
+Read more about this library here:
+[https://www.npmjs.com/package/uuid](https://www.npmjs.com/package/uuid)
