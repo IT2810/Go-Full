@@ -3,8 +3,8 @@ import { Alert, Text, TouchableOpacity } from 'react-native';
 import {
   Container, Content, Form, Item, Input, Label, Textarea,
 } from 'native-base';
-import DateTimePickerTester from './dateTimePicker';
 import moment from 'moment';
+import DateTimePickerTester from './dateTimePicker';
 
 class CreateEvent extends Component {
   constructor(props) {
