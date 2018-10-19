@@ -19,6 +19,8 @@ Also take note that the app was designed around a real alcohol consumption level
 
 On IOS you won't get push notifications if you have the expo app open, which means that to see the notification you have to be in another app or on the home screen.
 
+If you want to clear aSyncStorage for any reason, theres a commented line of code in componentDidMount that you can uncomment, and then run the app once to clear your aSyncStorage.
+
 ## About the App
 
 Go'Full is a party and drinks tracking app. The core idea is that students like to drink and stay drunk. We work to ensure that our users never forget to open that next beer.
