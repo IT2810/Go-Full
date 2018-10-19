@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { AsyncStorage, Platform } from 'react-native';
 import { Notifications, Permissions } from 'expo';
 import cloneDeep from 'lodash/cloneDeep';
-import uniqueId from 'lodash/uniqueId';
 import moment from 'moment';
+import uuid from 'uuid';
 import Serializer from '../../utils/serialization';
 import notificationUtil from '../../utils/notifications';
 
@@ -127,8 +127,8 @@ class AppProvider extends React.Component {
   async createEventAsync(eventObject) {
     const tempState = cloneDeep(this.state);
     const newEvent = cloneDeep(eventObject);
-    // trying to make unique keys. This won't work if we should be able to delete events
-    newEvent.key = parseInt(uniqueId(), 10);
+    // making unique keys. This won't work if we should be able to delete events
+    newEvent.key = uuid();
     newEvent.drinks = newEvent.drinks ? newEvent.drinks : [];
     tempState.events.push(newEvent);
     await this.setStorageAndState('events', tempState.events);
