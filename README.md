@@ -35,12 +35,7 @@ For the last project a lot of code-review-time was used linting eachothers code.
 
 While the start was heavy and the linter could seem downright aggressive we emerged on the other side as complete converts and better coders. We heartily recommend using both a linter and the AirBnB ruleset to anyone.
 
-@August, var det diss linkene du brukte? --------------------------------------------------
-Check out:
-https://www.npmjs.com/package/eslint-config-airbnb
-and
-https://github.com/airbnb/javascript/issues/1589
-for more info.
+To get started in your own project. Copy our .eslintrc and run `npm install eslint --save-dev` and run `npm run lint` to start the linter. Almost all respectable IDEs have an eslint exstension. 
 
 ### AsyncStorage - Storage that is Async, I guess...
 We decided early in the development that we wantet 1-1 parity between app state and AsyncStorage. To alleviate potential issues down the road we created a wrapper for this.setState which also handled storage in AsyncStorage. This method, situated in AppProvider was our sole writer of storage. This would later help us greatly as we never encountered issues with a mismatch between AsyncStorage and the state of our app. Since we have 1-1 parity we could also allow ourselves only to read from storage when we initialized the app. This is done with a simple get to fetch our entire state in the componentDidMount() of AppProvider.
