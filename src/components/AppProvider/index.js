@@ -24,7 +24,45 @@ class AppProvider extends React.Component {
     this.state = {
 
       // This is where we set initial state
-      events: [],
+      events: [
+        {
+          key: 999,
+          title: 'this is a past event',
+          time: moment().subtract(13, 'hours'),
+          description: 'this is an event',
+          drinks: [
+            {
+              type: 'beer 0.5',
+              alcoholInGrams: 19.39,
+              timeStamp: moment().subtract(11, 'hours'),
+            },
+            {
+              type: 'beer 0.5',
+              alcoholInGrams: 19.39,
+              timeStamp: moment().subtract(8, 'hours'),
+            },
+            {
+              type: 'beer 0.5',
+              alcoholInGrams: 19.39,
+              timeStamp: moment().subtract(12, 'hours'),
+            },
+          ],
+        },
+        {
+          key: 888,
+          title: 'this is a testevent',
+          description: 'this is an event',
+          time: moment(),
+          drinks: [],
+        },
+        {
+          key: 777,
+          title: 'this is an upcoming event',
+          description: 'this is an event',
+          time: moment().add(6, 'hours'),
+          drinks: [],
+        },
+      ],
       notificationId: -1,
 
       setStorageAndState: async (key, value) => await this.setStorageAndState(key, value),
@@ -36,6 +74,7 @@ class AppProvider extends React.Component {
   }
 
   async componentDidMount() {
+    // await AsyncStorage.clear(); //use this to clear asyncstorage for testing
     await AsyncStorage.getItem('@go-full:state')
       .then(result => JSON.parse(result))
       .then((result) => {
@@ -49,7 +88,6 @@ class AppProvider extends React.Component {
       .catch(error => console.error(error));
 
     this.setupNotificationChannels();
-    await this.thisFunctionIsForTesting();
   }
 
   setupNotificationChannels() {
@@ -81,10 +119,10 @@ class AppProvider extends React.Component {
   }
 
   async setStorageAndState(key, value) {
-    // Using cloneDeep to ensure immutability.
+    // Using cloneDeep to ensure immutability. Why is javascript always mutable :====)
     const tempState = cloneDeep(this.state);
     tempState[key] = value;
-    this.setState(tempState);
+    this.setState(cloneDeep(tempState));
     const serializedState = Serializer.serializeState(tempState.events);
     tempState.events = serializedState;
     storeData(tempState);
@@ -134,43 +172,6 @@ class AppProvider extends React.Component {
   }
 
   async thisFunctionIsForTesting() {
-    const events = [
-      {
-        title: 'this is a past event',
-        time: moment().subtract(13, 'hours'),
-        description: 'this is an event',
-        drinks: [
-          {
-            type: 'beer 0.5',
-            alcoholInGrams: 19.39,
-            timeStamp: moment().subtract(11, 'hours'),
-          },
-          {
-            type: 'beer 0.5',
-            alcoholInGrams: 19.39,
-            timeStamp: moment().subtract(8, 'hours'),
-          },
-          {
-            type: 'beer 0.5',
-            alcoholInGrams: 19.39,
-            timeStamp: moment().subtract(12, 'hours'),
-          },
-        ],
-      },
-      {
-        title: 'this is a testevent',
-        description: 'this is an event',
-        time: moment(),
-        drinks: [],
-      },
-      {
-        title: 'this is an upcoming event',
-        description: 'this is an event',
-        time: moment().add(6, 'hours'),
-        drinks: [],
-      },
-    ];
-
     await events.forEach(async event => this.createEventAsync(event));
   }
 
