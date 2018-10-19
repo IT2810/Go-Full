@@ -26,37 +26,37 @@ class AppProvider extends React.Component {
       // This is where we set initial state
       events: [
         {
-          key: 999,
+          key: uuid(),
           title: 'this is a past event',
           time: moment().subtract(13, 'hours'),
           description: 'this is an event',
           drinks: [
             {
-              type: 'beer 0.5',
+              type: 'beer',
               alcoholInGrams: 19.39,
               timeStamp: moment().subtract(11, 'hours'),
             },
             {
-              type: 'beer 0.5',
+              type: 'beer',
               alcoholInGrams: 19.39,
               timeStamp: moment().subtract(8, 'hours'),
             },
             {
-              type: 'beer 0.5',
+              type: 'beer',
               alcoholInGrams: 19.39,
               timeStamp: moment().subtract(12, 'hours'),
             },
           ],
         },
         {
-          key: 888,
+          key: uuid(),
           title: 'this is a testevent',
           description: 'this is an event',
           time: moment(),
           drinks: [],
         },
         {
-          key: 777,
+          key: uuid(),
           title: 'this is an upcoming event',
           description: 'this is an event',
           time: moment().add(6, 'hours'),
@@ -172,50 +172,6 @@ class AppProvider extends React.Component {
     newEvent.drinks = newEvent.drinks ? newEvent.drinks : [];
     tempState.events.push(newEvent);
     await this.setStorageAndState('events', tempState.events);
-  }
-
-  async thisFunctionIsForTesting() {
-<<<<<<< HEAD
-=======
-    const events = [
-      {
-        title: 'this is a past event',
-        time: moment().subtract(13, 'hours'),
-        description: 'this is an event',
-        drinks: [
-          {
-            type: 'beer',
-            alcoholInGrams: 19.39,
-            timeStamp: moment().subtract(11, 'hours'),
-          },
-          {
-            type: 'beer',
-            alcoholInGrams: 19.39,
-            timeStamp: moment().subtract(8, 'hours'),
-          },
-          {
-            type: 'beer',
-            alcoholInGrams: 19.39,
-            timeStamp: moment().subtract(12, 'hours'),
-          },
-        ],
-      },
-      {
-        title: 'this is a testevent',
-        description: 'this is an event',
-        time: moment(),
-        drinks: [],
-      },
-      {
-        title: 'this is an upcoming event',
-        description: 'this is an event',
-        time: moment().add(6, 'hours'),
-        drinks: [],
-      },
-    ];
-
->>>>>>> dcfa3979ea23d5a1ec836afc33adeb7bace629ac
-    await events.forEach(async event => this.createEventAsync(event));
   }
 
   render() {
