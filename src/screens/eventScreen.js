@@ -14,7 +14,7 @@ const beerGlass = require('../../assets/beer-solid.svg');
 
 const styles = ({ // Styling for different components
   eventTitle: {
-    fontSize: 24,
+    fontSize: 36,
     color: '#FFF',
     textAlign: 'center',
     fontWeight: '100',
