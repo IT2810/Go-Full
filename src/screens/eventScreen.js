@@ -70,7 +70,7 @@ const EventScreen = (props) => {
     </View>
   );
 
-  const description = (description, text) => (
+  const description = (desc, text) => (
     <Card style={{
       container: {
         flex: 10,
@@ -81,7 +81,7 @@ const EventScreen = (props) => {
     }}
     >
       <Text style={{ color: '#FFFFFF', marginBottom: 10, fontSize: 20 }}>{text}</Text>
-      <Text style={{ color: '#FFFFFF', fontSize: 15 }}>{description}</Text>
+      <Text style={{ color: '#FFFFFF', fontSize: 15 }}>{desc}</Text>
     </Card>);
 
   const descriptionOrButtons = (event, key, appState) => {

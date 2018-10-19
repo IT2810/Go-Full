@@ -22,32 +22,40 @@ class CreateEvent extends Component {
       title: this.inputs.title,
       description: this.inputs.description,
       time: this.inputs.date,
-    }
-    if (eventObject.time === null || eventObject.title === ''){
-      Alert.alert(
-        'OOPSIE DOOPSIE U MADE A WOOPSIE'        
-      )
-    }
-    else{
-      await appState.createEventAsync(eventObject)
+    };
+
+    if (eventObject.time === null || eventObject.title === '') {
+      Alert.alert('OOPSIE DOOPSIE U MADE A WOOPSIE');
+    } else {
+      await appState.createEventAsync(eventObject);
       this.goBack();
     }
   }
 
-  handleDatePicked = (datetime) => {
-      this.inputs.date = moment(datetime)
-  };
-  
-  goBack(){
-    this.props.navigation.goBack();
+  handleDatePicked(datetime) {
+    this.inputs.date = moment(datetime);
+  }
+
+  goBack() {
+    const { navigation } = this.props;
+    navigation.goBack();
+  }
+
+  changeTitle(titleText) {
+    this.inputs.title = titleText;
+  }
+
+  changeDescription(descriptionText) {
+    this.inputs.description = descriptionText;
   }
 
   render() {
     return (
       <Container
         style={{
-          backgroundColor: '#6D6D6D'
-        }}>
+          backgroundColor: '#6D6D6D',
+        }}
+      >
         <Content>
           <Form>
             <Item
@@ -67,7 +75,7 @@ class CreateEvent extends Component {
                 Title
               </Label>
               <Input
-                onChangeText={text => this.inputs.title = text}
+                onChangeText={text => this.changeTitle(text)}
                 style={{
                   color: 'white',
                 }}
@@ -76,7 +84,7 @@ class CreateEvent extends Component {
           </Form>
           <Form>
             <Textarea
-              onChangeText={text => this.inputs.description = text}
+              onChangeText={text => this.changeDescription(text)}
               rowSpan={5}
               placeholder="Description"
               style={{
@@ -88,7 +96,7 @@ class CreateEvent extends Component {
             />
           </Form>
           <DateTimePickerTester
-            onDatePicked={(datetime) => this.handleDatePicked(datetime)}
+            onDatePicked={datetime => this.handleDatePicked(datetime)}
           />
           <TouchableOpacity
             onPress={() => this.submitEvent()}
