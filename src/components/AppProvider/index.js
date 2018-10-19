@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AsyncStorage, Platform } from 'react-native';
-import { Notifications } from 'expo';
+import { Notifications, Permissions } from 'expo';
 import cloneDeep from 'lodash/cloneDeep';
-import uniqueId from 'lodash/uniqueId';
 import moment from 'moment';
+import uuid from 'uuid';
 import Serializer from '../../utils/serialization';
 import notificationUtil from '../../utils/notifications';
 
@@ -87,6 +87,9 @@ class AppProvider extends React.Component {
       .then(result => this.setState(result))
       .catch(error => console.error(error));
 
+    // We need to ask the user permission to send notifications in iOS.
+    Permissions.askAsync(Permissions.NOTIFICATIONS);
+
     this.setupNotificationChannels();
   }
 
@@ -164,14 +167,54 @@ class AppProvider extends React.Component {
   async createEventAsync(eventObject) {
     const tempState = cloneDeep(this.state);
     const newEvent = cloneDeep(eventObject);
-    // trying to make unique keys. This won't work if we should be able to delete events
-    newEvent.key = parseInt(uniqueId(), 10);
+    // making unique keys. This won't work if we should be able to delete events
+    newEvent.key = uuid();
     newEvent.drinks = newEvent.drinks ? newEvent.drinks : [];
     tempState.events.push(newEvent);
     await this.setStorageAndState('events', tempState.events);
   }
 
   async thisFunctionIsForTesting() {
+<<<<<<< HEAD
+=======
+    const events = [
+      {
+        title: 'this is a past event',
+        time: moment().subtract(13, 'hours'),
+        description: 'this is an event',
+        drinks: [
+          {
+            type: 'beer',
+            alcoholInGrams: 19.39,
+            timeStamp: moment().subtract(11, 'hours'),
+          },
+          {
+            type: 'beer',
+            alcoholInGrams: 19.39,
+            timeStamp: moment().subtract(8, 'hours'),
+          },
+          {
+            type: 'beer',
+            alcoholInGrams: 19.39,
+            timeStamp: moment().subtract(12, 'hours'),
+          },
+        ],
+      },
+      {
+        title: 'this is a testevent',
+        description: 'this is an event',
+        time: moment(),
+        drinks: [],
+      },
+      {
+        title: 'this is an upcoming event',
+        description: 'this is an event',
+        time: moment().add(6, 'hours'),
+        drinks: [],
+      },
+    ];
+
+>>>>>>> dcfa3979ea23d5a1ec836afc33adeb7bace629ac
     await events.forEach(async event => this.createEventAsync(event));
   }
 

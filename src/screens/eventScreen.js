@@ -8,20 +8,17 @@ import { Card } from 'react-native-material-ui';
 import Graph from '../components/graph/index';
 import { AppContext } from '../components/AppProvider';
 
-const wineGlass = require('./../Icons/wine-glass-solid.svg');
-const drinkGlass = require('./../Icons/glass-martini-solid.svg');
-const beerGlass = require('./../Icons/beer-solid.svg');
+const wineGlass = require('../../assets/wine-glass-solid.svg');
+const drinkGlass = require('../../assets/glass-martini-solid.svg');
+const beerGlass = require('../../assets/beer-solid.svg');
 
 const styles = ({ // Styling for different components
   eventTitle: {
-    fontSize: 24,
+    fontSize: 36,
     color: '#FFF',
     textAlign: 'center',
     fontWeight: '100',
     marginTop: 12,
-  },
-  scoreNumber: {
-
   },
   topView: {
     borderRadius: 2,
@@ -31,7 +28,6 @@ const styles = ({ // Styling for different components
     shadowRadius: 5,
     marginBottom: 10,
   },
-
   container: { // container - buttons
     flex: 1,
   },
@@ -44,7 +40,7 @@ const EventScreen = (props) => {
   const { navigation } = props;
   const drinkTypes = {
     beer: {
-      type: 'beer 0.5',
+      type: 'beer',
       alcoholInGrams: 18.03,
       timeStamp: moment(),
     },
