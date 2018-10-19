@@ -65,11 +65,11 @@ class AppProvider extends React.Component {
       ],
       notificationId: -1,
 
-      setStorageAndState: async (key, value) => await this.setStorageAndState(key, value),
-      addDrinkAsync: async (drinkObject, key) => await this.addDrinkAsync(drinkObject, key),
-      createEventAsync: async eventObject => await this.createEventAsync(eventObject),
+      setStorageAndState: async (key, value) => this.setStorageAndState(key, value),
+      addDrinkAsync: async (drinkObject, key) => this.addDrinkAsync(drinkObject, key),
+      createEventAsync: async eventObject => this.createEventAsync(eventObject),
       getEventFromKey: key => this.getEventFromKey(key),
-      notify: async drinkType => await this.notify(drinkType),
+      notify: async drinkType => this.notify(drinkType),
     };
   }
 
@@ -79,8 +79,9 @@ class AppProvider extends React.Component {
       .then(result => JSON.parse(result))
       .then((result) => {
         if (result && result.events) {
-          result.events = Serializer.deserializeState(result.events);
-          return result;
+          const makeEslintHappy = cloneDeep(result);
+          makeEslintHappy.events = Serializer.deserializeState(result.events);
+          return makeEslintHappy;
         }
         return result;
       })
